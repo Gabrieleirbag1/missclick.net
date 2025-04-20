@@ -107,21 +107,20 @@ h2 {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
   background-color: #212121;
-  color: white;
   padding: 30px;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 40px;
   width: 40vw;
 }
 
 .terminal-header p {
-    color: white;
+  color: white;
 }
 
 .terminal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;   
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .terminal-buttons {
@@ -163,6 +162,60 @@ h2 {
 
 .terminal-text.white {
   --text-color: #ffffff;
+}
+
+.terminal-text.grey {
+  --text-color: #bdbdbd;
+}
+
+.terminal-input-container {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: white;
+}
+
+.terminal-prompt {
+  color: white;
+  margin-right: 8px;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0;
+  flex: 1;
+  caret-color: transparent;
+  outline: none;
+}
+
+.terminal-cursor {
+  width: 8px;
+  height: 1.2em;
+  margin-left: -5px;
+  background-color: white;
+  display: inline-block;
+  position: absolute;
+  left: calc(1em + 8px + var(--input-width, 0px));
+  opacity: 0;
+}
+
+.terminal-cursor.active {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
