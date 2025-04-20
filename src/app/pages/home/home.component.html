@@ -20,7 +20,7 @@
           <br>
 					<div class="terminal-input-container">
 						<span class="terminal-prompt">></span>
-						<input type="text" class="terminal-input" (focus)="inputFocused = true" (blur)="inputFocused = false" [(ngModel)]="terminalInput">
+						<input type="text" class="terminal-input" (focus)="inputFocused = true" (blur)="inputFocused = false" [(ngModel)]="terminalInput" >
 						<span class="terminal-cursor" [class.active]="inputFocused || !terminalInput"></span>
 					</div>
 				</div>
