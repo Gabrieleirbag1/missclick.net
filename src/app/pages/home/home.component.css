@@ -12,11 +12,6 @@
   color: var(--primary-color);
 }
 
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
 .cta-button {
   background-color: var(--primary-color);
   color: white;
@@ -101,29 +96,46 @@ h2 {
 }
 
 .terminal-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+.terminal {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
   background-color: #212121;
   color: white;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
-  font-family: "Courier New", Courier, monospace;
   margin-bottom: 40px;
+  width: 40vw;
+}
+
+.terminal-header p {
+    color: white;
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
 }
 
 .terminal-buttons {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
-
 
 .terminal-button {
   border-radius: 9999px;
   width: 0.75rem;
   height: 0.75rem;
-  background-color: var(
-    --button-color,
-    #808080
-  ); 
+  background-color: var(--button-color, #808080);
 }
 
 .terminal-button.red {
@@ -139,11 +151,10 @@ h2 {
 }
 
 .terminal-text {
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.5;
+  margin: 0;
   color: var(--text-color, white);
-  display: flex;
-  justify-content: flex-start;
 }
 
 .terminal-text.green {
