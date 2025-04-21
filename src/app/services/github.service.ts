@@ -21,4 +21,4 @@ export class GithubService {
 }
 
 //https://github-readme-stats.vercel.app/api?username=Gabrieleirbag1&show_icons=true&theme=radical
-//https://github-readme-streak-stats.herokuapp.com/?user=Gabrieleirbag1&theme=dark
+//https://github-readme-streak-stats.terminalkuapp.com/?user=Gabrieleirbag1&theme=dark

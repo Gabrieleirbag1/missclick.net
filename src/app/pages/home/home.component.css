@@ -1,4 +1,4 @@
-.hero {
+.terminal {
   text-align: center;
   padding: 80px 20px;
   background-color: var(--light-bg);
@@ -6,7 +6,7 @@
   margin-bottom: 40px;
 }
 
-.hero h1 {
+.terminal h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: var(--primary-color);
@@ -49,7 +49,7 @@ h2 {
     flex-direction: column;
   }
 
-  .hero h1 {
+  .terminal h1 {
     font-size: 2rem;
   }
 }
