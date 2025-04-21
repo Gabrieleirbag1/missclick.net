@@ -48,7 +48,7 @@ export class GithubStatsComponent implements OnInit {
       case 'contributions':
         return 'Contribution Streak';
       case 'stars':
-        return 'Starred Repositories';
+        return 'Total Stars earned';
       default:
         return 'GitHub Statistics';
     }
@@ -57,15 +57,15 @@ export class GithubStatsComponent implements OnInit {
   getModalIcon(): string {
     switch(this.activeModal) {
       case 'languages':
-        return 'assets/icons/chart-icon.png';
+        return '/assets/icons/languages.png';
       case 'profile':
-        return 'assets/icons/github-icon.png';
+        return '/assets/icons/github-icon.png';
       case 'contributions':
-        return 'assets/icons/calendar-icon.png';
+        return '/assets/icons/calendar-icon.png';
       case 'stars':
-        return 'assets/icons/star-icon.png';
+        return 'assets/icons/stars.webp';
       default:
-        return 'assets/icons/github-icon.png';
+        return '/assets/icons/github-icon.png';
     }
   }
 }
