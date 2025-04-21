@@ -76,21 +76,30 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     const inputTerminalElement = document.querySelector(
       '.terminal-input'
     ) as HTMLInputElement;
+
+    function checkTerminalCommand(): void {
+      const inputValue: string = getInputText();
+      const commands: Array<string> = ['test', 'test2'];
+      if (!commands.includes(inputValue)) {
+        console.log('Unknown command !');
+      }
+      else {
+        console.log('Success');
+      }
+    }
+
+    function getInputText(): string {
+      const inputValue: string = inputTerminalElement.value.trim();
+
+      return inputValue;
+    }
+
     inputTerminalElement.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.keyCode === 13) {
         e.preventDefault();
+        checkTerminalCommand();
         inputTerminalElement.value = '';
       }
     });
-  }
-  
-  getInputText(): string {
-    const inputTerminalElement = document.querySelector(
-      '.terminal-input'
-    ) as HTMLInputElement;
-
-    const inputValue: string = inputTerminalElement.value;
-
-    return inputValue;
   }
 }
