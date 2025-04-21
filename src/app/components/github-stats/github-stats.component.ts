@@ -2,6 +2,12 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GithubService } from '../../services/github.service';
 
+interface ModalInfo {
+  type: string;
+  title: string;
+  iconSrc: string;
+}
+
 @Component({
   selector: 'app-github-stats',
   standalone: true,
@@ -11,9 +17,37 @@ import { GithubService } from '../../services/github.service';
 })
 export class GithubStatsComponent implements OnInit {
   username = 'Gabrieleirbag1';
-  activeModal: string | null = null;
+  activeModal: ModalInfo | null = null;
   currentTime = new Date();
   githubStats: any = {};
+  
+  // Define icons with their details
+  desktopIcons = [
+    {
+      type: 'languages',
+      title: 'Programming Languages',
+      iconSrc: 'assets/icons/languages.png',
+      label: 'Languages'
+    },
+    {
+      type: 'profile',
+      title: 'GitHub Profile Stats',
+      iconSrc: 'assets/icons/stats.png',
+      label: 'GitHub Stats'
+    },
+    {
+      type: 'contributions',
+      title: 'Contribution Streak',
+      iconSrc: 'assets/icons/contributions.png',
+      label: 'Contributions'
+    },
+    {
+      type: 'stars',
+      title: 'Total Stars earned',
+      iconSrc: 'assets/icons/stars.webp',
+      label: 'Stars'
+    }
+  ];
   
   constructor(
     private githubService: GithubService,
@@ -22,7 +56,7 @@ export class GithubStatsComponent implements OnInit {
   
   ngOnInit(): void {
     // Update the time every minute
-    this.githubStats.stars = 12;
+    this.githubStats.stars = 12; // temporary value
 
     setInterval(() => {
       this.ngZone.run(() => {
@@ -32,40 +66,14 @@ export class GithubStatsComponent implements OnInit {
   }
   
   openModal(modalType: string): void {
-    this.activeModal = modalType;
+    // Find the icon info from desktopIcons array
+    const iconInfo = this.desktopIcons.find(icon => icon.type === modalType);
+    if (iconInfo) {
+      this.activeModal = iconInfo;
+    }
   }
   
   closeModal(): void {
     this.activeModal = null;
-  }
-  
-  getModalTitle(): string {
-    switch(this.activeModal) {
-      case 'languages':
-        return 'Programming Languages';
-      case 'profile':
-        return 'GitHub Profile Stats';
-      case 'contributions':
-        return 'Contribution Streak';
-      case 'stars':
-        return 'Total Stars earned';
-      default:
-        return 'GitHub Statistics';
-    }
-  }
-  
-  getModalIcon(): string {
-    switch(this.activeModal) {
-      case 'languages':
-        return '/assets/icons/languages.png';
-      case 'profile':
-        return '/assets/icons/github-icon.png';
-      case 'contributions':
-        return '/assets/icons/calendar-icon.png';
-      case 'stars':
-        return 'assets/icons/stars.webp';
-      default:
-        return '/assets/icons/github-icon.png';
-    }
   }
 }

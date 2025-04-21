@@ -1,26 +1,9 @@
 <div class="windows-xp-desktop">
   <div class="desktop-icons">
-    <!-- Languages Stats Icon -->
-    <div class="desktop-icon" (dblclick)="openModal('languages')">
-      <img src="assets/icons/languages.png" alt="Languages Icon" class="icon-img">
-      <span class="icon-label">Languages</span>
-    </div>
-
-    <!-- Profile Stats Icon -->
-    <div class="desktop-icon" (dblclick)="openModal('profile')">
-      <img src="assets/icons/github-icon.png" alt="GitHub Icon" class="icon-img">
-      <span class="icon-label">GitHub Stats</span>
-    </div>
-
-    <!-- Contribution Stats Icon -->
-    <div class="desktop-icon" (dblclick)="openModal('contributions')">
-      <img src="assets/icons/calendar-icon.png" alt="Contributions Icon" class="icon-img">
-      <span class="icon-label">Contributions</span>
-    </div>
-
-    <div class="desktop-icon" (dblclick)="openModal('stars')">
-      <img src="assets/icons/stars.webp" alt="Stars Icon" class="icon-img">
-      <span class="icon-label">Stars</span>
+    <!-- Generate desktop icons dynamically -->
+    <div *ngFor="let icon of desktopIcons" class="desktop-icon" (dblclick)="openModal(icon.type)">
+      <img [src]="icon.iconSrc" [alt]="icon.label + ' Icon'" class="icon-img">
+      <span class="icon-label">{{ icon.label }}</span>
     </div>
   </div>
 
@@ -38,8 +21,8 @@
   <div class="windows-modal" *ngIf="activeModal" [class.active]="activeModal">
     <div class="window-header">
       <div class="window-title">
-        <img [src]="getModalIcon()" alt="Window Icon" class="window-icon">
-        <span>{{ getModalTitle() }}</span>
+        <img [src]="activeModal.iconSrc" alt="Window Icon" class="window-icon">
+        <span>{{ activeModal.title }}</span>
       </div>
       <div class="window-controls">
         <span class="control minimize">_</span>
@@ -49,38 +32,40 @@
     </div>
     <div class="window-content">
       <!-- Languages Stats -->
-      <div *ngIf="activeModal === 'languages'" class="stat-card">
+      <div *ngIf="activeModal.type === 'languages'" class="stat-card">
         <img 
-          src="https://github-readme-stats.vercel.app/api/top-langs/?username=Gabrieleirbag1&layout=donut-vertical&size_weight=0.2&count_weight=0.2&hide=shell,css,html,powershell" 
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=Gabrieleirbag1&layout=donut-vertical&size_weight=0.2&count_weight=0.2&hide=shell,css,html,powershell&hide_border=true" 
           alt="Most Used Languages" 
           class="github-card"
         />
       </div>
 
       <!-- Profile Stats -->
-      <div *ngIf="activeModal === 'profile'" class="stat-card">
+      <div *ngIf="activeModal.type === 'profile'" class="stat-card">
         <img 
-          src="https://github-readme-stats.vercel.app/api?username=Gabrieleirbag1&show_icons=true&theme=buefy&rank_icon=github" 
+          src="https://github-readme-stats.vercel.app/api?username=Gabrieleirbag1&show_icons=true&theme=buefy&rank_icon=github&hide_border=true" 
           alt="GitHub Stats" 
           class="github-card"
         />
       </div>
 
       <!-- Contribution Stats -->
-      <div *ngIf="activeModal === 'contributions'" class="stat-card">
+      <div *ngIf="activeModal.type === 'contributions'" class="stat-card">
         <img 
-          src="https://github-readme-streak-stats.herokuapp.com/?user=Gabrieleirbag1&theme=buefy&hide_border=true&stroke=0000&background=FFFFFF00&ring=FF0000&fire=FF0000&currStreakLabel=FF0000" 
+          src="https://github-readme-streak-stats.herokuapp.com/?user=Gabrieleirbag1&theme=buefy&hide_border=true" 
           alt="GitHub Streak Stats" 
           class="github-card"
         />
       </div>
 
       <!-- Stars Stats -->
-      <div *ngIf="activeModal === 'stars'" class="stat-card stat-icon-card">
-        <img src="assets/icons/stars.webp" alt="Stars Icon" class="icon-card">
-        <p class="icon-text">{{ githubStats.stars }}</p>
+      <div *ngIf="activeModal.type === 'stars'" class="stat-card stat-icon-card">
+        <img [src]="activeModal.iconSrc" alt="Stars Icon" class="icon-card">
+        <div>        
+          <p class="icon-text icon-text-value">{{ githubStats.stars }}</p>
+          <p class="icon-text icon-text-desc">stars earned</p>
+        </div>
       </div>
-      
     </div>
     <div class="window-statusbar">
       <span>github.com/Gabrieleirbag1</span>
