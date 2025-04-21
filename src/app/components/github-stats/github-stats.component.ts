@@ -17,13 +17,13 @@ export class GithubStatsComponent implements OnInit {
   constructor(private githubService: GithubService) {}
 
   ngOnInit(): void {
-    this.githubService.getUserProfile().subscribe((data) => {
-      this.githubData = data;
-    });
+    // this.githubService.getUserProfile().subscribe((data) => {
+    //   this.githubData = data;
+    // });
 
-    this.githubService.getRepos().subscribe((data) => {
-      this.repos = data;
-    });
+    // this.githubService.getRepos().subscribe((data) => {
+    //   this.repos = data;
+    // });
 
   }
 }
