@@ -213,6 +213,9 @@
 .icon-text {
   padding: 0;
   margin: 0;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in forwards;
+  animation-delay: 0.4s;
 }
 
 .icon-text-value {
@@ -228,11 +231,33 @@
   text-align: center;
   font-weight: 700;
   font-family: "Courier New", Courier, monospace;
+  animation-delay: 0.6s;
 }
 
 .icon-card {
   width: 160px;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeInSlide 0.6s ease-in forwards;
+  animation-delay: 0.2s; /* slight delay after modal appears */
 }
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 
 .github-card {
   max-width: 100%;
