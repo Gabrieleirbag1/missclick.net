@@ -1,3 +1,230 @@
+/* Windows XP Desktop */
+.windows-xp-desktop {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background-image: url('/assets/backgrounds/winxp-bliss.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+}
+
+/* Desktop Icons */
+.desktop-icons {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 80px);
+  grid-gap: 20px;
+  align-content: start;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.desktop-icon:hover {
+  background-color: rgba(49, 106, 197, 0.2);
+}
+
+.desktop-icon:active {
+  background-color: rgba(49, 106, 197, 0.4);
+}
+
+.icon-img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 5px;
+}
+
+.icon-label {
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Windows XP Taskbar */
+.windows-taskbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(to bottom, #2584e4 0%, #0078d7 35%, #0078d7 65%, #245edb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.start-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.start-logo {
+  margin-right: 5px;
+  height: 30px;
+}
+
+.start-logo:hover {
+  filter: brightness(110%);
+}
+
+.taskbar-time {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  padding: 0 10px;
+}
+
+/* Windows XP Modal */
+.windows-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-height: 550px;
+  background-color: #ECE9D8;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.windows-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.window-header {
+  background: linear-gradient(to right, #0058cb 0%, #3c8ae4 100%);
+  color: white;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  border-radius: 8px 8px 0 0;
+  cursor: move;
+}
+
+.window-title {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.window-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.window-controls {
+  display: flex;
+}
+
+.control {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+  border-radius: 3px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.minimize {
+  background-color: #7eb4ea;
+}
+
+.maximize {
+  background-color: #7eb4ea;
+}
+
+.close {
+  background-color: #e81123;
+  color: white;
+}
+
+.window-content {
+  flex: 1;
+  padding: 16px;
+  background-color: white;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-statusbar {
+  height: 20px;
+  background-color: #ECE9D8;
+  border-top: 1px solid #d0cec1;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 11px;
+  color: #555;
+}
+
+.stat-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.stat-icon-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icon-text {
+  padding: 0;
+  margin: 0;
+  font-size: 100px;
+  color: #333;
+  text-align: center;
+  font-weight: 700;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.icon-card {
+  width: 160px;
+}
+
+.github-card {
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
 .github-stats {
   background-color: var(--light-bg);
   border-radius: 8px;
