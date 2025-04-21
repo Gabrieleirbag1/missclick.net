@@ -93,11 +93,18 @@
 }
 
 .taskbar-time {
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 2px 8px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(223, 222, 222, 0.2);
   border-radius: 2px;
-  font-size: 12px;
-  padding: 0 10px;
+  font-size: 15px;
+  padding: 0 6px;
+  height: 30px;
+}
+
+.taskbar-time p {
+  margin: 0;
+  color: white;
 }
 
 /* Windows XP Modal */
