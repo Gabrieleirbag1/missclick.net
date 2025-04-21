@@ -1,0 +1,26 @@
+<div class="terminal-div">
+  <div class="terminal">
+    <div class="terminal-header">
+      <div class="terminal-buttons">
+        <div class="terminal-button red"></div>
+        <div class="terminal-button yellow"></div>
+        <div class="terminal-button green"></div>
+      </div>
+      <p>bash</p>
+    </div>
+    <div class="terminal-content">
+      <p class="terminal-text green">$ npm install missclick</p>
+      <p class="terminal-text white">+ missclick&#64;07.11.04
+        added 1 package, and audited 2 packages in 3s</p>
+      <br>
+      <br>
+      <p class="terminal-text grey">Explore my work and let's connect!</p>
+      <br>
+      <div class="terminal-input-container">
+        <span class="terminal-prompt">></span>
+        <input type="text" class="terminal-input" spellcheck="false" (focus)="inputFocused = true" (blur)="inputFocused = false" [(ngModel)]="terminalInput">
+        <span class="terminal-cursor" [class.active]="inputFocused || !terminalInput"></span>
+      </div>
+    </div>
+  </div>
+</div>

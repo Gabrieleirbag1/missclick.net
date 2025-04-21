@@ -1,47 +1,11 @@
 <div class="container">
     <section class="hero">
-		<div class="terminal-div">
-			<div class="terminal">
-				<div class="terminal-header">
-					<div class="terminal-buttons">
-						<div class="terminal-button red"></div>
-						<div class="terminal-button yellow"></div>
-						<div class="terminal-button green"></div>
-					</div>
-					<p> bash</p>
-				</div>
-				<div class="terminal-content">
-					<p class="terminal-text green">$ npm install missclick</p>
-					<p class="terminal-text white">+ missclick&#64;07.11.04
-						added 1 package, and audited 2 packages in 3s</p>
-          <br>
-					<br>
-					<p class="terminal-text grey">Explore my work and let's connect!</p>
-          <br>
-					<div class="terminal-input-container">
-						<span class="terminal-prompt">></span>
-						<input type="text" class="terminal-input" spellcheck="false" (focus)="inputFocused = true" (blur)="inputFocused = false" [(ngModel)]="terminalInput" >
-						<span class="terminal-cursor" [class.active]="inputFocused || !terminalInput"></span>
-					</div>
-				</div>
-			</div>
-		</div>
-
-      <button class="cta-button">View My Work</button>
+        <app-terminal></app-terminal>
+        <button class="cta-button">View My Work</button>
     </section>
   
     <section class="about">
-      <h2>About Me</h2>
-      <div class="about-content">
-        <div class="about-image">
-          <!-- You can add your image here -->
-          <div class="placeholder-image">Profile Image</div>
-        </div>
-        <div class="about-text">
-          <p>Hello! I'm a developer with expertise in Angular, TypeScript, and web development. I'm passionate about creating user-friendly and efficient applications.</p>
-          <p>I enjoy solving complex problems and continuously learning new technologies.</p>
-        </div>
-      </div>
+      <app-about></app-about>
     </section>
 
     <section class="hobbies">
@@ -49,36 +13,7 @@
     </section>
 
     <section class="skills">
-      <h2>My Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Frontend</h3>
-          <ul>
-            <li>Angular</li>
-            <li>TypeScript</li>
-            <li>HTML/CSS</li>
-            <li>JavaScript</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <h3>Backend</h3>
-          <ul>
-            <li>Node.js</li>
-            <li>Express</li>
-            <li>MongoDB</li>
-            <li>SQL</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <h3>Tools</h3>
-          <ul>
-            <li>Git</li>
-            <li>VS Code</li>
-            <li>Docker</li>
-            <li>CI/CD</li>
-          </ul>
-        </div>
-      </div>
+      <app-skills></app-skills>
     </section>
 
     <section class="github-stats">
@@ -88,5 +23,4 @@
     <section class="projects">
       <app-projects></app-projects>
     </section>
-
 </div>
