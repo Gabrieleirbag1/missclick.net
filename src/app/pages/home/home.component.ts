@@ -8,11 +8,13 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GithubStatsComponent } from '../../components/github-stats/github-stats.component';
+import { ProjectsComponent } from "../../components/projects/projects.component";
+import { HobbiesComponent } from "../../components/hobbies/hobbies.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, GithubStatsComponent],
+  imports: [FormsModule, GithubStatsComponent, ProjectsComponent, HobbiesComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
