@@ -20,18 +20,17 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   terminalInput = '';
   inputFocused = false;
   cursorInterval: any;
-  inputTerminalElement = document.querySelector('.terminal-input') as HTMLInputElement;
 
   @ViewChild('terminalInput') terminalInputEl: ElementRef | undefined;
 
   ngAfterViewInit(): void {
     // Automatically focus the input when the component loads
     setTimeout(() => {
-      const inputElement = document.querySelector(
+      const inputTerminalElement = document.querySelector(
         '.terminal-input'
       ) as HTMLInputElement;
-      if (inputElement) {
-        inputElement.focus();
+      if (inputTerminalElement) {
+        inputTerminalElement.focus();
       }
     }, 500);
 
@@ -48,17 +47,17 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   updateCursorPosition(): void {
     this.cursorInterval = setInterval(() => {
-      const inputElement = document.querySelector(
+      const inputTerminalElement = document.querySelector(
         '.terminal-input'
       ) as HTMLInputElement;
-      if (inputElement) {
+      if (inputTerminalElement) {
         // Create a temporary span to measure text width
         const temp = document.createElement('span');
         temp.style.visibility = 'hidden';
         temp.style.position = 'absolute';
         temp.style.whiteSpace = 'pre';
-        temp.style.font = window.getComputedStyle(inputElement).font;
-        temp.textContent = inputElement.value || '';
+        temp.style.font = window.getComputedStyle(inputTerminalElement).font;
+        temp.textContent = inputTerminalElement.value || '';
         document.body.appendChild(temp);
 
         // Set the custom property
@@ -74,16 +73,23 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   }
 
   handleInputTerminalEvent(): void {
-    this.inputTerminalElement.addEventListener('keydown', function (e) {
+    const inputTerminalElement = document.querySelector(
+      '.terminal-input'
+    ) as HTMLInputElement;
+    inputTerminalElement.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.keyCode === 13) {
         e.preventDefault();
-        console.log('test');
+        inputTerminalElement.value = '';
       }
     });
   }
   
   getInputText(): string {
-    const inputValue: string = this.inputTerminalElement.value;
+    const inputTerminalElement = document.querySelector(
+      '.terminal-input'
+    ) as HTMLInputElement;
+
+    const inputValue: string = inputTerminalElement.value;
 
     return inputValue;
   }
