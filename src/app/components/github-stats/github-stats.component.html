@@ -1,0 +1,56 @@
+<div class="github-stats">
+  <h3>My GitHub Activity</h3>
+  
+  <div class="stats-container" *ngIf="githubData">
+    <div class="stat-card">
+      <h4>Public Repos</h4>
+      <p class="stat-value">{{ githubData.public_repos }}</p>
+    </div>
+
+    <div class="stat-card">
+      <h4>Public Gists</h4>
+      <p class="stat-value">{{ githubData.public_gists }}</p>
+    </div>
+
+    <div class="stat-card">
+      <h4>Stars</h4>
+      <p class="stat-value">{{ githubData.stars }}</p>
+    </div>
+
+    <div class="stat-card">
+      <h4>Forks</h4>
+      <p class="stat-value">{{ githubData.forks }}</p>
+    </div>
+
+    <div class="stat-card">
+      <h4>Issues</h4>
+      <p class="stat-value">{{ githubData.issues }}</p>
+    </div>
+
+    <div class="stat-card">
+      <h4>Commits</h4>
+      <p class="stat-value">{{ githubData.commits }}</p>
+    </div>
+    
+    <div class="stat-card">
+      <h4>Followers</h4>
+      <p class="stat-value">{{ githubData.followers }}</p>
+    </div>
+    
+    <div class="stat-card">
+      <h4>Following</h4>
+      <p class="stat-value">{{ githubData.following }}</p>
+    </div>
+  </div>
+  
+  <div class="recent-activity" *ngIf="repos && repos.length">
+    <h4>Recent Activity</h4>
+    <ul class="repo-list">
+      <li *ngFor="let repo of repos.slice(0, 5)">
+        <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+        <p class="repo-description">{{ repo.description }}</p>
+        <p class="repo-updated">Last updated: {{ repo.pushed_at | date }}</p>
+      </li>
+    </ul>
+  </div>
+</div>

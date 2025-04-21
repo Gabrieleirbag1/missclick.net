@@ -6,11 +6,12 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { GithubStatsComponent } from "../../components/github-stats/github-stats.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, GithubStatsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
