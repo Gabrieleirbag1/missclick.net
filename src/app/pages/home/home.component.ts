@@ -4,9 +4,10 @@ import {
   ViewChild,
   ElementRef,
   OnDestroy,
+  input,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { GithubStatsComponent } from "../../components/github-stats/github-stats.component";
+import { GithubStatsComponent } from '../../components/github-stats/github-stats.component';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   terminalInput = '';
   inputFocused = false;
   cursorInterval: any;
+  inputTerminalElement = document.querySelector('.terminal-input') as HTMLInputElement;
 
   @ViewChild('terminalInput') terminalInputEl: ElementRef | undefined;
 
@@ -35,6 +37,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
     // Update cursor position based on input width
     this.updateCursorPosition();
+    this.handleInputTerminalEvent();
   }
 
   ngOnDestroy(): void {
@@ -68,5 +71,20 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
         document.body.removeChild(temp);
       }
     }, 100);
+  }
+
+  handleInputTerminalEvent(): void {
+    this.inputTerminalElement.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        e.preventDefault();
+        console.log('test');
+      }
+    });
+  }
+  
+  getInputText(): string {
+    const inputValue: string = this.inputTerminalElement.value;
+
+    return inputValue;
   }
 }
