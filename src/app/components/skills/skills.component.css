@@ -19,10 +19,14 @@
   background-image: url("/assets/skills/devops.jpg");
 }
 
+.web {
+  background-image: url("/assets/skills/web.jpg");
+}
+
 .skill-icon {
   background-size: cover;
   background-position: center;
-  height: 500px;
+  height: 450px;
   transition: all 0.75s ease-in-out;
 }
 
@@ -31,7 +35,7 @@
 }
 
 .skill-card.expanded {
-  flex: 3;
+  flex: 1.25;
 }
 
 .skill-card.reduced {
@@ -43,5 +47,34 @@
 }
 
 .skill-desc {
-  font-size: 14px;
+  font-weight: 700;
+  font-family: "Courier New", Courier, monospace;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  height: 275px;
+}
+
+.skill-desc h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-desc span {
+  margin: 20px 0;
+}
+
+.technologies-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.technologies-icon {
+  width: 42px;
 }
