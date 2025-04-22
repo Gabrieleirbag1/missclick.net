@@ -6,7 +6,7 @@
 
 .skill-card {
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
   cursor: pointer;
   transition: all 0.75s ease-in-out;
@@ -15,12 +15,20 @@
   height: 100%;
 }
 
-.devops {
-  background-image: url("/assets/skills/devops.jpg");
-}
-
 .web {
   background-image: url("/assets/skills/web.jpg");
+}
+
+.video-game {
+  background-image: url("/assets/skills/video-game.webp");
+}
+
+.software {
+  background-image: url("/assets/skills/software.jpg");
+}
+
+.devops {
+  background-image: url("/assets/skills/devops.jpg");
 }
 
 .skill-icon {
@@ -59,7 +67,8 @@
 }
 
 .skill-desc h2 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
+  white-space: nowrap;
   font-weight: 900;
   padding: 0;
   margin: 0;

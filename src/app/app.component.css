@@ -1,27 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --primary-color: #3f51b5;
-    --secondary-color: #ff4081;
-    --text-color: #333;
-    --light-bg: #f5f5f5;
-    --dark-bg: #212121;
-  }
-  
-  body {
-    font-family: 'Roboto', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: var(--text-color);
-  }
-  
-  main {
-    min-height: 80vh;
-    padding: 20px;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+  --primary-color: #3f51b5;
+  --secondary-color: #ff4081;
+  --text-color: #333;
+  --light-bg: #f5f5f5;
+  --dark-bg: #212121;
+}
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--text-color);
+}
+
+main {
+  min-height: 80vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
