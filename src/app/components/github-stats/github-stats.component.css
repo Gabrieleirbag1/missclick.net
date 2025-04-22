@@ -273,7 +273,6 @@
   to { opacity: 1; }
 }
 
-
 .github-card {
   max-width: 100%;
   border-radius: 6px;
@@ -284,6 +283,88 @@
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 40px;
+}
+
+.recycle-bin-card {
+  background-color: white;
+  border: 1px solid #d4d0c8;
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.recycle-bin-card .trash-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  height: 90px;
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.recycle-bin-card .trash-item:hover {
+  background-color: #e5f3ff;
+  border: 1px solid #70c0ff;
+}
+
+.recycle-bin-card .trash-item img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 5px;
+}
+
+.recycle-bin-card .trash-item span {
+  font-size: 11px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.recycle-bin-card .toolbar {
+  width: 100%;
+  background: linear-gradient(to bottom, #ebeadb 0%, #d4d0c8 100%);
+  margin-bottom: 10px;
+  align-items: center;
+  border: 1px solid #ababab;
+  height: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toolbal-container {
+  padding: 0 8px;
+  display: flex;
+}
+
+.toolbar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0 10px;
+  background-color: #ffffff;
+  border: 1px solid #ababab;
+  border-right: none;
+}
+
+.toolbar-img {
+  height: 16px;
+}
+
+.recycle-bin-card .toolbar-text {
+  font-size: 11px;
+  color: #444;
+  margin-right: 10px;
 }
 
 .stat-card {

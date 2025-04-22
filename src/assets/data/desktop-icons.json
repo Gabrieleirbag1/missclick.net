@@ -1,5 +1,11 @@
 [
   {
+    "type": "recycleBin",
+    "title": "Recycle Bin",
+    "iconSrc": "assets/icons/recycle-bin.webp",
+    "label": "Recycle Bin"
+  },
+  {
     "type": "languages",
     "title": "Programming Languages",
     "iconSrc": "assets/icons/languages.png",
