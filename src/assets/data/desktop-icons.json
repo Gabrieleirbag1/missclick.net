@@ -1,0 +1,56 @@
+[
+  {
+    "type": "languages",
+    "title": "Programming Languages",
+    "iconSrc": "assets/icons/languages.png",
+    "label": "Languages"
+  },
+  {
+    "type": "profile",
+    "title": "GitHub Profile Stats",
+    "iconSrc": "assets/icons/stats.png",
+    "label": "GitHub Stats"
+  },
+  {
+    "type": "contributions",
+    "title": "Contribution Streak",
+    "iconSrc": "assets/icons/contributions.png",
+    "label": "Contributions"
+  },
+  {
+    "type": "stars",
+    "title": "Total Stars earned",
+    "iconSrc": "assets/icons/stars.webp",
+    "label": "Stars"
+  },
+  {
+    "type": "followers",
+    "title": "Followers",
+    "iconSrc": "assets/icons/followers.png",
+    "label": "Followers"
+  },
+  {
+    "type": "repos",
+    "title": "Repositories",
+    "iconSrc": "assets/icons/repos.png",
+    "label": "Repositories"
+  },
+  {
+    "type": "commits",
+    "title": "Total Commits",
+    "iconSrc": "assets/icons/commits.png",
+    "label": "Commits"
+  },
+  {
+    "type": "pullRequests",
+    "title": "Pull Requests",
+    "iconSrc": "assets/icons/pull-requests.png",
+    "label": "Pull Requests"
+  },
+  {
+    "type": "issues",
+    "title": "Issues",
+    "iconSrc": "assets/icons/issues.png",
+    "label": "Issues"
+  }
+]

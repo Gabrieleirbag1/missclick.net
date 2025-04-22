@@ -60,6 +60,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: 0 10px;
 }
 
 /* Windows XP Taskbar */
@@ -229,6 +230,7 @@
   opacity: 0;
   animation: fadeIn 0.6s ease-in forwards;
   animation-delay: 0.4s;
+  max-width: 200px;
 }
 
 .icon-text-value {

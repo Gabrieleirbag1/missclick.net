@@ -9,7 +9,7 @@
 
   <!-- Windows XP Taskbar -->
   <div class="windows-taskbar">
-    <div class="start-button">
+    <div class="start-button" (click)="playSound()">
       <img src="assets/icons/winxp-start.png" alt="Start" class="start-logo">
     </div>
     <div class="taskbar-time">
@@ -67,12 +67,12 @@
         </div>
       </div>
 
-      <!-- Total Commits -->
-      <div *ngIf="activeModal.type === 'commits'" class="stat-card stat-icon-card">
-        <img [src]="activeModal.iconSrc" alt="Commits Icon" class="icon-card">
+      <!-- Followers -->
+      <div *ngIf="activeModal.type === 'followers'" class="stat-card stat-icon-card">
+        <img [src]="activeModal.iconSrc" alt="Followers Icon" class="icon-card">
         <div>        
-          <p class="icon-text icon-text-value">{{ githubStats.commits }}</p>
-          <p class="icon-text icon-text-desc">total commits</p>
+          <p class="icon-text icon-text-value">{{ githubStats.followers }}</p>
+          <p class="icon-text icon-text-desc">followers</p>
         </div>
       </div>
 
@@ -85,12 +85,12 @@
         </div>
       </div>
 
-      <!-- Followers -->
-      <div *ngIf="activeModal.type === 'followers'" class="stat-card stat-icon-card">
-        <img [src]="activeModal.iconSrc" alt="Followers Icon" class="icon-card">
+      <!-- Total Commits -->
+      <div *ngIf="activeModal.type === 'commits'" class="stat-card stat-icon-card">
+        <img [src]="activeModal.iconSrc" alt="Commits Icon" class="icon-card">
         <div>        
-          <p class="icon-text icon-text-value">{{ githubStats.followers }}</p>
-          <p class="icon-text icon-text-desc">followers</p>
+          <p class="icon-text icon-text-value">{{ githubStats.commits }}</p>
+          <p class="icon-text icon-text-desc">total commits</p>
         </div>
       </div>
 
