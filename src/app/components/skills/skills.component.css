@@ -19,12 +19,12 @@
   background-image: url("/assets/skills/web.jpg");
 }
 
-.video-game {
-  background-image: url("/assets/skills/video-game.webp");
-}
-
 .software {
   background-image: url("/assets/skills/software.jpg");
+}
+
+.video-game {
+  background-image: url("/assets/skills/video-game.webp");
 }
 
 .devops {
@@ -85,5 +85,5 @@
 }
 
 .technologies-icon {
-  width: 42px;
+  height: 42px;
 }
