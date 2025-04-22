@@ -46,6 +46,30 @@ export class GithubStatsComponent implements OnInit {
       title: 'Total Stars earned',
       iconSrc: 'assets/icons/stars.webp',
       label: 'Stars'
+    },
+    {
+      type: 'commits',
+      title: 'Total Commits',
+      iconSrc: 'assets/icons/commits.png',
+      label: 'Commits'
+    },
+    {
+      type: 'followers',
+      title: 'Followers',
+      iconSrc: 'assets/icons/followers.png',
+      label: 'Followers'
+    },
+    {
+      type: 'pullRequests',
+      title: 'Pull Requests',
+      iconSrc: 'assets/icons/pull-requests.png',
+      label: 'Pull Requests'
+    },
+    {
+      type: 'issues',
+      title: 'Issues',
+      iconSrc: 'assets/icons/issues.png',
+      label: 'Issues'
     }
   ];
   
@@ -55,8 +79,17 @@ export class GithubStatsComponent implements OnInit {
   ) {}
   
   ngOnInit(): void {
-    // Update the time every minute
-    this.githubStats.stars = 12; // temporary value
+    this.githubService.getAllStats().subscribe(stats => {
+      console.log('All GitHub Stats:', stats);
+      this.githubStats = {
+        repos: stats.profile.public_repos + (stats.profile.total_private_repos || 0),
+        stars: stats.stars,
+        commits: stats.commits,
+        followers: stats.followers,
+        pullRequests: stats.pullRequests,
+        issues: stats.issues
+      };
+    });
 
     setInterval(() => {
       this.ngZone.run(() => {
