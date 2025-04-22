@@ -77,10 +77,10 @@
       </div>
 
       <!-- Total Repositories -->
-      <div *ngIf="activeModal.type === 'repositories'" class="stat-card stat-icon-card">
+      <div *ngIf="activeModal.type === 'repos'" class="stat-card stat-icon-card">
         <img [src]="activeModal.iconSrc" alt="Repositories Icon" class="icon-card">
         <div>        
-          <p class="icon-text icon-text-value">{{ githubStats.repositories }}</p>
+          <p class="icon-text icon-text-value">{{ githubStats.repos }}</p>
           <p class="icon-text icon-text-desc">total repositories</p>
         </div>
       </div>
@@ -91,6 +91,24 @@
         <div>        
           <p class="icon-text icon-text-value">{{ githubStats.followers }}</p>
           <p class="icon-text icon-text-desc">followers</p>
+        </div>
+      </div>
+
+      <!-- Issues -->
+      <div *ngIf="activeModal.type === 'issues'" class="stat-card stat-icon-card">
+        <img [src]="activeModal.iconSrc" alt="Issues Icon" class="icon-card">
+        <div>        
+          <p class="icon-text icon-text-value">{{ githubStats.issues }}</p>
+          <p class="icon-text icon-text-desc">issues opened</p>
+        </div>
+      </div>
+
+      <!-- Pull Requests -->
+      <div *ngIf="activeModal.type === 'pullRequests'" class="stat-card stat-icon-card">
+        <img [src]="activeModal.iconSrc" alt="Pull Requests Icon" class="icon-card">
+        <div>        
+          <p class="icon-text icon-text-value">{{ githubStats.pullRequests }}</p>
+          <p class="icon-text icon-text-desc">pull requests opened</p>
         </div>
       </div>
 

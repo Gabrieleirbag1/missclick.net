@@ -16,9 +16,15 @@
 .desktop-icons {
   padding: 20px;
   display: grid;
-  /* grid-template-columns: repeat(auto-fill, 80px); */
+  grid-auto-flow: column;
+  grid-template-rows: repeat(auto-fill, 80px);
+  grid-template-columns: 80px;
+  grid-auto-columns: 80px;
   grid-gap: 20px;
   align-content: start;
+  justify-content: start;
+  height: calc(100% - 100px);
+  width: 100%;
 }
 
 .desktop-icon {

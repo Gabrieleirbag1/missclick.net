@@ -54,6 +54,12 @@ export class GithubStatsComponent implements OnInit {
       label: 'Commits'
     },
     {
+      type: 'repos',
+      title: 'Repositories',
+      iconSrc: 'assets/icons/repos.png',
+      label: 'Repositories'
+    },
+    {
       type: 'followers',
       title: 'Followers',
       iconSrc: 'assets/icons/followers.png',
