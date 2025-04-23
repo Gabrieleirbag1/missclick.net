@@ -64,6 +64,7 @@
   align-items: center;
   gap: 40px;
   height: 275px;
+  position: relative;
 }
 
 .skill-desc h2 {
@@ -72,6 +73,63 @@
   font-weight: 900;
   padding: 0;
   margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.expanded-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: opacity 0.4s ease;
+  transition-delay: 0.1s;
+}
+
+.expanded-content p {
+  padding: 0 10px;
+}
+
+.expanded-content h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.expanded-content p {
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Hide normal content and show expanded content when card is expanded */
+.skill-card.expanded .skill-desc h2,
+.skill-card.expanded .technologies-icons,
+.skill-card.expanded .technologies-button {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-card.expanded .expanded-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.skill-card {
+  transition: all 0.5s ease-in-out;
+}
+
+.skill-card.expanded .skill-desc h2,
+.skill-card.expanded .technologies-icons,
+.skill-card.expanded .technologies-button {
+  transition-delay: 0s;
+}
+
+.skill-card.expanded .expanded-content {
+  transition-delay: 0.5s;
 }
 
 .skill-desc span {
