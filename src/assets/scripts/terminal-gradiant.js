@@ -5,6 +5,7 @@
  */
 
 //Converting colors to proper format
+if (typeof MiniGl === 'undefined' && typeof Gradient === 'undefined') {
 function normalizeColor(hexCode) {
   return [
     ((hexCode >> 16) & 255) / 255,
@@ -19,6 +20,7 @@ function normalizeColor(hexCode) {
     }),
   {}
 );
+
 
 //Essential functionality of WebGl
 //t = width
@@ -869,3 +871,4 @@ class Gradient {
  */
 var gradient = new Gradient();
 gradient.initGradient("#gradient-canvas");
+}

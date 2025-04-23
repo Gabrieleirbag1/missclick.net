@@ -1,15 +1,17 @@
 <header>
-    <div class="container header-container">
-      <div class="logo">
-        <a routerLink="/" class="header-title">Missclick.net</a>
-      </div>
-      <nav>
-        <ul>
-          <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-          <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-          <li><a routerLink="/portfolio" routerLinkActive="active">Portfolio</a></li>
-          <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
-        </ul>
-      </nav>
+  <div class="container header-container">
+    <div class="logo">
+      <a routerLink="/" class="header-title">Missclick.net</a>
     </div>
+    <nav>
+      <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+        <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
+        <li><a href="#" (click)="toggleContactModal($event)" [class.active]="isModalOpen">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
+
+<app-contact-modal [isOpen]="isModalOpen" (closeModalEvent)="closeModal()"></app-contact-modal>

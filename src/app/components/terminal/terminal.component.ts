@@ -113,9 +113,6 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
     setTimeout(() => {
       const script = document.createElement('script');
       script.src = 'assets/scripts/terminal-gradiant.js';
-      // script.onload = () => {
-      //   console.log('Gradient script loaded');
-      // };
       document.body.appendChild(script);
     }, 100);
   }

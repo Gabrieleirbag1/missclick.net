@@ -1,0 +1,24 @@
+<div class="modal-overlay" [class.active]="isOpen" (click)="closeModal($event)">
+    <div class="modal-content">
+        <button class="close-button" (click)="closeModal($event)">&times;</button>
+        <h2>Let's Connect!</h2>
+        <div class="social-icons">
+        <a href="https://github.com/yourusername" target="_blank" class="social-icon github">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+        </a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-icon linkedin">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+        </a>
+        <a href="https://twitter.com/yourusername" target="_blank" class="social-icon twitter">
+            <i class="fab fa-twitter"></i>
+            <span>Twitter</span>
+        </a>
+        <a href="mailto:your.email@example.com" class="social-icon email">
+            <i class="fas fa-envelope"></i>
+            <span>Email</span>
+        </a>
+        </div>
+    </div>
+</div>

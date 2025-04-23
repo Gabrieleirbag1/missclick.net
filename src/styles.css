@@ -7,7 +7,7 @@ section {
   padding: 80px 20px;
 }
 
-.about, .hobbies, .github-stats {
+.hobbies, .github-stats {
   background-color: rgb(52, 52, 52);
 }
 
