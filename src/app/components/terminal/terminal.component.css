@@ -12,8 +12,8 @@
   background-color: #212121;
   padding: 30px;
   border-radius: 12px;
-  margin-bottom: 40px;
   width: 40vw;
+  margin-bottom: 20vh;
 }
 
 .terminal-header p {
@@ -107,19 +107,6 @@
 
 .terminal-cursor.active {
   animation: blink 1s step-end infinite;
-}
-
-#gradient-canvas {
-  width: 100%;
-  height: 100%;
-  --gradient-color-1: #a960ee;
-  --gradient-color-2: #ff333d;
-  --gradient-color-3: #90e0ff;
-  --gradient-color-4: #ffcb57;
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 @keyframes blink {
