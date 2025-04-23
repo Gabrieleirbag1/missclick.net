@@ -1,5 +1,6 @@
 import {
   Component,
+  OnInit,
   AfterViewInit,
   ViewChild,
   ElementRef,
@@ -12,14 +13,19 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './terminal.component.html',
-  styleUrl: './terminal.component.css'
+  styleUrls: ['./terminal.component.css']
 })
-export class TerminalComponent implements AfterViewInit, OnDestroy {
+export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
   terminalInput = '';
   inputFocused = false;
   cursorInterval: any;
 
   @ViewChild('terminalInput') terminalInputEl: ElementRef | undefined;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
   ngAfterViewInit(): void {
     // Automatically focus the input when the component loads
@@ -35,6 +41,9 @@ export class TerminalComponent implements AfterViewInit, OnDestroy {
     // Update cursor position based on input width
     this.updateCursorPosition();
     this.handleInputTerminalEvent();
+
+    // Initialize the gradient after the view has been initialized
+    this.initGradient();
   }
 
   ngOnDestroy(): void {
@@ -98,5 +107,16 @@ export class TerminalComponent implements AfterViewInit, OnDestroy {
         inputTerminalElement.value = '';
       }
     });
+  }
+
+  initGradient(): void {
+    setTimeout(() => {
+      const script = document.createElement('script');
+      script.src = 'assets/scripts/terminal-gradiant.js';
+      // script.onload = () => {
+      //   console.log('Gradient script loaded');
+      // };
+      document.body.appendChild(script);
+    }, 100);
   }
 }
