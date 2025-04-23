@@ -9,15 +9,15 @@ section {
 
 .about, .hobbies, .github-stats {
   background-color: rgb(52, 52, 52);
-  color: white;
 }
 
 .terminal-container {
   padding: 0;
-  height: 100vh;
+  height: calc(100vh - var(--header-height, 0px));
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .skills {

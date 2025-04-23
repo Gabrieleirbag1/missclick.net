@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -6,7 +6,23 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements AfterViewInit {
+  
+  constructor(private elementRef: ElementRef) {}
+
+  @HostListener('window:resize')
+  onResize() {
+    this.updateHeaderHeight();
+  }
+
+  ngAfterViewInit() {
+    this.updateHeaderHeight();
+  }
+
+  private updateHeaderHeight() {
+    const headerHeight = this.elementRef.nativeElement.offsetHeight;
+    document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+  }
 }
