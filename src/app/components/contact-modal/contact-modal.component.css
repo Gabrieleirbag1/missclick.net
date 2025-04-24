@@ -29,6 +29,7 @@
   transition: transform 0.3s;
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
 }
 
 .modal-overlay.active .modal-content {
@@ -61,35 +62,13 @@ h2 {
 }
 
 .social-icons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.social-icon {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
-  background-color: rgba(255, 255, 255, 0.1);
-  transition: transform 0.2s, background-color 0.2s;
+  justify-content: space-around;
+  margin-top: 50px;
 }
 
-.social-icon:hover {
-  transform: translateY(-5px);
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.social-icon i {
-  font-size: 32px;
-  margin-bottom: 8px;
-}
-
-@media (max-width: 500px) {
-  .social-icons {
-    grid-template-columns: 1fr;
-  }
+.social-btn svg {
+  height: 40px;
+  width: 40px;
+  fill: white;
 }
