@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import hobbiesData from '../../../assets/data/hobbies.json';
 
 interface Hobby {
   title: string;
@@ -15,18 +16,7 @@ interface Hobby {
   styleUrl: './hobbies.component.css'
 })
 export class HobbiesComponent {
-  hobbies: Hobby[] = [
-    {
-      title: 'The Piano',
-      description: 'Here are some of my hobbies:',
-      imageUrl: 'assets/hobbies/piano.png'
-    },
-    {
-      title: 'E-Sport',
-      description: 'Here are some of my hobbies:',
-      imageUrl: 'assets/hobbies/piano.png'
-    }
-  ];
+  hobbies: Hobby[] = hobbiesData;
 
   currentIndex = 0;
 
