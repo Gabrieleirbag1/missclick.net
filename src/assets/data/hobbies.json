@@ -1,12 +1,14 @@
 [
   {
     "title": "The Piano",
-    "description": "Here are some of my hobbies:",
-    "imageUrl": "assets/hobbies/piano.png"
+    "description": "I enjoy playing piano in my free time...",
+    "imageUrl": "assets/hobbies/piano.png",
+    "replaceBackground": false
   },
   {
-    "title": "E-Sport",
-    "description": "Here are some of my hobbies:",
-    "imageUrl": "assets/hobbies/piano.png"
+    "title": "E-Sports",
+    "description": "I'm passionate about competitive gaming...",
+    "imageUrl": "assets/hobbies/esports-background.png",
+    "replaceBackground": true
   }
 ]

@@ -23,6 +23,13 @@
   transition: transform 0.4s ease;
   animation: fadeIn 0.5s;
   width: 100%;
+  height: 60vh;
+}
+
+.hobbie-element.replace-background {
+  justify-content: flex-start;
+  background-size: cover;
+  background-position: center;
 }
 
 .hobbie-desc {
@@ -34,8 +41,7 @@
 }
 
 .hobbie-image img {
-  width: 100%;
-  height: auto;
+  height: 500px;
   border-radius: 8px;
 }
 
@@ -89,7 +95,6 @@
   background: #555;
 }
 
-/* Optional: Add animation for slide transitions */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

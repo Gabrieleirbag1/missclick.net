@@ -6,6 +6,7 @@ interface Hobby {
   title: string;
   description: string;
   imageUrl: string;
+  replaceBackground: boolean;
 }
 
 @Component({
