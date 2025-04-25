@@ -71,8 +71,8 @@ nav a:hover{
   height: 2rem;
 }
 
-/* Sidebar Styles */
 .sidebar {
+  font-family: 'Courier New', Courier, monospace;
   position: fixed;
   top: 0;
   right: -300px;
@@ -118,7 +118,6 @@ nav a:hover{
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Overlay when sidebar is open */
 .sidebar-overlay {
   position: fixed;
   top: 0;
