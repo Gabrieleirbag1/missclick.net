@@ -1,0 +1,12 @@
+.hobbie-element {
+  display: flex;
+  justify-content: space-between;
+  background: -webkit-linear-gradient(-20deg, rgba(255, 255, 255, 0.9) 45%, transparent 0%), url('/assets/backgrounds/chalkboard.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px 30px;
+}
+
+.hobbie-image img {
+    width: 50vw;
+}

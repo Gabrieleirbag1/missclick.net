@@ -31,7 +31,6 @@ export class GithubStatsComponent implements OnInit {
 
   ngOnInit(): void {
     this.githubService.getAllStats().subscribe((stats) => {
-      console.log('All GitHub Stats:', stats);
       this.githubStats = {
         repos:
           stats.profile.public_repos + (stats.profile.total_private_repos || 0),
