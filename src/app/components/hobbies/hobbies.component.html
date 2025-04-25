@@ -1,11 +1,24 @@
 <div class="hobbies-container">
-    <div class="hobbie-element">
+    <div class="slider-navigation">
+      <button class="arrow left-arrow" (click)="previousSlide()">&#10094;</button>
+      
+      <div class="hobbie-element">
         <div class="hobbie-desc">
-            <h2>Hobbies</h2>
-            <p>Here are some of my hobbies:</p>
+          <h2>{{ hobbies[currentIndex].title }}</h2>
+          <p>{{ hobbies[currentIndex].description }}</p>
         </div>
         <div class="hobbie-image">
-            <img src="assets/hobbies/piano.png" alt="Hobbies Image">
+          <img [src]="hobbies[currentIndex].imageUrl" [alt]="hobbies[currentIndex].title">
         </div>
+      </div>
+      
+      <button class="arrow right-arrow" (click)="nextSlide()">&#10095;</button>
     </div>
-</div>
+    
+    <div class="slide-indicators">
+      <span *ngFor="let hobby of hobbies; let i = index" 
+            [class.active]="i === currentIndex"
+            (click)="currentIndex = i">
+      </span>
+    </div>
+  </div>

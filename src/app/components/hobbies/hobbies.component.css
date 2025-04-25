@@ -1,12 +1,96 @@
+.hobbies-container {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slider-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .hobbie-element {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background: -webkit-linear-gradient(-20deg, rgba(255, 255, 255, 0.9) 45%, transparent 0%), url('/assets/backgrounds/chalkboard.jpg');
   background-size: cover;
   background-position: center;
-  padding: 20px 30px;
+  padding: 80px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: 300px;
+  transition: transform 0.4s ease;
+  animation: fadeIn 0.5s;
+  width: 100%;
+}
+
+.hobbie-desc {
+  width: 50%;
+}
+
+.hobbie-image {
+  width: 50%;
 }
 
 .hobbie-image img {
-    width: 50vw;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.arrow {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.left-arrow {
+  position: absolute;
+  left: 10px;
+}
+
+.right-arrow {
+  position: absolute;
+  right: 10px;
+}
+
+.slide-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.slide-indicators span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ddd;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slide-indicators span.active {
+  background: #555;
+}
+
+/* Optional: Add animation for slide transitions */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
