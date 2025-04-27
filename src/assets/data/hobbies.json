@@ -10,5 +10,11 @@
     "description": "I'm passionate about competitive gaming...",
     "imageUrl": "assets/hobbies/esports-background.png",
     "replaceBackground": true
+  },
+  {
+    "title": "E-Sports",
+    "description": "I'm passionate about competitive gaming...",
+    "imageUrl": "assets/hobbies/esports-background.png",
+    "replaceBackground": true
   }
 ]

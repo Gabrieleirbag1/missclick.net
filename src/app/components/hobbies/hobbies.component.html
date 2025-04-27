@@ -1,26 +1,27 @@
-<div class="hobbies-container">
-    <div class="slider-navigation">
-      <button class="arrow left-arrow" (click)="previousSlide()">&#10094;</button>
-      
-      <div class="hobbie-element" [ngClass]="{'replace-background': hobbies[currentIndex].replaceBackground}"
-           [ngStyle]="hobbies[currentIndex].replaceBackground ? 
-                     {'background-image': '-webkit-linear-gradient(-20deg, rgba(255, 255, 255, 0.9) 45%, transparent 0%), url(' + hobbies[currentIndex].imageUrl + ')'} : {}">
+<div class="slider-navigation">
+  <div class="slider-container">
+    <div class="slider-inner" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+      <div class="hobbie-element" *ngFor="let hobby of hobbies" 
+           [ngClass]="{'replace-background': hobby.replaceBackground}"
+           [ngStyle]="hobby.replaceBackground ? 
+                     {'background-image': '-webkit-linear-gradient(-20deg, rgba(255, 255, 255, 0.9) 45%, transparent 0%), url(' + hobby.imageUrl + ')'} : {}">
         <div class="hobbie-desc">
-          <h2>{{ hobbies[currentIndex].title }}</h2>
-          <p>{{ hobbies[currentIndex].description }}</p>
+          <h2>{{ hobby.title }}</h2>
+          <p>{{ hobby.description }}</p>
         </div>
-        <div class="hobbie-image" *ngIf="!hobbies[currentIndex].replaceBackground">
-          <img [src]="hobbies[currentIndex].imageUrl" [alt]="hobbies[currentIndex].title">
+        <div class="hobbie-image" *ngIf="!hobby.replaceBackground">
+          <img [src]="hobby.imageUrl" [alt]="hobby.title">
         </div>
       </div>
-      
-      <button class="arrow right-arrow" (click)="nextSlide()">&#10095;</button>
     </div>
-    
-    <div class="slide-indicators">
-      <span *ngFor="let hobby of hobbies; let i = index" 
-            [class.active]="i === currentIndex"
-            (click)="currentIndex = i">
-      </span>
-    </div>
+  </div>
+  <button class="arrow left-arrow" (click)="previousSlide()">&#10094;</button>
+  <button class="arrow right-arrow" (click)="nextSlide()">&#10095;</button>
+</div>
+
+<div class="slide-indicators">
+  <span *ngFor="let hobby of hobbies; let i = index" 
+        [class.active]="i === currentIndex"
+        (click)="currentIndex = i">
+  </span>
 </div>
