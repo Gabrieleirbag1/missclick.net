@@ -17,11 +17,10 @@
   </div>
   <button class="arrow left-arrow" (click)="previousSlide()">&#10094;</button>
   <button class="arrow right-arrow" (click)="nextSlide()">&#10095;</button>
-</div>
-
-<div class="slide-indicators">
-  <span *ngFor="let hobby of hobbies; let i = index" 
-        [class.active]="i === currentIndex"
-        (click)="currentIndex = i">
-  </span>
+  <div class="slide-indicators">
+    <span *ngFor="let hobby of hobbies; let i = index" 
+          [class.active]="i === currentIndex"
+          (click)="currentIndex = i">
+    </span>
+  </div>
 </div>

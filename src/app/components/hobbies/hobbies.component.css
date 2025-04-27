@@ -16,6 +16,7 @@
 }
 
 .slider-navigation {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,6 +45,7 @@
 }
 
 .hobbie-desc {
+  font-family: 'Courier New', Courier, monospace;
   width: 50%;
 }
 
@@ -89,7 +91,10 @@
 .slide-indicators {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .slide-indicators span {
@@ -103,7 +108,7 @@
 }
 
 .slide-indicators span.active {
-  background: #555;
+  background: #9c9c9c;
 }
 
 @keyframes fadeIn {
