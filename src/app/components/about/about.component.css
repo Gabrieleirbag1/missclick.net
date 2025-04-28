@@ -11,15 +11,27 @@
 
 .about-content {
   display: flex;
-  gap: 30px;
+  gap: 50px;
   align-items: center;
 }
 
 .about-image {
   width: 35%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.about-text {
+
+.about-image img {
+  width: 90%;
+}
+
+p {
   font-family: 'Courier New', Courier, monospace;
+}
+
+.about-text {
   width: 65%;
 }
 
