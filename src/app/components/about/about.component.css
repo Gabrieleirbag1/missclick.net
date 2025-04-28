@@ -25,6 +25,8 @@
 
 .about-image img {
   width: 90%;
+  max-height: 300px;
+  object-fit: contain;
 }
 
 p {
