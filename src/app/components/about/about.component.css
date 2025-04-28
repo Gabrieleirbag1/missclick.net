@@ -2,6 +2,7 @@
   background-image: url('/assets/backgrounds/cloud.png');
   background-size: cover;
   padding: 120px 100px;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .about-container h2 {

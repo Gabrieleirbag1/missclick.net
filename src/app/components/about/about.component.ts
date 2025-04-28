@@ -18,7 +18,7 @@ export class AboutComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.intervalId = setInterval(() => {
       this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-    }, 500);
+    }, 250);
   }
   
   ngOnDestroy() {
