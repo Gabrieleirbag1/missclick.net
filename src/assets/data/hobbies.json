@@ -2,19 +2,19 @@
   {
     "title": "The Piano",
     "description": "I enjoy playing piano in my free time...",
-    "imageUrl": "assets/hobbies/piano.png",
+    "imageUrl": "assets/images/hobbies/piano.png",
     "replaceBackground": false
   },
   {
     "title": "E-Sports",
     "description": "I'm passionate about competitive gaming...",
-    "imageUrl": "assets/hobbies/esports-background.png",
+    "imageUrl": "assets/images/hobbies/esports-background.png",
     "replaceBackground": true
   },
   {
-    "title": "E-Sports",
+    "title": "Video Games",
     "description": "I'm passionate about competitive gaming...",
-    "imageUrl": "assets/hobbies/esports-background.png",
+    "imageUrl": "assets/images/hobbies/jeux-video.avif",
     "replaceBackground": true
   }
 ]

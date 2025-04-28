@@ -16,19 +16,19 @@
 }
 
 .web {
-  background-image: url("/assets/skills/web.jpg");
+  background-image: url("/assets/images/skills/web.jpg");
 }
 
 .software {
-  background-image: url("/assets/skills/software.jpg");
+  background-image: url("/assets/images/skills/software.jpg");
 }
 
 .video-game {
-  background-image: url("/assets/skills/video-game.webp");
+  background-image: url("/assets/images/skills/video-game.webp");
 }
 
 .devops {
-  background-image: url("/assets/skills/devops.jpg");
+  background-image: url("/assets/images/skills/devops.jpg");
 }
 
 .skill-icon {

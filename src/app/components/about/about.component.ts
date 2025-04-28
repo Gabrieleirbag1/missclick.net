@@ -28,6 +28,6 @@ export class AboutComponent implements OnInit, OnDestroy {
   }
   
   get currentImage(): string {
-    return `assets/about/${this.images[this.currentImageIndex]}`;
+    return `assets/images/about/${this.images[this.currentImageIndex]}`;
   }
 }
