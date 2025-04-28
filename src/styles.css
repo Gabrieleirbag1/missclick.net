@@ -4,7 +4,8 @@ body {
 }
 
 .github-stats {
-  background-color: rgb(52, 52, 52);
+  background-color: rgb(161, 161, 161);
+  padding: 70px 20px;
 }
 
 .terminal-container {
