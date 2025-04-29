@@ -1,159 +1,164 @@
-<div class="windows-xp-desktop">
-  <div class="desktop-icons">
-    <!-- Generate desktop icons dynamically -->
-    <div *ngFor="let icon of desktopIcons" class="desktop-icon" (dblclick)="openModal(icon.type)">
-      <img [src]="icon.iconSrc" [alt]="icon.label + ' Icon'" class="icon-img">
-      <span class="icon-label">{{ icon.label }}</span>
-    </div>
+<div class="github-stats-container">
+  <div class="github-stats-info">
+    <img src="assets/images/gifs/rocket.gif" alt="Rocket GIF" class="rocket-fig">
   </div>
-
-  <!-- Windows XP Taskbar -->
-  <div class="windows-taskbar">
-    <div class="start-button" (click)="playSound()">
-      <img src="assets/images/icons/winxp-start.png" alt="Start" class="start-logo">
-    </div>
-    <div class="taskbar-time">
-      <span>{{ currentTime | date:'h:mm a' }}</span>
-    </div>
-  </div>
-
-  <!-- Modal Windows -->
-  <div class="windows-modal" *ngIf="activeModal" [class.active]="activeModal">
-    <div class="window-header">
-      <div class="window-title">
-        <img [src]="activeModal.iconSrc" alt="Window Icon" class="window-icon">
-        <span>{{ activeModal.title }}</span>
-      </div>
-      <div class="window-controls">
-        <span class="control minimize">_</span>
-        <span class="control maximize">□</span>
-        <span class="control close" (click)="closeModal()">✕</span>
+  <div class="windows-xp-desktop">
+    <div class="desktop-icons">
+      <!-- Generate desktop icons dynamically -->
+      <div *ngFor="let icon of desktopIcons" class="desktop-icon" (dblclick)="openModal(icon.type)">
+        <img [src]="icon.iconSrc" [alt]="icon.label + ' Icon'" class="icon-img">
+        <span class="icon-label">{{ icon.label }}</span>
       </div>
     </div>
-    <div class="window-content">
-      <!-- Recycle Bin -->
-      <div *ngIf="activeModal.type === 'recycleBin'" class="recycle-bin-card">
-        <div class="toolbar">
-          <div class="toolbal-container">
-            <span class="toolbar-text">File</span>
-            <span class="toolbar-text">Edit</span>
-            <span class="toolbar-text">View</span>
-            <span class="toolbar-text">Favorites</span>
-            <span class="toolbar-text">Tools</span>
-            <span class="toolbar-text">Help</span>
+
+    <!-- Windows XP Taskbar -->
+    <div class="windows-taskbar">
+      <div class="start-button" (click)="playSound()">
+        <img src="assets/images/icons/winxp-start.png" alt="Start" class="start-logo">
+      </div>
+      <div class="taskbar-time">
+        <span>{{ currentTime | date:'h:mm a' }}</span>
+      </div>
+    </div>
+
+    <!-- Modal Windows -->
+    <div class="windows-modal" *ngIf="activeModal" [class.active]="activeModal">
+      <div class="window-header">
+        <div class="window-title">
+          <img [src]="activeModal.iconSrc" alt="Window Icon" class="window-icon">
+          <span>{{ activeModal.title }}</span>
+        </div>
+        <div class="window-controls">
+          <span class="control minimize">_</span>
+          <span class="control maximize">□</span>
+          <span class="control close" (click)="closeModal()">✕</span>
+        </div>
+      </div>
+      <div class="window-content">
+        <!-- Recycle Bin -->
+        <div *ngIf="activeModal.type === 'recycleBin'" class="recycle-bin-card">
+          <div class="toolbar">
+            <div class="toolbal-container">
+              <span class="toolbar-text">File</span>
+              <span class="toolbar-text">Edit</span>
+              <span class="toolbar-text">View</span>
+              <span class="toolbar-text">Favorites</span>
+              <span class="toolbar-text">Tools</span>
+              <span class="toolbar-text">Help</span>
+            </div>
+            <div class="toolbar-icon">
+              <img src="assets/images/icons/winxp-logo.png" alt="Windows XP Icon" class="toolbar-img">
+            </div>
           </div>
-          <div class="toolbar-icon">
-            <img src="assets/images/icons/winxp-logo.png" alt="Windows XP Icon" class="toolbar-img">
+          
+          <!-- Trash items -->
+          <div class="trash-item">
+            <img src="assets/images/icons/deleted-file.png" alt="Deleted Text File">
+            <span>unused_code.js</span>
+          </div>
+          
+          <div class="trash-item">
+            <img src="assets/images/icons/deleted-img.png" alt="Deleted Image">
+            <span>old_logo.png</span>
+          </div>
+          
+          <div class="trash-item">
+            <img src="assets/images/icons/rn.png" alt="Front National">
+            <span>fachos.jpg</span>
+          </div>
+          
+          <div class="trash-item">
+            <img src="assets/images/icons/deleted-file.png" alt="Deleted Text File">
+            <span>bugs_fixed.txt</span>
+          </div>
+          
+          <div class="trash-item">
+            <img src="assets/images/icons/deleted-file.png" alt="Deleted Text File">
+            <span>todo_v1.md</span>
+          </div>
+          
+          <div class="trash-item">
+            <img src="assets/images/icons/deleted-img.png" alt="Deleted Image">
+            <span>screenshot.jpg</span>
           </div>
         </div>
-        
-        <!-- Trash items -->
-        <div class="trash-item">
-          <img src="assets/images/icons/deleted-file.png" alt="Deleted Text File">
-          <span>unused_code.js</span>
+        <!-- Languages Stats -->
+        <div *ngIf="activeModal.type === 'languages'" class="stat-card">
+          <img 
+            src="https://github-readme-stats.vercel.app/api/top-langs/?username=Gabrieleirbag1&layout=donut-vertical&size_weight=0.2&count_weight=0.2&hide=shell,css,html,powershell&hide_border=true" 
+            alt="Most Used Languages" 
+            class="github-card"
+          />
         </div>
-        
-        <div class="trash-item">
-          <img src="assets/images/icons/deleted-img.png" alt="Deleted Image">
-          <span>old_logo.png</span>
+        <!-- Profile Stats -->
+        <div *ngIf="activeModal.type === 'profile'" class="stat-card">
+          <img 
+            src="https://github-readme-stats.vercel.app/api?username=Gabrieleirbag1&show_icons=true&theme=buefy&rank_icon=github&hide_border=true" 
+            alt="GitHub Stats" 
+            class="github-card"
+          />
         </div>
-        
-        <div class="trash-item">
-          <img src="assets/images/icons/rn.png" alt="Front National">
-          <span>fachos.jpg</span>
+        <!-- Contribution Stats -->
+        <div *ngIf="activeModal.type === 'contributions'" class="stat-card">
+          <img 
+            src="https://github-readme-streak-stats.herokuapp.com/?user=Gabrieleirbag1&theme=buefy&hide_border=true" 
+            alt="GitHub Streak Stats" 
+            class="github-card"
+          />
         </div>
-        
-        <div class="trash-item">
-          <img src="assets/images/icons/deleted-file.png" alt="Deleted Text File">
-          <span>bugs_fixed.txt</span>
+        <!-- Stars Stats -->
+        <div *ngIf="activeModal.type === 'stars'" class="stat-card stat-icon-card">
+          <img [src]="activeModal.iconSrc" alt="Stars Icon" class="icon-card">
+          <div>        
+            <p class="icon-text icon-text-value">{{ githubStats.stars }}</p>
+            <p class="icon-text icon-text-desc">stars earned</p>
+          </div>
         </div>
-        
-        <div class="trash-item">
-          <img src="assets/images/icons/deleted-file.png" alt="Deleted Text File">
-          <span>todo_v1.md</span>
+        <!-- Followers -->
+        <div *ngIf="activeModal.type === 'followers'" class="stat-card stat-icon-card">
+          <img [src]="activeModal.iconSrc" alt="Followers Icon" class="icon-card">
+          <div>        
+            <p class="icon-text icon-text-value">{{ githubStats.followers }}</p>
+            <p class="icon-text icon-text-desc">followers</p>
+          </div>
         </div>
-        
-        <div class="trash-item">
-          <img src="assets/images/icons/deleted-img.png" alt="Deleted Image">
-          <span>screenshot.jpg</span>
+        <!-- Total Repositories -->
+        <div *ngIf="activeModal.type === 'repos'" class="stat-card stat-icon-card">
+          <img [src]="activeModal.iconSrc" alt="Repositories Icon" class="icon-card">
+          <div>        
+            <p class="icon-text icon-text-value">{{ githubStats.repos }}</p>
+            <p class="icon-text icon-text-desc">total repositories</p>
+          </div>
         </div>
-      </div>
-      <!-- Languages Stats -->
-      <div *ngIf="activeModal.type === 'languages'" class="stat-card">
-        <img 
-          src="https://github-readme-stats.vercel.app/api/top-langs/?username=Gabrieleirbag1&layout=donut-vertical&size_weight=0.2&count_weight=0.2&hide=shell,css,html,powershell&hide_border=true" 
-          alt="Most Used Languages" 
-          class="github-card"
-        />
-      </div>
-      <!-- Profile Stats -->
-      <div *ngIf="activeModal.type === 'profile'" class="stat-card">
-        <img 
-          src="https://github-readme-stats.vercel.app/api?username=Gabrieleirbag1&show_icons=true&theme=buefy&rank_icon=github&hide_border=true" 
-          alt="GitHub Stats" 
-          class="github-card"
-        />
-      </div>
-      <!-- Contribution Stats -->
-      <div *ngIf="activeModal.type === 'contributions'" class="stat-card">
-        <img 
-          src="https://github-readme-streak-stats.herokuapp.com/?user=Gabrieleirbag1&theme=buefy&hide_border=true" 
-          alt="GitHub Streak Stats" 
-          class="github-card"
-        />
-      </div>
-      <!-- Stars Stats -->
-      <div *ngIf="activeModal.type === 'stars'" class="stat-card stat-icon-card">
-        <img [src]="activeModal.iconSrc" alt="Stars Icon" class="icon-card">
-        <div>        
-          <p class="icon-text icon-text-value">{{ githubStats.stars }}</p>
-          <p class="icon-text icon-text-desc">stars earned</p>
+        <!-- Total Commits -->
+        <div *ngIf="activeModal.type === 'commits'" class="stat-card stat-icon-card">
+          <img [src]="activeModal.iconSrc" alt="Commits Icon" class="icon-card">
+          <div>        
+            <p class="icon-text icon-text-value">{{ githubStats.commits }}</p>
+            <p class="icon-text icon-text-desc">total commits</p>
+          </div>
         </div>
-      </div>
-      <!-- Followers -->
-      <div *ngIf="activeModal.type === 'followers'" class="stat-card stat-icon-card">
-        <img [src]="activeModal.iconSrc" alt="Followers Icon" class="icon-card">
-        <div>        
-          <p class="icon-text icon-text-value">{{ githubStats.followers }}</p>
-          <p class="icon-text icon-text-desc">followers</p>
+        <!-- Issues -->
+        <div *ngIf="activeModal.type === 'issues'" class="stat-card stat-icon-card">
+          <img [src]="activeModal.iconSrc" alt="Issues Icon" class="icon-card">
+          <div>        
+            <p class="icon-text icon-text-value">{{ githubStats.issues }}</p>
+            <p class="icon-text icon-text-desc">issues opened</p>
+          </div>
         </div>
-      </div>
-      <!-- Total Repositories -->
-      <div *ngIf="activeModal.type === 'repos'" class="stat-card stat-icon-card">
-        <img [src]="activeModal.iconSrc" alt="Repositories Icon" class="icon-card">
-        <div>        
-          <p class="icon-text icon-text-value">{{ githubStats.repos }}</p>
-          <p class="icon-text icon-text-desc">total repositories</p>
+        <!-- Pull Requests -->
+        <div *ngIf="activeModal.type === 'pullRequests'" class="stat-card stat-icon-card">
+          <img [src]="activeModal.iconSrc" alt="Pull Requests Icon" class="icon-card">
+          <div>        
+            <p class="icon-text icon-text-value">{{ githubStats.pullRequests }}</p>
+            <p class="icon-text icon-text-desc">pull requests opened</p>
+          </div>
         </div>
-      </div>
-      <!-- Total Commits -->
-      <div *ngIf="activeModal.type === 'commits'" class="stat-card stat-icon-card">
-        <img [src]="activeModal.iconSrc" alt="Commits Icon" class="icon-card">
-        <div>        
-          <p class="icon-text icon-text-value">{{ githubStats.commits }}</p>
-          <p class="icon-text icon-text-desc">total commits</p>
-        </div>
-      </div>
-      <!-- Issues -->
-      <div *ngIf="activeModal.type === 'issues'" class="stat-card stat-icon-card">
-        <img [src]="activeModal.iconSrc" alt="Issues Icon" class="icon-card">
-        <div>        
-          <p class="icon-text icon-text-value">{{ githubStats.issues }}</p>
-          <p class="icon-text icon-text-desc">issues opened</p>
-        </div>
-      </div>
-      <!-- Pull Requests -->
-      <div *ngIf="activeModal.type === 'pullRequests'" class="stat-card stat-icon-card">
-        <img [src]="activeModal.iconSrc" alt="Pull Requests Icon" class="icon-card">
-        <div>        
-          <p class="icon-text icon-text-value">{{ githubStats.pullRequests }}</p>
-          <p class="icon-text icon-text-desc">pull requests opened</p>
-        </div>
-      </div>
 
-    </div>
-    <div class="window-statusbar">
-      <span>github.com/Gabrieleirbag1</span>
+      </div>
+      <div class="window-statusbar">
+        <span>github.com/Gabrieleirbag1</span>
+      </div>
     </div>
   </div>
 </div>

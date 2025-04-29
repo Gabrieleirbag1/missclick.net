@@ -4,8 +4,7 @@ body {
 }
 
 .github-stats {
-  background-color: rgb(161, 161, 161);
-  padding: 70px 20px;
+  background-image: url("/assets/images/backgrounds/cloud.gif");
 }
 
 .terminal-container {
