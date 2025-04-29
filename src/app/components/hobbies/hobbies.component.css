@@ -46,7 +46,10 @@
 
 .hobbie-desc {
   font-family: 'Courier New', Courier, monospace;
-  width: 50%;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .hobbie-image {

@@ -1,19 +1,30 @@
 [
   {
     "title": "The Piano",
-    "description": "I enjoy playing piano in my free time...",
+    "description": [
+      "I started playing the piano in 2015 as an extracurricular hobby, but it quickly became a true passion. What I enjoy most about this instrument is the freedom it offers. I can explore and perform a wide variety of pieces across different genres.",
+      "As someone passionate about video games and pop culture, I've always appreciated being able to choose the music I play and bring to life the pieces that inspire me personally.",
+      "Although I no longer take formal lessons, I still play regularly and continue learning on my own."
+    ],
     "imageUrl": "assets/images/hobbies/piano.png",
     "replaceBackground": false
   },
   {
     "title": "E-Sports",
-    "description": "I'm passionate about competitive gaming...",
+    "description": [
+      "I'm passionate about competitive gaming and have been following the esports scene for years.",
+      "I particularly enjoy watching professional League of Legends tournaments and staying updated with the latest strategies and team developments, especially when it comes to Fnatic and Solary. I've had the chance to attend major offline events with crowds of over 10,000 people, which allowed me to experience the incredible energy and emotion of live esports, it was truly unforgettable.",
+      "I'm also a big fan of the Super Smash Bros. scene, where I closely follow Glutonny. Although this scene is less professionalized, it offers a more authentic and grassroots side of esports that I truly appreciate for its passion, creativity, and strong sense of community."],
     "imageUrl": "assets/images/hobbies/esports-background.png",
     "replaceBackground": true
   },
   {
     "title": "Video Games",
-    "description": "I'm passionate about competitive gaming...",
+    "description": [
+      "Video games have been a significant part of my life since childhood.",
+      "I enjoy a variety of genres, from story-driven adventures to competitive multiplayer titles.",
+      "Gaming is not just entertainment for me—it's also a source of inspiration for my programming work."
+    ],
     "imageUrl": "assets/images/hobbies/jeux-video.avif",
     "replaceBackground": true
   }

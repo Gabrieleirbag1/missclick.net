@@ -4,7 +4,7 @@ import hobbiesData from '../../../assets/data/hobbies.json';
 
 interface Hobby {
   title: string;
-  description: string;
+  description: string[];
   imageUrl: string;
   replaceBackground: boolean;
 }

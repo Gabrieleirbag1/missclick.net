@@ -7,7 +7,7 @@
                      {'background-image': '-webkit-linear-gradient(-20deg, rgba(255, 255, 255, 0.9) 45%, transparent 0%), url(' + hobby.imageUrl + ')'} : {}">
         <div class="hobbie-desc">
           <h2>{{ hobby.title }}</h2>
-          <p>{{ hobby.description }}</p>
+          <p *ngFor="let paragraph of hobby.description">{{ paragraph }}</p>
         </div>
         <div class="hobbie-image" *ngIf="!hobby.replaceBackground">
           <img [src]="hobby.imageUrl" [alt]="hobby.title">
