@@ -14,16 +14,17 @@
     "description": [
       "I'm passionate about competitive gaming and have been following the esports scene for years.",
       "I particularly enjoy watching professional League of Legends tournaments and staying updated with the latest strategies and team developments, especially when it comes to Fnatic and Solary. I've had the chance to attend major offline events with crowds of over 10,000 people, which allowed me to experience the incredible energy and emotion of live esports, it was truly unforgettable.",
-      "I'm also a big fan of the Super Smash Bros. scene, where I closely follow Glutonny. Although this scene is less professionalized, it offers a more authentic and grassroots side of esports that I truly appreciate for its passion, creativity, and strong sense of community."],
+      "I'm also a big fan of the Super Smash Bros. scene, where I closely follow Glutonny. Although this scene is less professionalized, it offers a more authentic and grassroots side of esports that I truly appreciate for its passion, creativity, and strong sense of community."
+    ],
     "imageUrl": "assets/images/hobbies/esports-background.png",
     "replaceBackground": true
   },
   {
     "title": "Video Games",
     "description": [
-      "Video games have been a significant part of my life since childhood.",
-      "I enjoy a variety of genres, from story-driven adventures to competitive multiplayer titles.",
-      "Gaming is not just entertainment for me—it's also a source of inspiration for my programming work."
+      "Video games have been a significant part of my life since childhood. My very first game was Mario Kart DS, but as a kid, I mostly enjoyed watching my older sisters play and videos on youtube, which is what ignited my passion for gaming.",
+      "I enjoy a wide range of genres, from story-driven adventures to competitive multiplayer titles. While I'm a big fan of League of Legends, I also have a strong attachment to Nintendo franchises, especially 3D Mario games and The Legend of Zelda.",
+      "For me, gaming isn’t just entertainment—it’s also a source of inspiration for my programming projects and creativity."
     ],
     "imageUrl": "assets/images/hobbies/jeux-video.avif",
     "replaceBackground": true
