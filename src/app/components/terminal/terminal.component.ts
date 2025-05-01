@@ -97,7 +97,7 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
       'redirectToSection': (section: string) => redirectToSection(section),
       'redirectToPage': (page: string) => redirectToPage(page),
     };
-    
+
     function checkTerminalCommand(): void {
       const inputValue: string = getInputText();
       const terminalCommand: TerminalCommand | undefined = terminalCommandsData.find(
@@ -106,6 +106,11 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
       if (terminalCommand) {
         executeCommand(terminalCommand);
       }
+    }
+    
+    function getInputText(): string {
+      const inputValue: string = inputTerminalElement.value.trim();
+      return inputValue;
     }
 
     function executeCommand(terminalCommand: TerminalCommand): void {
@@ -117,11 +122,6 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
           console.log(`Method ${methodName} not found`);
         }
       }
-
-    function getInputText(): string {
-      const inputValue: string = inputTerminalElement.value.trim();
-      return inputValue;
-    }
 
     function redirectToSection(inputValue: string): void {
       const section: string = inputValue.toLowerCase();
