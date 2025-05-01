@@ -46,6 +46,12 @@
         "alias": ["streamingpower", "streaming-power", "streaming", "stream"],
         "description": "The streaming power game.",
         "method": "redirectToPage"
+    },
+    {
+        "command": "https://www.linkedin.com/in/romain-escourbanies/?originalSubdomain=fr",
+        "alias": ["romain", "rom1", "rom2", "khomain", "ropied", "petitchat", "potichat"],
+        "description": "Discover Romain, a passionate entrepreneur.",
+        "method": "redirectToPage"
     }
 
 ]

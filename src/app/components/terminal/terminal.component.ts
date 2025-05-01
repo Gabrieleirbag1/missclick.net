@@ -128,7 +128,7 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     function getInputText(): string {
-      const inputValue: string = inputTerminalElement.value.trim();
+      const inputValue: string = inputTerminalElement.value.trim().toLowerCase();
       return inputValue;
     }
 
