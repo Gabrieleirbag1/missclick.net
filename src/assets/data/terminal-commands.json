@@ -1,0 +1,32 @@
+[
+    {
+        "command": "about",
+        "alias": ["info", "infos", "about", "whoami", "who", "me", "myself", "about-me"],
+        "description": "Get information about me.",
+        "method": "redirectToSection"
+    },
+    {
+        "command": "skills",
+        "alias": ["skill", "skills", "my-skills", "abilities", "talents", "competencies", "capabilities"],
+        "description": "Get a list of my skills.",
+        "method": "redirectToSection"
+    },
+    {
+        "command": "hobbies",
+        "alias": ["hobby", "hobbies", "interests", "leisure", "pastimes", "passions"],
+        "description": "Get a list of my hobbies.",
+        "method": "redirectToSection"
+    },
+    {
+        "command": "github-stats",
+        "alias": ["gh", "ghs", "gh-stats", "github-stats", "github", "git"],
+        "description": "Get GitHub stats for a user or organization.",
+        "method": "redirectToSection"
+    },
+    {
+        "command": "projects",
+        "alias": ["project", "projects", "portfolio", "work", "my-projects", "my-work"],
+        "description": "Get a list of my projects.",
+        "method": "redirectToPage"
+    }
+]

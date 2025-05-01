@@ -7,6 +7,14 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import terminalCommandsData from '../../../assets/data/terminal-commands.json';
+
+interface TerminalCommand {
+  command: string;
+  alias: string[];
+  description: string;
+  method: string;
+}
 
 @Component({
   selector: 'app-terminal',
@@ -19,6 +27,8 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
   terminalInput = '';
   inputFocused = false;
   cursorInterval: any;
+
+  terminalCommands: TerminalCommand[] = terminalCommandsData;
 
   @ViewChild('terminalInput') terminalInputEl: ElementRef | undefined;
 
@@ -83,18 +93,30 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
     const inputTerminalElement = document.querySelector(
       '.terminal-input'
     ) as HTMLInputElement;
-
+    const methodMap: { [key: string]: Function } = {
+      'redirectToSection': (section: string) => redirectToSection(section),
+      'redirectToPage': (page: string) => redirectToPage(page),
+    };
+    
     function checkTerminalCommand(): void {
       const inputValue: string = getInputText();
-      // const commands: Array<string> = ['test', 'test2'];
-      // if (!commands.includes(inputValue)) {
-      //   console.log('Unknown command !');
-      // }
-      // else {
-      //   console.log('Success');
-      // }
-      redirectToSection(inputValue);
+      const terminalCommand: TerminalCommand | undefined = terminalCommandsData.find(
+        (cmd) => cmd.command === inputValue || cmd.alias.includes(inputValue)
+      );
+      if (terminalCommand) {
+        executeCommand(terminalCommand);
+      }
     }
+
+    function executeCommand(terminalCommand: TerminalCommand): void {
+        const methodName: string = terminalCommand.method || '';
+
+        if (methodMap[methodName]) {
+          methodMap[methodName](terminalCommand.command);
+        } else {
+          console.log(`Method ${methodName} not found`);
+        }
+      }
 
     function getInputText(): string {
       const inputValue: string = inputTerminalElement.value.trim();
@@ -106,6 +128,15 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
       const element = document.getElementById(section);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function redirectToPage(inputValue: string): void {
+      const page = inputValue.toLowerCase();
+      if (page) {
+        window.location.href = page;
+      } else {
+        console.log(`Page ${inputValue} not found`);
       }
     }
 
