@@ -21,7 +21,7 @@ interface TerminalCommand {
   standalone: true,
   imports: [FormsModule],
   templateUrl: './terminal.component.html',
-  styleUrls: ['./terminal.component.css']
+  styleUrls: ['./terminal.component.css'],
 })
 export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
   terminalInput = '';
@@ -32,10 +32,9 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('terminalInput') terminalInputEl: ElementRef | undefined;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     // Automatically focus the input when the component loads
@@ -47,22 +46,28 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
         inputTerminalElement.focus();
       }
     }, 500);
-  
+
     this.updateCursorPosition();
     this.handleInputTerminalEvent();
     this.setupTerminalContainerClick();
-  
+
     this.initGradient();
   }
-  
+
   setupTerminalContainerClick(): void {
-    const terminalContainer = document.querySelector('.terminal-container') as HTMLElement;
-    const terminalInput = document.querySelector('.terminal-input') as HTMLInputElement;
-    
+    const terminalContainer = document.querySelector(
+      '.terminal-container'
+    ) as HTMLElement;
+    const terminalInput = document.querySelector(
+      '.terminal-input'
+    ) as HTMLInputElement;
+
     if (terminalContainer && terminalInput) {
       terminalContainer.addEventListener('click', (event) => {
         // Don't focus if clicking on the input itself (it will handle its own focus)
-        if (!(event.target as HTMLElement).classList.contains('terminal-input')) {
+        if (
+          !(event.target as HTMLElement).classList.contains('terminal-input')
+        ) {
           terminalInput.focus();
         }
       });
@@ -107,34 +112,35 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
       '.terminal-input'
     ) as HTMLInputElement;
     const methodMap: { [key: string]: Function } = {
-      'redirectToSection': (section: string) => redirectToSection(section),
-      'redirectToPage': (page: string) => redirectToPage(page),
+      redirectToSection: (section: string) => redirectToSection(section),
+      redirectToPage: (page: string) => redirectToPage(page),
     };
 
     function checkTerminalCommand(): void {
       const inputValue: string = getInputText();
-      const terminalCommand: TerminalCommand | undefined = terminalCommandsData.find(
-        (cmd) => cmd.command === inputValue || cmd.alias.includes(inputValue)
-      );
+      const terminalCommand: TerminalCommand | undefined =
+        terminalCommandsData.find(
+          (cmd) => cmd.command === inputValue || cmd.alias.includes(inputValue)
+        );
       if (terminalCommand) {
         executeCommand(terminalCommand);
       }
     }
-    
+
     function getInputText(): string {
       const inputValue: string = inputTerminalElement.value.trim();
       return inputValue;
     }
 
     function executeCommand(terminalCommand: TerminalCommand): void {
-        const methodName: string = terminalCommand.method || '';
+      const methodName: string = terminalCommand.method || '';
 
-        if (methodMap[methodName]) {
-          methodMap[methodName](terminalCommand.command);
-        } else {
-          console.log(`Method ${methodName} not found`);
-        }
+      if (methodMap[methodName]) {
+        methodMap[methodName](terminalCommand.command);
+      } else {
+        console.log(`Method ${methodName} not found`);
       }
+    }
 
     function redirectToSection(inputValue: string): void {
       const section: string = inputValue.toLowerCase();
@@ -147,7 +153,7 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
     function redirectToPage(inputValue: string): void {
       const page = inputValue.toLowerCase();
       if (page) {
-        window.location.href = page;
+        window.open(page, '_blank');
       } else {
         console.log(`Page ${inputValue} not found`);
       }

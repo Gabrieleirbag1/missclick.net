@@ -28,5 +28,24 @@
         "alias": ["project", "projects", "portfolio", "work", "my-projects", "my-work"],
         "description": "Get a list of my projects.",
         "method": "redirectToPage"
+    },
+    {
+        "command": "https://ultimate-converter.missclick.net/",
+        "alias": ["converter", "ultimate-converter", "convert", "conversion"],
+        "description": "The ultimate converter for all your needs.",
+        "method": "redirectToPage"
+    },
+    {
+        "command": "https://findword.missclick.net/findword/",
+        "alias": ["findword", "find-word", "word-finder", "word-search"],
+        "description": "The findowrd game.",
+        "method": "redirectToPage"
+    },
+    {
+        "command": "https://missclick.net/streamingpower/",
+        "alias": ["streamingpower", "streaming-power", "streaming", "stream"],
+        "description": "The streaming power game.",
+        "method": "redirectToPage"
     }
+
 ]
