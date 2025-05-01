@@ -47,13 +47,26 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
         inputTerminalElement.focus();
       }
     }, 500);
-
-    // Update cursor position based on input width
+  
     this.updateCursorPosition();
     this.handleInputTerminalEvent();
-
-    // Initialize the gradient after the view has been initialized
+    this.setupTerminalContainerClick();
+  
     this.initGradient();
+  }
+  
+  setupTerminalContainerClick(): void {
+    const terminalContainer = document.querySelector('.terminal-container') as HTMLElement;
+    const terminalInput = document.querySelector('.terminal-input') as HTMLInputElement;
+    
+    if (terminalContainer && terminalInput) {
+      terminalContainer.addEventListener('click', (event) => {
+        // Don't focus if clicking on the input itself (it will handle its own focus)
+        if (!(event.target as HTMLElement).classList.contains('terminal-input')) {
+          terminalInput.focus();
+        }
+      });
+    }
   }
 
   ngOnDestroy(): void {
