@@ -21,5 +21,4 @@ import { TerminalComponent } from '../../components/terminal/terminal.component'
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  // No terminal functionality needed here anymore
 }

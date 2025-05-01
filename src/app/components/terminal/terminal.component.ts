@@ -86,18 +86,27 @@ export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
 
     function checkTerminalCommand(): void {
       const inputValue: string = getInputText();
-      const commands: Array<string> = ['test', 'test2'];
-      if (!commands.includes(inputValue)) {
-        console.log('Unknown command !');
-      }
-      else {
-        console.log('Success');
-      }
+      // const commands: Array<string> = ['test', 'test2'];
+      // if (!commands.includes(inputValue)) {
+      //   console.log('Unknown command !');
+      // }
+      // else {
+      //   console.log('Success');
+      // }
+      redirectToSection(inputValue);
     }
 
     function getInputText(): string {
       const inputValue: string = inputTerminalElement.value.trim();
       return inputValue;
+    }
+
+    function redirectToSection(inputValue: string): void {
+      const section: string = inputValue.toLowerCase();
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
     inputTerminalElement.addEventListener('keydown', function (e) {
