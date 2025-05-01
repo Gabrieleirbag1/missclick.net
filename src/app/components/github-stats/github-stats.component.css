@@ -253,13 +253,6 @@
   animation-delay: 0.2s; /* slight delay after modal appears */
 }
 
-.github-stats {
-  background-color: var(--light-bg);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 40px;
-}
-
 .recycle-bin-card {
   background-color: white;
   border: 1px solid #d4d0c8;

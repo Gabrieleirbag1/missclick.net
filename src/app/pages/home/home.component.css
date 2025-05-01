@@ -1,11 +1,3 @@
-.terminal {
-  text-align: center;
-  padding: 80px 20px;
-  background-color: var(--light-bg);
-  border-radius: 8px;
-  margin-bottom: 40px;
-}
-
 .terminal h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;

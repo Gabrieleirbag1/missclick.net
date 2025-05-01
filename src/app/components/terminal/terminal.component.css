@@ -6,7 +6,7 @@
   text-align: left;
 }
 
-.terminal {
+.terminal-container {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
   background-color: #212121;
