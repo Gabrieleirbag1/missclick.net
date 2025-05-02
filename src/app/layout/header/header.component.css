@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
 
 header {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   padding: 2vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90deg, rgba(88,27,153,0.95), rgba(217,79,79,0.95));
+  background: linear-gradient(
+    90deg,
+    rgba(88, 27, 153, 0.95),
+    rgba(217, 79, 79, 0.95)
+  );
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   position: relative;
 }
@@ -27,7 +31,7 @@ nav a {
   color: rgba(255, 255, 255, 0.85);
 }
 
-nav a:hover{
+nav a:hover {
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
 }
@@ -65,13 +69,17 @@ nav a:hover{
 }
 
 .sidebar {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   position: fixed;
   top: 0;
   right: -300px;
   width: 300px;
   height: 100%;
-  background: linear-gradient(180deg, rgba(88,27,153,0.98), rgba(217,79,79,0.98));
+  background: linear-gradient(
+    180deg,
+    rgba(88, 27, 153, 0.98),
+    rgba(217, 79, 79, 0.98)
+  );
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
   transition: right 0.3s ease-in-out;
   z-index: 999;
@@ -155,7 +163,18 @@ nav a:hover{
   border-right: 8px solid white;
   transition: transform 0.3s ease;
   cursor: pointer;
+  position: relative;
   margin-right: 15px;
+}
+
+.arrow::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+  padding: 20px;
 }
 
 .arrow.rotated {
@@ -165,7 +184,7 @@ nav a:hover{
 .submenu {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
+  transition: max-height 0.5s ease-out;
   margin: 0;
   padding: 0;
   list-style: none;
