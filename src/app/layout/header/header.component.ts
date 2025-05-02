@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ElementRef, HostListener } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { ContactModalComponent } from '../../components/contact-modal/contact-modal.component';
 import { CommonModule } from '@angular/common';
 
@@ -14,8 +14,9 @@ export class HeaderComponent implements AfterViewInit {
   
   isModalOpen = false;
   isSidebarOpen = false;
+  isHomeSubmenuOpen = false;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef, private router: Router) {}
 
   @HostListener('window:resize')
   onResize() {
@@ -45,6 +46,41 @@ export class HeaderComponent implements AfterViewInit {
   closeSidebar(): void {
     this.isSidebarOpen = false;
     document.body.style.overflow = '';
+  }
+
+  toggleSubmenu(submenu: string, event: Event): void {
+    // Prevent the click from navigating
+    event.stopPropagation();
+    
+    if (submenu === 'home') {
+      this.isHomeSubmenuOpen = !this.isHomeSubmenuOpen;
+    }
+    // Add more submenus as needed
+  }
+
+  scrollToSection(sectionId: string): void {
+    // First navigate to home page if not already there
+    if (this.router.url !== '/') {
+      this.router.navigate(['/'])
+        .then(() => {
+          // After navigation, wait for section to be in DOM
+          setTimeout(() => {
+            this.scrollToElement(sectionId);
+            this.closeSidebar();
+          }, 300);
+        });
+    } else {
+      // Already on home page, just scroll
+      this.scrollToElement(sectionId);
+      this.closeSidebar();
+    }
+  }
+
+  private scrollToElement(elementId: string): void {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   ngAfterViewInit() {

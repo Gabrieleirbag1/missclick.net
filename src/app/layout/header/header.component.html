@@ -14,10 +14,27 @@
 <div class="sidebar" [class.open]="isSidebarOpen">
   <div class="sidebar-content">
     <ul>
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-      <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
-      <li><a href="#" (click)="toggleContactModal($event)" [class.active]="isModalOpen">Contact</a></li>
+      <li class="menu-item">
+        <div class="menu-title">
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+          <span class="arrow" [class.rotated]="isHomeSubmenuOpen" (click)="toggleSubmenu('home', $event)"></span>
+        </div>
+        <ul class="submenu" [class.open]="isHomeSubmenuOpen">
+          <li><a (click)="scrollToSection('about')">About Me</a></li>
+          <li><a (click)="scrollToSection('skills')">Skills</a></li>
+          <li><a (click)="scrollToSection('hobbies')">Hobbies</a></li>
+          <li><a (click)="scrollToSection('github-stats')">GitHub Stats</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">
+        <div class="menu-title"><a routerLink="/about" routerLinkActive="active">About</a></div>
+      </li>
+      <li class="menu-item">
+        <div class="menu-title"><a routerLink="/projects" routerLinkActive="active">Projects</a></div>
+      </li>
+      <li class="menu-item">
+        <div class="menu-title"><a href="#" (click)="toggleContactModal($event)" [class.active]="isModalOpen">Contact</a></div>
+      </li>
     </ul>
   </div>
 </div>
