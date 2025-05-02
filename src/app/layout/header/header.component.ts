@@ -1,4 +1,9 @@
-import { Component, AfterViewInit, ElementRef, HostListener } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  ElementRef,
+  HostListener,
+} from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { ContactModalComponent } from '../../components/contact-modal/contact-modal.component';
 import { CommonModule } from '@angular/common';
@@ -8,10 +13,9 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterModule, ContactModalComponent, CommonModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements AfterViewInit {
-  
   isModalOpen = false;
   isSidebarOpen = false;
   isHomeSubmenuOpen = false;
@@ -34,8 +38,7 @@ export class HeaderComponent implements AfterViewInit {
 
   toggleMenu(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
-    
-    // Prevent scrolling when sidebar is open
+
     if (this.isSidebarOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -49,9 +52,8 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   toggleSubmenu(submenu: string, event: Event): void {
-    // Prevent the click from navigating
     event.stopPropagation();
-    
+
     if (submenu === 'home') {
       this.isHomeSubmenuOpen = !this.isHomeSubmenuOpen;
     }
@@ -61,16 +63,14 @@ export class HeaderComponent implements AfterViewInit {
   scrollToSection(sectionId: string): void {
     // First navigate to home page if not already there
     if (this.router.url !== '/') {
-      this.router.navigate(['/'])
-        .then(() => {
-          // After navigation, wait for section to be in DOM
-          setTimeout(() => {
-            this.scrollToElement(sectionId);
-            this.closeSidebar();
-          }, 300);
-        });
+      this.router.navigate(['/']).then(() => {
+        // After navigation, wait for section to be in DOM
+        setTimeout(() => {
+          this.scrollToElement(sectionId);
+          this.closeSidebar();
+        }, 300);
+      });
     } else {
-      // Already on home page, just scroll
       this.scrollToElement(sectionId);
       this.closeSidebar();
     }
@@ -89,6 +89,9 @@ export class HeaderComponent implements AfterViewInit {
 
   private updateHeaderHeight() {
     const headerHeight = this.elementRef.nativeElement.offsetHeight;
-    document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+    document.documentElement.style.setProperty(
+      '--header-height',
+      `${headerHeight}px`
+    );
   }
 }
