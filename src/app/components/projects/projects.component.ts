@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 
 interface Project {
   title: string;
+  date: string;
   tags: Array<"Software" | "Website" | "Mobile" | "Game" | "DevOps" | "Other">;
   description: string[];
   technologies: string[];
@@ -21,6 +22,7 @@ export class ProjectsComponent {
   projects: Project[] = [
     {
       title: 'Project 1',
+      date: "2025",
       tags: ["Website", "Software"],
       description: [
         'Description of project 1.',
@@ -32,6 +34,7 @@ export class ProjectsComponent {
     },
     {
       title: 'Project 2',
+      date: '2024',
       tags: ["Website", "Software"],
       description: [
         'Description of project 2.',

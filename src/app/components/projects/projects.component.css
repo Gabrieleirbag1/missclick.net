@@ -7,12 +7,21 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  height: 100%;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .project-text {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .project-image img {
-    width: 100%;
+  width: 100%;
 }

@@ -3,6 +3,10 @@
     <div class="project-info">
       <div class="project-text">
         <h3>{{ project.title }}</h3>
+        <ul>
+          <li *ngFor="let tag of project.tags">{{ tag }}</li>
+        </ul>
+        <p *ngIf="project.date">Date: {{ project.date }}</p>
         <p *ngFor="let description of project.description">{{ description }}</p>
         <a [href]="project.link" target="_blank">View Project</a>
       </div>
