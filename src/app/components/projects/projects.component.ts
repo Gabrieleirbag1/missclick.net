@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 
 interface Project {
   title: string;
+  tags: Array<"Software" | "Website" | "Mobile" | "Game" | "DevOps" | "Other">;
   description: string[];
   technologies: string[];
   imageUrl: string;
@@ -20,16 +21,18 @@ export class ProjectsComponent {
   projects: Project[] = [
     {
       title: 'Project 1',
+      tags: ["Website", "Software"],
       description: [
         'Description of project 1.',
         'Another line of description for project 1.',
       ],
       technologies: ['HTML', 'CSS', 'JavaScript'],
-      imageUrl: 'assets/images/project1.jpg',
+      imageUrl: 'assets/images/hobbies/jeux-video.avif',
       link: 'google.com',
     },
     {
       title: 'Project 2',
+      tags: ["Website", "Software"],
       description: [
         'Description of project 2.',
         'Another line of description for project 2.',

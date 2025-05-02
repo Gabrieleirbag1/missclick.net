@@ -1,0 +1,18 @@
+.project-card {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-text {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.project-image img {
+    width: 100%;
+}
