@@ -9,7 +9,7 @@
     ],
     "technologies": ["Flask", "FFmpeg", "Python", "HTML", "CSS", "Docker", "JavaScript", "SpotDL", "Youtube-dl", "Inkscape"],
     "imageUrl": {"grid": "assets/images/projects/ultimate-converter-grid.png", "list": "assets/images/projects/ultimate-converter-list.png"},
-    "link": "google.com"
+    "link": "https://ultimate-converter.missclick.net"
   },
   {
     "title": "FindWord",
@@ -21,7 +21,7 @@
     ],
     "technologies": ["Django", "WebSocket", "Python", "HTML", "CSS", "JavaScript"],
     "imageUrl": {"grid": "assets/images/projects/findword-grid.png", "list": "assets/images/projects/findword-list.png"},
-    "link": "google.com"
+    "link": "https://findword.missclick.net"
   },
   {
     "title": "Kaboom",
@@ -33,7 +33,7 @@
     ],
     "technologies": ["Python", "PyQt5"],
     "imageUrl": {"grid": "assets/images/projects/Kaboom.png", "list": "assets/images/projects/Kaboom.png"},
-    "link": "google.com"
+    "link": "https://github.com/Gabrieleirbag1/Kaboom/releases"
   },
   {
     "title": "Project 4",

@@ -21,12 +21,11 @@ interface Project {
 })
 export class ProjectsComponent implements OnInit {
   projects: Project[] = projectsData;
-  currentLayout: 'grid' | 'list' = 'grid'; // Default to grid view
+  currentLayout: 'grid' | 'list' = 'grid';
 
   constructor() { }
 
   ngOnInit(): void {
-    // Check if user has a preferred layout saved in localStorage
     const savedLayout = localStorage.getItem('projectLayout');
     if (savedLayout === 'grid' || savedLayout === 'list') {
       this.currentLayout = savedLayout;
@@ -35,7 +34,6 @@ export class ProjectsComponent implements OnInit {
 
   setLayout(layout: 'grid' | 'list'): void {
     this.currentLayout = layout;
-    // Save user preference
     localStorage.setItem('projectLayout', layout);
   }
 }
