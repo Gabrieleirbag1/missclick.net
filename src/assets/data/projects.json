@@ -1,18 +1,18 @@
 [
   {
-    "title": "Project 1",
+    "title": "Ultimate Converter",
     "date": "2025",
     "tags": ["Website", "Software"],
     "description": [
       "Description of project 1.",
       "Another line of description for project 1."
     ],
-    "technologies": ["HTML", "CSS", "JavaScript"],
-    "imageUrl": "assets/images/hobbies/jeux-video.avif",
+    "technologies": ["HTML", "CSS", "Python", "Docker", "JavaScript", "FFmpeg"],
+    "imageUrl": {"grid": "assets/images/projects/ultimate-converter-grid.png", "list": "assets/images/projects/ultimate-converter-list.png"},
     "link": "google.com"
   },
   {
-    "title": "Project 2",
+    "title": "FindWord",
     "date": "2024",
     "tags": ["Website", "Software"],
     "description": [
@@ -20,7 +20,31 @@
       "Another line of description for project 2."
     ],
     "technologies": ["React", "Node.js"],
-    "imageUrl": "assets/images/hobbies/jeux-video.avif",
+    "imageUrl": {"grid": "assets/images/projects/findword-grid.png", "list": "assets/images/projects/findword-list.png"},
     "link": "google.com"
+  },
+  {
+    "title": "Kaboom",
+    "date": "2024",
+    "tags": ["Game", "Software"],
+    "description": [
+      "Description of project 3.",
+      "Another line of description for project 3."
+    ],
+    "technologies": ["Python", "PyQt5"],
+    "imageUrl": {"grid": "assets/images/projects/project3-grid.png", "list": "assets/images/projects/project3-list.png"},
+    "link": "google.com"
+  },
+  {
+    "title": "Project 4",
+    "date": "2022",
+    "tags": ["Website", "Software"],
+    "description": [
+      "Description of project 4.",
+      "Another line of description for project 4."
+    ],
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "imageUrl": {"grid": "assets/images/projects/project4-grid.png", "list": "assets/images/projects/project4-list.png"},
+    "link": ""
   }
 ]

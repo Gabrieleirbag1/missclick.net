@@ -12,7 +12,7 @@
   <div class="projects-wrapper" *ngIf="currentLayout === 'grid'">
     <div class="project-card" *ngFor="let project of projects">
       <div class="project-image-container">
-        <img [src]="project.imageUrl" alt="{{ project.title }}" class="project-image"/>
+        <img [src]="project.imageUrl.grid" alt="{{ project.title }}" class="project-image"/>
         <div class="image-overlay"></div>
       </div>
       <div class="project-content">
@@ -31,11 +31,11 @@
         
         <div class="project-footer">
           <div class="project-technologies">
-            <span *ngFor="let tech of project.technologies">{{ tech }}</span>
+            <span *ngFor="let tech of project.technologies.slice(0, 3)">{{ tech }}</span>
+            <span *ngIf="project.technologies.length > 3" class="more-tech">+{{ project.technologies.length - 3 }}</span>
           </div>
           <a [href]="project.link" target="_blank" class="view-button">
-            <span>View Project</span>
-            <i class="arrow-icon"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
           </a>
         </div>
       </div>
@@ -69,7 +69,7 @@
         </div>
         <div class="divider"></div>
         <div class="project-image" [ngClass]="{'image-left': even}">
-          <img [src]="project.imageUrl" alt="{{ project.title }}" />
+          <img [src]="project.imageUrl.list" alt="{{ project.title }}" />
         </div>
       </div>
     </div>
