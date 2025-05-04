@@ -7,19 +7,19 @@
       "Description of project 1.",
       "Another line of description for project 1."
     ],
-    "technologies": ["HTML", "CSS", "Python", "Docker", "JavaScript", "FFmpeg"],
+    "technologies": ["Flask", "FFmpeg", "Python", "HTML", "CSS", "Docker", "JavaScript", "SpotDL", "Youtube-dl", "Inkscape"],
     "imageUrl": {"grid": "assets/images/projects/ultimate-converter-grid.png", "list": "assets/images/projects/ultimate-converter-list.png"},
     "link": "google.com"
   },
   {
     "title": "FindWord",
     "date": "2024",
-    "tags": ["Website", "Software"],
+    "tags": ["Website", "Game"],
     "description": [
       "Description of project 2.",
       "Another line of description for project 2."
     ],
-    "technologies": ["React", "Node.js"],
+    "technologies": ["Django", "WebSocket", "Python", "HTML", "CSS", "JavaScript"],
     "imageUrl": {"grid": "assets/images/projects/findword-grid.png", "list": "assets/images/projects/findword-list.png"},
     "link": "google.com"
   },
@@ -32,7 +32,7 @@
       "Another line of description for project 3."
     ],
     "technologies": ["Python", "PyQt5"],
-    "imageUrl": {"grid": "assets/images/projects/project3-grid.png", "list": "assets/images/projects/project3-list.png"},
+    "imageUrl": {"grid": "assets/images/projects/Kaboom.png", "list": "assets/images/projects/Kaboom.png"},
     "link": "google.com"
   },
   {
