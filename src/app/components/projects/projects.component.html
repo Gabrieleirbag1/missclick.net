@@ -1,23 +1,77 @@
-<div class="project-container">
-  <div class="project-card" *ngFor="let project of projects">
-    <div class="project-info">
-      <div class="project-text">
-        <h3>{{ project.title }}</h3>
-        <ul>
-          <li *ngFor="let tag of project.tags">{{ tag }}</li>
-        </ul>
-        <p *ngIf="project.date">{{ project.date }}</p>
-        <p *ngFor="let description of project.description">{{ description }}</p>
-        <a [href]="project.link" target="_blank">View Project</a>
+<div class="projects-container">
+  <div class="layout-toggle">
+    <button [class.active]="currentLayout === 'grid'" (click)="setLayout('grid')" aria-label="Grid view">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+    </button>
+    <button [class.active]="currentLayout === 'list'" (click)="setLayout('list')" aria-label="List view">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+    </button>
+  </div>
+
+  <!-- Grid Layout -->
+  <div class="projects-wrapper" *ngIf="currentLayout === 'grid'">
+    <div class="project-card" *ngFor="let project of projects">
+      <div class="project-image-container">
+        <img [src]="project.imageUrl" alt="{{ project.title }}" class="project-image"/>
+        <div class="image-overlay"></div>
       </div>
-      <div class="project-tech">
-        <ul>
-          <li *ngFor="let tech of project.technologies">{{ tech }}</li>
-        </ul>
+      <div class="project-content">
+        <div class="project-header">
+          <h3>{{ project.title }}</h3>
+          <div class="project-date" *ngIf="project.date">{{ project.date }}</div>
+        </div>
+        
+        <div class="project-tags">
+          <span *ngFor="let tag of project.tags">{{ tag }}</span>
+        </div>
+        
+        <div class="project-description">
+          <p *ngFor="let description of project.description">{{ description }}</p>
+        </div>
+        
+        <div class="project-footer">
+          <div class="project-technologies">
+            <span *ngFor="let tech of project.technologies">{{ tech }}</span>
+          </div>
+          <a [href]="project.link" target="_blank" class="view-button">
+            <span>View Project</span>
+            <i class="arrow-icon"></i>
+          </a>
+        </div>
       </div>
     </div>
-    <div class="project-image">
-        <img [src]="project.imageUrl" alt="{{ project.title }}" class="project-image"/>
+  </div>
+
+  <!-- List Layout -->
+  <div class="project-container" *ngIf="currentLayout === 'list'">
+    <div class="project-card" *ngFor="let project of projects; let even = even" [ngClass]="{'card-alt': even}">
+      <div class="card-content">
+        <div class="project-info" [ngClass]="{'info-right': even}">
+          <div class="project-text">
+            <h3>{{ project.title }}</h3>
+            <div class="tags">
+              <span class="tag" *ngFor="let tag of project.tags">{{ tag }}</span>
+            </div>
+            <p class="date" *ngIf="project.date">{{ project.date }}</p>
+            <div class="description">
+              <p *ngFor="let description of project.description">{{ description }}</p>
+            </div>
+            <a class="project-link" [href]="project.link" target="_blank">
+              <span>View Project</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+          <div class="project-tech">
+            <ul>
+              <li *ngFor="let tech of project.technologies">{{ tech }}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-image" [ngClass]="{'image-left': even}">
+          <img [src]="project.imageUrl" alt="{{ project.title }}" />
+        </div>
+      </div>
+      <div class="divider"></div>
     </div>
   </div>
 </div>
