@@ -6,7 +6,7 @@
         <ul>
           <li *ngFor="let tag of project.tags">{{ tag }}</li>
         </ul>
-        <p *ngIf="project.date">Date: {{ project.date }}</p>
+        <p *ngIf="project.date">{{ project.date }}</p>
         <p *ngFor="let description of project.description">{{ description }}</p>
         <a [href]="project.link" target="_blank">View Project</a>
       </div>
