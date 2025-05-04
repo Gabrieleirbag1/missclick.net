@@ -12,6 +12,18 @@
     "link": "https://ultimate-converter.missclick.net"
   },
   {
+    "title": "Square Game",
+    "date": "2024",
+    "tags": ["Website", "Software"],
+    "description": [
+      "Description of project 4.",
+      "Another line of description for project 4."
+    ],
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "imageUrl": {"grid": "assets/images/projects/Square-Game.png", "list": "assets/images/projects/Square-Game.png"},
+    "link": "https://github.com/Gabrieleirbag1/Square-Game/releases"
+  },
+  {
     "title": "FindWord",
     "date": "2024",
     "tags": ["Website", "Game"],
@@ -36,15 +48,15 @@
     "link": "https://github.com/Gabrieleirbag1/Kaboom/releases"
   },
   {
-    "title": "Project 4",
-    "date": "2022",
-    "tags": ["Website", "Software"],
+    "title": "Streaming Power",
+    "date": "2023",
+    "tags": ["Website"],
     "description": [
       "Description of project 4.",
       "Another line of description for project 4."
     ],
-    "technologies": ["HTML", "CSS", "JavaScript"],
-    "imageUrl": {"grid": "assets/images/projects/project4-grid.png", "list": "assets/images/projects/project4-list.png"},
-    "link": ""
+    "technologies": ["Django", "Python", "HTML", "CSS", "JavaScript"],
+    "imageUrl": {"grid": "assets/images/projects/streaming-power-grid.png", "list": "assets/images/projects/streaming-power-list.png"},
+    "link": "https://missclick.net/streamingpower/"
   }
 ]
