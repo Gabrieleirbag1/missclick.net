@@ -20,7 +20,7 @@
       "Another line of description for project 2."
     ],
     "technologies": ["React", "Node.js"],
-    "imageUrl": "assets/images/project2.jpg",
+    "imageUrl": "assets/images/hobbies/jeux-video.avif",
     "link": "google.com"
   }
 ]
