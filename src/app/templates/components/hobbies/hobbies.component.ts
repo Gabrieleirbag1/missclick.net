@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import hobbiesData from '../../../assets/data/hobbies.json';
+import hobbiesData from '../../../../assets/data/hobbies.json';
 
 interface Hobby {
   title: string;

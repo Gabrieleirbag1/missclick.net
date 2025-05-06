@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { Project } from '../../models/projects.model';
+import { Project } from '../../../models/projects.model';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({

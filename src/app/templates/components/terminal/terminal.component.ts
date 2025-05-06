@@ -7,7 +7,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import terminalCommandsData from '../../../assets/data/terminal-commands.json';
+import terminalCommandsData from '../../../../assets/data/terminal-commands.json';
 
 interface TerminalCommand {
   command: string;

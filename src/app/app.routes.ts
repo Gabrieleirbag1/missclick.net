@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { AdminComponent } from './pages/admin/admin.component';
+import { HomeComponent } from './templates/pages/home/home.component';
+import { ProjectsComponent } from './templates/components/projects/projects.component';
+import { AdminComponent } from './templates/pages/admin/admin.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },  // Default route to home

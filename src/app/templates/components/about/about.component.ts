@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import aboutImagesData from '../../../assets/data/about-images.json';
+import aboutImagesData from '../../../../assets/data/about-images.json';
 
 @Component({
   selector: 'app-about',

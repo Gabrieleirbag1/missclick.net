@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GithubService } from '../../services/github.service';
-import desktopIconsData from '../../../assets/data/desktop-icons.json';
+import { GithubService } from '../../../services/github.service';
+import desktopIconsData from '../../../../assets/data/desktop-icons.json';
 
 interface ModalInfo {
   type: string;
