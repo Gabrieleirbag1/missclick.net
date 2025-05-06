@@ -7,6 +7,7 @@ import {
 import { RouterModule, Router } from '@angular/router';
 import { ContactModalComponent } from '../../components/contact-modal/contact-modal.component';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -16,11 +17,18 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements AfterViewInit {
+  isAdmin = false;
   isModalOpen = false;
   isSidebarOpen = false;
   isHomeSubmenuOpen = false;
 
-  constructor(private elementRef: ElementRef, private router: Router) {}
+  constructor(private elementRef: ElementRef, private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.authService.isAuthenticated().subscribe((isAuthenticated) => {
+      this.isAdmin = isAuthenticated;
+    });
+  }
 
   @HostListener('window:resize')
   onResize() {

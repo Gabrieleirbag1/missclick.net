@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '../../../models/projects.model';
 import { AdminProjectService } from '../../../services/admin-projects.service';
-import { Observable } from 'rxjs';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -16,10 +17,15 @@ export class ProjectsComponent implements OnInit {
   imageAPIUrl = 'http://localhost:3000/api/projects/image/';
   currentLayout: 'grid' | 'list' = 'grid';
   projects: Project[] | undefined;
-  constructor(private adminProjectService: AdminProjectService) {}
+  isAdmin = false;
+
+  constructor(
+    private adminProjectService: AdminProjectService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    
     this.adminProjectService.getProjects().subscribe(
       (projects: Project[]) => {
         projects.forEach((project) => {
@@ -37,10 +43,25 @@ export class ProjectsComponent implements OnInit {
     if (savedLayout === 'grid' || savedLayout === 'list') {
       this.currentLayout = savedLayout;
     }
+
+    this.authService.isAuthenticated().subscribe(
+      isAuthenticated => {
+        this.isAdmin = isAuthenticated;
+      }
+    );
   }
 
   setLayout(layout: 'grid' | 'list'): void {
     this.currentLayout = layout;
     localStorage.setItem('projectLayout', layout);
+  }
+
+  editProject(project: any): void {
+    // Navigate to admin page with project ID
+    this.router.navigate(['/projects/admin/edit', project.title]);
+  }
+  
+  deleteProject(project: any): void {
+    return;
   }
 }
