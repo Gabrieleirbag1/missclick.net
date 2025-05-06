@@ -435,3 +435,10 @@ h2 {
     max-width: 450px;
   }
 }
+
+@media screen and (min-aspect-ratio: 16/9) {
+  .github-stats-container {
+    gap: 100px;
+    padding: 80px 120px;
+  }
+}

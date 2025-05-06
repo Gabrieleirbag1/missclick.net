@@ -12,7 +12,7 @@
   background-color: #212121;
   padding: 30px;
   border-radius: 12px;
-  width: 35vw;
+  width: 40vw;
   margin-bottom: 10vh;
   cursor: text;
 }
@@ -117,5 +117,11 @@
   }
   50% {
     opacity: 1;
+  }
+}
+
+@media screen and (min-aspect-ratio: 16/9) {
+  .terminal-container {
+    width: 35vw;
   }
 }
