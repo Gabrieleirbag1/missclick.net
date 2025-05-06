@@ -54,9 +54,7 @@ nav a:hover {
   align-items: center;
   z-index: 1001;
   transition: transform 0.3s ease;
-  position: absolute;
-  top: 30px;
-  right: 30px;
+  position: relative;
 }
 
 .menu-toggle.open {
