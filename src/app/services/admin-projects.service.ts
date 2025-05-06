@@ -15,13 +15,11 @@ export class AdminProjectService {
         return this.http.get<Project[]>(this.apiUrl);
     }
 
-    addProject(project: Project, gridImage: File | null, listImage: File | null): Observable<Project> {
+    setProjectFormData(project: Project, gridImage: File | null, listImage: File | null): FormData{
         const formData = new FormData();
-        
-        // Add the project data as JSON
+            
         formData.append('projectData', JSON.stringify(project));
         
-        // Add image files if they exist
         if (gridImage) {
             formData.append('gridImage', gridImage);
         }
@@ -29,25 +27,17 @@ export class AdminProjectService {
         if (listImage) {
             formData.append('listImage', listImage);
         }
-        
+
+        return formData;
+    }
+
+    addProject(project: Project, gridImage: File | null, listImage: File | null): Observable<Project> {
+        const formData = this.setProjectFormData(project, gridImage, listImage);
         return this.http.post<Project>(this.apiUrl, formData);
     }
 
     updateProject(id: string, project: Project, gridImage: File | null, listImage: File | null): Observable<Project> {
-        const formData = new FormData();
-        
-        // Add the project data as JSON
-        formData.append('projectData', JSON.stringify(project));
-        
-        // Add image files if they exist
-        if (gridImage) {
-            formData.append('gridImage', gridImage);
-        }
-        
-        if (listImage) {
-            formData.append('listImage', listImage);
-        }
-        
+        const formData = this.setProjectFormData(project, gridImage, listImage);
         return this.http.put<Project>(`${this.apiUrl}/${id}`, formData);
     }
 

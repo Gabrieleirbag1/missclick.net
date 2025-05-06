@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  FormGroup,
-  FormArray,
-  Validators,
-} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { AdminProjectService } from '../../../services/admin-projects.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,32 +10,32 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
-  providers: [AdminProjectService],
+  providers: [AdminProjectService]
 })
 export class AdminComponent implements OnInit {
   projectForm!: FormGroup;
   submitted = false;
   success = false;
   error = '';
-
+  
   // File inputs
   gridImageFile: File | null = null;
   listImageFile: File | null = null;
-
+  
   // Image previews
   gridImagePreview: string | ArrayBuffer | null = null;
   listImagePreview: string | ArrayBuffer | null = null;
 
   constructor(
     private adminProjectService: AdminProjectService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {}
 
   ngOnInit(): void {
     this.initForm();
     this.adminProjectService.getProjects().subscribe(
-      (projects) => console.log(projects),
-      (error) => console.error('Error fetching projects:', error)
+      projects => projects,
+      error => console.error('Error fetching projects:', error),
     );
   }
 
@@ -54,9 +48,9 @@ export class AdminComponent implements OnInit {
       technologies: this.fb.array([this.fb.control('')]),
       imageUrl: this.fb.group({
         grid: [''],
-        list: [''],
+        list: ['']
       }),
-      link: ['', Validators.required],
+      link: ['', Validators.required]
     });
   }
 
@@ -65,7 +59,7 @@ export class AdminComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.gridImageFile = file;
-
+      
       // Create preview
       const reader = new FileReader();
       reader.onload = () => {
@@ -79,7 +73,7 @@ export class AdminComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.listImageFile = file;
-
+      
       // Create preview
       const reader = new FileReader();
       reader.onload = () => {
@@ -130,37 +124,34 @@ export class AdminComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-
+    
     if (this.projectForm.invalid) {
       return;
     }
 
     // Get form data
     const projectData = this.projectForm.value;
-
+    
     // Use the service to add the project with files
-    this.adminProjectService
-      .addProject(projectData, this.gridImageFile, this.listImageFile)
-      .subscribe(
-        (response) => {
-          console.log('Project added successfully', response);
-          this.success = true;
-          this.submitted = false;
-
-          // Reset form and file inputs
-          this.projectForm.reset();
-          this.initForm();
-          this.gridImageFile = null;
-          this.listImageFile = null;
-          this.gridImagePreview = null;
-          this.listImagePreview = null;
-        },
-        (error) => {
-          console.error('Error adding project:', error);
-          this.error =
-            'Failed to add project: ' + (error.message || 'Unknown error');
-          this.submitted = false;
-        }
-      );
+    this.adminProjectService.addProject(projectData, this.gridImageFile, this.listImageFile).subscribe(
+      response => {
+        console.log('Project added successfully', response);
+        this.success = true;
+        this.submitted = false;
+        
+        // Reset form and file inputs
+        this.projectForm.reset();
+        this.initForm();
+        this.gridImageFile = null;
+        this.listImageFile = null;
+        this.gridImagePreview = null;
+        this.listImagePreview = null;
+      },
+      error => {
+        console.error('Error adding project:', error);
+        this.error = 'Failed to add project: ' + (error.message || 'Unknown error');
+        this.submitted = false;
+      }
+    );
   }
 }
