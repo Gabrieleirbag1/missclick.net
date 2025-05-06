@@ -1,9 +1,13 @@
-export interface Project {
-  title: string;
-  description: string[];
-  imageUrl: { grid: string; list: string };
-  link: string;
-  date: string;
-  tags: string[];
-  technologies: string[];
+export class Project {
+
+  constructor(
+    public title: string,
+    public description: string[],
+    public imageUrl: { grid: string; list: string },
+    public link: string,
+    public date: string,
+    public tags: string[],
+    public technologies: string[]
+  ) {}
+
 }

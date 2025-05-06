@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { Project } from '../../../models/projects.model';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AdminProjectService } from '../../../services/admin-projects.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  styleUrl: './admin.component.css',
+  providers: [AdminProjectService] // Add this line to provide the service
 })
 export class AdminComponent implements OnInit {
   projectForm!: FormGroup;
@@ -18,12 +19,16 @@ export class AdminComponent implements OnInit {
   error = '';
 
   constructor(
+    private adminProjectService: AdminProjectService,
     private fb: FormBuilder,
-    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     this.initForm();
+    this.adminProjectService.getProjects().subscribe(
+      projects => console.log(projects),
+      error => console.error('Error fetching projects:', error)
+    );
   }
 
   initForm(): void {
@@ -81,6 +86,25 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit(): void {
-    return;
+    this.submitted = true;
+    
+    if (this.projectForm.invalid) {
+      return;
+    }
+
+    this.adminProjectService.addProject(this.projectForm.value).subscribe(
+      response => {
+        console.log('Project added successfully', response);
+        this.success = true;
+        this.submitted = false;
+        this.projectForm.reset();
+        this.initForm();
+      },
+      error => {
+        console.error('Error adding project:', error);
+        this.error = 'Failed to add project: ' + (error.message || 'Unknown error');
+        this.submitted = false;
+      }
+    );
   }
 }
