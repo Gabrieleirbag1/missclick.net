@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 
 export class ProjectsComponent implements OnInit {
+  imageAPIUrl = 'http://localhost:3000/api/projects/image/';
   currentLayout: 'grid' | 'list' = 'grid';
   projects: Project[] | undefined;
   constructor(private adminProjectService: AdminProjectService) {}
@@ -21,6 +22,10 @@ export class ProjectsComponent implements OnInit {
     
     this.adminProjectService.getProjects().subscribe(
       (projects: Project[]) => {
+        projects.forEach((project) => {
+          project.imageUrl.grid = this.imageAPIUrl + project.imageUrl.grid;
+          project.imageUrl.list = this.imageAPIUrl + project.imageUrl.list;
+        });
         this.projects = projects;
       },
       (error) => {
