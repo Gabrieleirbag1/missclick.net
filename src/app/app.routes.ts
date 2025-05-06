@@ -7,6 +7,6 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },  // Default route to home
   { path: 'home', component: HomeComponent },
   { path: 'projects', component: ProjectsComponent},
-  { path: 'admin', component: AdminComponent },
+  { path: 'projects/admin', component: AdminComponent },
   { path: '**', redirectTo: '' }  // Redirect any unknown routes to home
 ];
