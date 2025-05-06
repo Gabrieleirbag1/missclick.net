@@ -1,16 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import projectsData from '../../../assets/data/projects.json';
-
-interface Project {
-  title: string;
-  description: string[];
-  imageUrl: { grid: string; list: string; };
-  link: string;
-  date: string;
-  tags: string[];
-  technologies: string[];
-}
+import { Project } from '../../models/projects.model';
 
 @Component({
   selector: 'app-projects',
@@ -19,6 +10,7 @@ interface Project {
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css']
 })
+
 export class ProjectsComponent implements OnInit {
   projects: Project[] = projectsData;
   currentLayout: 'grid' | 'list' = 'grid';
