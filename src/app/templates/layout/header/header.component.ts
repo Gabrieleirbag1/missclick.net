@@ -24,6 +24,10 @@ export class HeaderComponent implements AfterViewInit {
 
   constructor(private elementRef: ElementRef, private authService: AuthService, private router: Router) {}
 
+  logout(): void {
+    this.authService.logout();
+  }
+
   ngOnInit(): void {
     this.authService.isAuthenticated().subscribe((isAuthenticated) => {
       this.isAdmin = isAuthenticated;

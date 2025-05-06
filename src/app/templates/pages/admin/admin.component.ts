@@ -47,11 +47,6 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
-
   initForm(): void {
     this.projectForm = this.fb.group({
       title: ['', Validators.required],
