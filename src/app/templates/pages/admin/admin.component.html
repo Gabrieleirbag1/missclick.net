@@ -1,9 +1,16 @@
 <div class="admin-container">  
-  <h1>Project Administration</h1>
+  <div class="admin-header">
+    <h1>{{ pageTitle }}</h1>
+    <button type="button" class="logout-btn" (click)="cancelEdit()" *ngIf="editMode">Cancel</button>
+  </div>
   
   @if (success) {
     <div class="success-message">
-    Project has been added successfully!
+      @if (editMode) {
+        Project has been updated successfully!
+      } @else {
+        Project has been added successfully!
+      }
     </div>
   }
   
@@ -100,7 +107,11 @@
     </div>
     
     <button type="submit" class="submit-btn">
-      Save Project
+      @if (editMode) {
+        Update Project
+      } @else {
+        Save Project
+      }
     </button>
   </form>
   

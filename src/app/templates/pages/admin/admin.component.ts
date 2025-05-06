@@ -10,7 +10,8 @@ import {
 import { AdminProjectService } from '../../../services/admin-projects.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Project } from '../../../models/projects.model';
 
 @Component({
   selector: 'app-admin',
@@ -25,6 +26,9 @@ export class AdminComponent implements OnInit {
   submitted = false;
   success = false;
   error = '';
+  editMode = false;
+  projectId = '';
+  pageTitle = 'Add New Project';
 
   gridImageFile: File | null = null;
   listImageFile: File | null = null;
@@ -32,19 +36,104 @@ export class AdminComponent implements OnInit {
   gridImagePreview: string | ArrayBuffer | null = null;
   listImagePreview: string | ArrayBuffer | null = null;
 
+  private imageAPIUrl = 'http://localhost:3000/api/projects/image/';
+
   constructor(
     private adminProjectService: AdminProjectService,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.initForm();
-    this.adminProjectService.getProjects().subscribe(
-      (projects) => projects,
-      (error) => console.error('Error fetching projects:', error)
+
+    // Check if we're in edit mode
+    this.route.params.subscribe((params) => {
+      if (params['id']) {
+        this.editMode = true;
+        this.projectId = params['id'];
+        this.pageTitle = 'Edit Project';
+        this.loadProject(this.projectId);
+      }
+    });
+  }
+
+  loadProject(id: string): void {
+    this.adminProjectService.getProject(id).subscribe(
+      (project: Project) => {
+        // Populate the form with project data
+        this.populateForm(project);
+
+        // Show image previews
+        if (project.imageUrl.grid) {
+          this.gridImagePreview = this.imageAPIUrl + project.imageUrl.grid;
+        }
+
+        if (project.imageUrl.list) {
+          this.listImagePreview = this.imageAPIUrl + project.imageUrl.list;
+        }
+      },
+      (error) => {
+        console.error('Error loading project:', error);
+        this.error =
+          'Failed to load project: ' + (error.message || 'Unknown error');
+      }
     );
+  }
+
+  populateForm(project: Project): void {
+    // Reset form arrays first
+    while (this.tagsArray.length > 0) {
+      this.tagsArray.removeAt(0);
+    }
+
+    while (this.descriptionArray.length > 0) {
+      this.descriptionArray.removeAt(0);
+    }
+
+    while (this.technologiesArray.length > 0) {
+      this.technologiesArray.removeAt(0);
+    }
+
+    // Set basic form values
+    this.projectForm.patchValue({
+      title: project.title,
+      date: project.date,
+      link: project.link,
+      imageUrl: {
+        grid: project.imageUrl.grid,
+        list: project.imageUrl.list,
+      },
+    });
+
+    // Add tags
+    if (project.tags && project.tags.length > 0) {
+      project.tags.forEach((tag) => {
+        this.tagsArray.push(this.fb.control(tag));
+      });
+    } else {
+      this.tagsArray.push(this.fb.control(''));
+    }
+
+    // Add descriptions
+    if (project.description && project.description.length > 0) {
+      project.description.forEach((desc) => {
+        this.descriptionArray.push(this.fb.control(desc));
+      });
+    } else {
+      this.descriptionArray.push(this.fb.control(''));
+    }
+
+    // Add technologies
+    if (project.technologies && project.technologies.length > 0) {
+      project.technologies.forEach((tech) => {
+        this.technologiesArray.push(this.fb.control(tech));
+      });
+    } else {
+      this.technologiesArray.push(this.fb.control(''));
+    }
   }
 
   initForm(): void {
@@ -161,23 +250,53 @@ export class AdminComponent implements OnInit {
     if (this.projectForm.invalid) {
       return;
     }
+
     const projectData = this.projectForm.value;
 
-    this.adminProjectService
-      .addProject(projectData, this.gridImageFile, this.listImageFile)
-      .subscribe(
-        (response) => {
-          console.log('Project added successfully', response);
-          this.success = true;
-          this.submitted = false;
-          this.resetForm();
-        },
-        (error) => {
-          console.error('Error adding project:', error);
-          this.error =
-            'Failed to add project: ' + (error.message || 'Unknown error');
-          this.submitted = false;
-        }
-      );
+    if (this.editMode) {
+      // Update existing project
+      this.adminProjectService
+        .updateProject(this.projectId, projectData, this.gridImageFile, this.listImageFile)
+        .subscribe(
+          (response) => {
+            console.log('Project updated successfully', response);
+            this.success = true;
+            this.submitted = false;
+            // Navigate back to projects after a brief delay
+            setTimeout(() => {
+              this.router.navigate(['/projects']);
+            }, 2000);
+          },
+          (error) => {
+            console.error('Error updating project:', error);
+            this.error =
+              'Failed to update project: ' + (error.message || 'Unknown error');
+            this.submitted = false;
+          }
+        );
+    } else {
+      // Add new project
+      this.adminProjectService
+        .addProject(projectData, this.gridImageFile, this.listImageFile)
+        .subscribe(
+          (response) => {
+            console.log('Project added successfully', response);
+            this.success = true;
+            this.submitted = false;
+            this.resetForm();
+          },
+          (error) => {
+            console.error('Error adding project:', error);
+            this.error =
+              'Failed to add project: ' + (error.message || 'Unknown error');
+            this.submitted = false;
+          }
+        );
+    }
+  }
+
+  // Add a cancel method
+  cancelEdit(): void {
+    this.router.navigate(['/projects']);
   }
 }

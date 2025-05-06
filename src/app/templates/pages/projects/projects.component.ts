@@ -57,8 +57,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   editProject(project: any): void {
-    // Navigate to admin page with project ID
-    this.router.navigate(['/projects/admin/edit', project.title]);
+    // Navigate to admin page with project title
+    this.router.navigate(['/projects/admin/edit', project._id || project.title]);
   }
   
   deleteProject(project: any): void {

@@ -15,6 +15,10 @@ export class AdminProjectService {
         return this.http.get<Project[]>(this.apiUrl);
     }
 
+    getProject(id: string): Observable<Project> {
+        return this.http.get<Project>(`${this.apiUrl}/${id}`);
+    }
+
     setProjectFormData(project: Project, gridImage: File | null, listImage: File | null): FormData{
         const formData = new FormData();
             

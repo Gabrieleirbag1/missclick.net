@@ -6,10 +6,11 @@ import { LoginComponent } from './templates/pages/login/login.component';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },  // Default route to home
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'projects', component: ProjectsComponent},
   { path: 'login', component: LoginComponent },
   { path: 'projects/admin', component: AdminComponent, canActivate: [authGuard] },
-  { path: '**', redirectTo: '' }  // Redirect any unknown routes to home
+  { path: 'projects/admin/edit/:id', component: AdminComponent, canActivate: [authGuard] },
+  { path: '**', redirectTo: '' }
 ];

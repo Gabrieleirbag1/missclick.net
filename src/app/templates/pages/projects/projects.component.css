@@ -376,7 +376,6 @@
 
 .edit-btn {
   background: #0d6efd;
-
 }
 
 .edit-btn:hover {
@@ -409,5 +408,11 @@
 
   .divider {
     display: none;
+  }
+}
+
+@media screen and (min-aspect-ratio: 16/9) {
+  .project-container .project-image {
+    width: 44%;
   }
 }
