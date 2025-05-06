@@ -9,6 +9,8 @@ import {
 } from '@angular/forms';
 import { AdminProjectService } from '../../../services/admin-projects.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -32,7 +34,9 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private adminProjectService: AdminProjectService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +45,11 @@ export class AdminComponent implements OnInit {
       (projects) => projects,
       (error) => console.error('Error fetching projects:', error)
     );
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   initForm(): void {
