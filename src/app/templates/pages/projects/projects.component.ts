@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import projectsData from '../../../../assets/data/projects.json';
 import { Project } from '../../../models/projects.model';
+import { AdminProjectService } from '../../../services/admin-projects.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -12,12 +13,21 @@ import { Project } from '../../../models/projects.model';
 })
 
 export class ProjectsComponent implements OnInit {
-  projects: Project[] = projectsData;
   currentLayout: 'grid' | 'list' = 'grid';
-
-  constructor() { }
+  projects: Project[] | undefined;
+  constructor(private adminProjectService: AdminProjectService) {}
 
   ngOnInit(): void {
+    
+    this.adminProjectService.getProjects().subscribe(
+      (projects: Project[]) => {
+        this.projects = projects;
+      },
+      (error) => {
+        console.error('Error fetching projects:', error);
+      }
+    );
+
     const savedLayout = localStorage.getItem('projectLayout');
     if (savedLayout === 'grid' || savedLayout === 'list') {
       this.currentLayout = savedLayout;
