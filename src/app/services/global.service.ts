@@ -9,9 +9,13 @@ export class GlobalService {
 
   redirect(page: string): void {
     this.router.navigate([page]);
+    this.scroll();
+  }
+
+  scroll(direction: number = 0, behavior: ScrollBehavior = 'smooth') : void {
     window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
+      top: direction,
+      behavior: behavior,
     });
   }
 }

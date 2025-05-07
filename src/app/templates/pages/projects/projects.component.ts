@@ -24,7 +24,7 @@ export class ProjectsComponent implements OnInit {
     private adminProjectService: AdminProjectService,
     private authService: AuthService,
     private router: Router,
-    protected global: GlobalService
+    protected globalService: GlobalService
   ) {}
 
   ngOnInit(): void {

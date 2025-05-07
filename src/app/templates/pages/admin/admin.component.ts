@@ -11,6 +11,7 @@ import { AdminProjectService } from '../../../services/admin-projects.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Project } from '../../../models/projects.model';
+import { GlobalService } from '../../../services/global.service';
 
 @Component({
   selector: 'app-admin',
@@ -41,7 +42,8 @@ export class AdminComponent implements OnInit {
     private adminProjectService: AdminProjectService,
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private globalService: GlobalService
   ) {}
 
   ngOnInit(): void {
@@ -98,7 +100,6 @@ export class AdminComponent implements OnInit {
         formArray.push(this.fb.control(value));
       });
     } else {
-      // Only add an empty control if we're not editing.
       if (!this.editMode) {
         formArray.push(this.fb.control(''));
       }
@@ -238,49 +239,42 @@ export class AdminComponent implements OnInit {
 
     const projectData = this.projectForm.value;
 
-    if (this.editMode) {
-      // Update existing project
-      this.adminProjectService
-        .updateProject(this.projectId, projectData, this.gridImageFile, this.listImageFile)
-        .subscribe(
-          (response) => {
-            console.log('Project updated successfully', response);
-            this.success = true;
-            this.submitted = false;
-            // Navigate back to projects after a brief delay
-            setTimeout(() => {
-              this.router.navigate(['/projects']);
-            }, 2000);
-          },
-          (error) => {
-            console.error('Error updating project:', error);
-            this.error =
-              'Failed to update project: ' + (error.message || 'Unknown error');
-            this.submitted = false;
-          }
-        );
-    } else {
-      // Add new project
-      this.adminProjectService
-        .addProject(projectData, this.gridImageFile, this.listImageFile)
-        .subscribe(
-          (response) => {
-            console.log('Project added successfully', response);
-            this.success = true;
-            this.submitted = false;
-            this.resetForm();
-          },
-          (error) => {
-            console.error('Error adding project:', error);
-            this.error =
-              'Failed to add project: ' + (error.message || 'Unknown error');
-            this.submitted = false;
-          }
-        );
-    }
-  }
+    const request$ = this.editMode
+      ? this.adminProjectService.updateProject(this.projectId, projectData, this.gridImageFile, this.listImageFile)
+      : this.adminProjectService.addProject(projectData, this.gridImageFile, this.listImageFile);
 
-  // Add a cancel method
+    request$.subscribe(
+      (response) => {
+        console.log(
+          this.editMode ? 'Project updated successfully' : 'Project added successfully',
+          response
+        );
+        this.success = true;
+        this.submitted = false;
+
+        if (this.editMode) {
+          this.globalService.scroll();
+          setTimeout(() => this.router.navigate(['/projects']), 2000);
+        } else {
+          // Reset the form when adding a new project
+          this.resetForm();
+        }
+      },
+      (error) => {
+        console.error(
+          this.editMode ? 'Error updating project:' : 'Error adding project:',
+          error
+        );
+        this.error =
+          'Failed to ' +
+          (this.editMode ? 'update' : 'add') +
+          ' project: ' +
+          (error.message || 'Unknown error');
+        this.submitted = false;
+      }
+    );
+}
+
   cancelEdit(): void {
     this.router.navigate(['/projects']);
   }
