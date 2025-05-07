@@ -207,8 +207,9 @@ button {
 }
 
 .sub-form-group {
-  display: flex;
-  gap: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-wrap: wrap;
   margin-bottom: 1.5rem;
   padding: 1.2rem;
   background-color: #f9fafb;
@@ -285,4 +286,83 @@ input[type="file"]:hover {
   .remove-btn {
     align-self: flex-end;
   }
+
+  .sub-form-group {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .file-name {
+    width: 100%;
+    max-width: none;
+    margin-top: 5px;
+  }
+}
+
+/* Add these styles to your existing CSS */
+
+.file-input-container {
+  margin-bottom: 1.5rem;
+}
+
+.custom-file-input {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.custom-file-input input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.file-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #4f46e5;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.file-button:hover {
+  background-color: #4338ca;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.file-button:active {
+  transform: translateY(0);
+}
+
+.file-button svg {
+  transition: transform 0.2s ease;
+}
+
+.file-button:hover svg {
+  transform: translateY(-2px);
+}
+
+.file-name {
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin-left: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  display: inline-block;
 }

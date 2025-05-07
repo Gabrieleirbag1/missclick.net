@@ -36,6 +36,9 @@ export class AdminComponent implements OnInit {
   gridImagePreview: string | ArrayBuffer | null = null;
   listImagePreview: string | ArrayBuffer | null = null;
 
+  gridImageName: string | null = null;
+  listImageName: string | null = null;
+
   private imageAPIUrl = 'http://localhost:3000/api/projects/image/';
 
   constructor(
@@ -137,37 +140,29 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  onImageSelected(imageType: 'grid' | 'list', event: any): void {
+  onImageSelected(type: 'grid' | 'list', event: any): void {
     const file = event.target.files[0];
-    if (file) {
-      if (imageType === 'grid') {
-        this.gridImageFile = file;
-      } else {
-        this.listImageFile = file;
-      }
-
-      // Create preview
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (imageType === 'grid') {
-          this.gridImagePreview = reader.result;
-        } else {
-          this.listImagePreview = reader.result;
-        }
-      };
-      reader.readAsDataURL(file);
-
-      const filename = file.name;
-      this.projectForm.get('imageUrl')?.get(imageType)?.setValue(filename);
+    if (!file) return;
+    
+    if (type === 'grid') {
+      this.gridImageName = file.name;
+      this.gridImageFile = file;
+    } else {
+      this.listImageName = file.name;
+      this.listImageFile = file;
     }
-  }
-
-  onGridImageSelected(event: any): void {
-    this.onImageSelected('grid', event);
-  }
-
-  onListImageSelected(event: any): void {
-    this.onImageSelected('list', event);
+    
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      if (type === 'grid') {
+        this.gridImagePreview = e.target.result;
+      } else {
+        this.listImagePreview = e.target.result;
+      }
+    };
+    reader.readAsDataURL(file);
+    
+    this.projectForm.get(`imageUrl.${type}`)?.setValue(file);
   }
 
   // Helper getters for form arrays
