@@ -9,7 +9,6 @@ import {
 } from '@angular/forms';
 import { AdminProjectService } from '../../../services/admin-projects.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from '../../../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Project } from '../../../models/projects.model';
 
@@ -41,7 +40,6 @@ export class AdminComponent implements OnInit {
   constructor(
     private adminProjectService: AdminProjectService,
     private fb: FormBuilder,
-    private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -83,21 +81,25 @@ export class AdminComponent implements OnInit {
     );
   }
 
+  populateFormArray(formArrayName: string, values: string[] | undefined): void {
+    const formArray = this.getFormArray(formArrayName);
+    while (formArray.length > 0) {
+      formArray.removeAt(0);
+    }
+    
+    if (values && values.length > 0) {
+      values.forEach(value => {
+        formArray.push(this.fb.control(value));
+      });
+    } else {
+      // Only add an empty control if we're not editing.
+      if (!this.editMode) {
+        formArray.push(this.fb.control(''));
+      }
+    }
+  }
+
   populateForm(project: Project): void {
-    // Reset form arrays first
-    while (this.tagsArray.length > 0) {
-      this.tagsArray.removeAt(0);
-    }
-
-    while (this.descriptionArray.length > 0) {
-      this.descriptionArray.removeAt(0);
-    }
-
-    while (this.technologiesArray.length > 0) {
-      this.technologiesArray.removeAt(0);
-    }
-
-    // Set basic form values
     this.projectForm.patchValue({
       title: project.title,
       date: project.date,
@@ -108,41 +110,18 @@ export class AdminComponent implements OnInit {
       },
     });
 
-    // Add tags
-    if (project.tags && project.tags.length > 0) {
-      project.tags.forEach((tag) => {
-        this.tagsArray.push(this.fb.control(tag));
-      });
-    } else {
-      this.tagsArray.push(this.fb.control(''));
-    }
-
-    // Add descriptions
-    if (project.description && project.description.length > 0) {
-      project.description.forEach((desc) => {
-        this.descriptionArray.push(this.fb.control(desc));
-      });
-    } else {
-      this.descriptionArray.push(this.fb.control(''));
-    }
-
-    // Add technologies
-    if (project.technologies && project.technologies.length > 0) {
-      project.technologies.forEach((tech) => {
-        this.technologiesArray.push(this.fb.control(tech));
-      });
-    } else {
-      this.technologiesArray.push(this.fb.control(''));
-    }
+    this.populateFormArray('tags', project.tags);
+    this.populateFormArray('description', project.description);
+    this.populateFormArray('technologies', project.technologies);
   }
 
   initForm(): void {
     this.projectForm = this.fb.group({
       title: ['', Validators.required],
       date: ['', Validators.required],
-      tags: this.fb.array([this.fb.control('')]),
-      description: this.fb.array([this.fb.control('')]),
-      technologies: this.fb.array([this.fb.control('')]),
+      tags: this.fb.array([]),
+      description: this.fb.array([]),
+      technologies: this.fb.array([]),
       imageUrl: this.fb.group({
         grid: [''],
         list: [''],
