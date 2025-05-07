@@ -1,0 +1,14 @@
+<div *ngIf="isVisible" class="confirmation-modal" (click)="onBackdropClick($event)">
+  <div class="confirmation-modal-content">
+    <div class="confirmation-modal-sub-div">
+    <img src="assets/images/modal/warning.png" width="44" height="38" alt="Warning" />
+    <span class="title">Warning!</span>
+    <span class="confirmation-close" (click)="onClose()">&times;</span>
+    <p id="confirmation-modal-message">{{ message }}</p>
+    <div class="confirmation-modal-buttons">
+      <button id="confirm-yes" class="confirmation-modal-button" (click)="onConfirm()">Yes</button>
+      <button id="confirm-no" class="confirmation-modal-button" (click)="onCancel()">No</button>
+    </div>
+    </div>
+  </div>
+</div>
