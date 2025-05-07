@@ -1,39 +1,83 @@
 .admin-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #efefef;
 }
 
 h1 {
-  margin-bottom: 20px;
-  color: #333;
+  margin: 0;
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.logout-btn {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #e5e7eb;
+  color: #374151;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 1.8rem;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+  color: #4b5563;
+  font-size: 0.95rem;
 }
 
 .form-control {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 10px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #f9fafb;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background-color: #ffffff;
 }
 
 textarea.form-control {
-  min-height: 80px;
+  min-height: 100px;
+  resize: vertical;
 }
 
 .array-item {
   display: flex;
-  margin-bottom: 10px;
-  gap: 10px;
+  margin-bottom: 0.8rem;
+  gap: 12px;
   align-items: center;
 }
 
@@ -42,85 +86,197 @@ textarea.form-control {
 }
 
 button {
-  padding: 8px 16px;
+  padding: 0.7rem 1.2rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
 }
 
 .add-btn {
-  background-color: #4caf50;
+  background-color: #10b981;
   color: white;
-  margin-top: 5px;
+  margin-top: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.add-btn:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+}
+
+.add-btn::before {
+  content: "+";
+  font-size: 1rem;
+  margin-right: 3px;
 }
 
 .remove-btn {
-  background-color: #f44336;
-  color: white;
+  background-color: #f3f4f6;
+  color: #6b7280;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #e5e7eb;
+}
+
+.remove-btn:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+  border-color: #fecaca;
 }
 
 .submit-btn {
-  background-color: #2196f3;
+  background-color: #4f46e5;
   color: white;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 1.5rem;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
 }
 
 .submit-btn:disabled {
-  background-color: #cccccc;
+  background-color: #cbd5e1;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .error {
-  color: #f44336;
-  font-size: 14px;
-  margin-top: 5px;
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.error::before {
+  content: "⚠️";
+  font-size: 0.9rem;
 }
 
 .success-message {
-  background-color: #dff0d8;
-  color: #3c763d;
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 20px;
+  background-color: #ecfdf5;
+  color: #065f46;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  border-left: 4px solid #10b981;
+}
+
+.success-message::before {
+  content: "✓";
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 10px;
 }
 
 .error-message {
-  background-color: #f2dede;
-  color: #a94442;
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 20px;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  border-left: 4px solid #ef4444;
+}
+
+.error-message::before {
+  content: "⚠️";
+  font-size: 1.2rem;
+  margin-right: 10px;
 }
 
 .sub-form-group {
-  margin-bottom: 10px;
-  padding-left: 15px;
+  margin-bottom: 1.5rem;
+  padding: 1.2rem;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
 }
 
 .note {
-  margin-top: 30px;
-  padding: 15px;
-  background-color: #f8f9fa;
-  border-left: 4px solid #6c757d;
-  font-size: 14px;
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #94a3b8;
+  font-size: 0.9rem;
+  color: #64748b;
 }
 
 .image-preview {
-  margin-top: 10px;
-  border: 1px solid #ddd;
-  padding: 5px;
-  border-radius: 4px;
-  background-color: #f8f9fa;
+  margin-top: 1rem;
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: #ffffff;
   max-width: 300px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.image-preview:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
 }
 
 .image-preview img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 4px;
 }
 
 input[type="file"] {
-  padding: 6px;
+  padding: 0.8rem;
+  background-color: #ffffff;
+  border: 1px dashed #cbd5e1;
+}
+
+input[type="file"]:hover {
+  background-color: #f1f5f9;
+}
+
+/* Form sections with visual separation */
+.form-group:nth-child(even) {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .array-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .remove-btn {
+    align-self: flex-end;
+  }
 }
