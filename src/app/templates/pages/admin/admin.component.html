@@ -1,7 +1,11 @@
 <div class="admin-container">  
   <div class="admin-header">
     <h1>{{ pageTitle }}</h1>
-    <button type="button" class="logout-btn" (click)="cancelEdit()" *ngIf="editMode">Cancel</button>
+    <div>
+      <a class="view-button" (click)="cancelEdit()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z"/></svg>
+      </a>
+    </div>
   </div>
   
   <div class="success-message" *ngIf="success">
@@ -68,21 +72,20 @@
       <label>Images:</label>
       
       <div class="sub-form-group">
-        <label for="gridImage">Grid Image:</label>
-        <input type="file" id="gridImage" (change)="onGridImageSelected($event)" class="form-control">
-        <div class="image-preview" *ngIf="gridImagePreview">
-          <img [src]="gridImagePreview" alt="Grid image preview">
+        <div>
+          <label for="gridImage">Grid Image:</label>
+          <input type="file" id="gridImage" (change)="onGridImageSelected($event)" class="form-control">
+          <div class="image-preview" *ngIf="gridImagePreview">
+            <img [src]="gridImagePreview" alt="Grid image preview">
+          </div>
         </div>
-      </div>
-      
-      <div class="sub-form-group">
-        <label for="listImage">List Image:</label>
-        <input type="file" id="listImage" (change)="onListImageSelected($event)" class="form-control">
-        @if (listImagePreview) {
-          <div class="image-preview">
+        <div>
+          <label for="listImage">List Image:</label>
+          <input type="file" id="listImage" (change)="onListImageSelected($event)" class="form-control">
+          <div class="image-preview" *ngIf="listImagePreview">
             <img [src]="listImagePreview" alt="List image preview">
           </div>
-        }
+        </div>
       </div>
     </div>
     

@@ -24,21 +24,6 @@ h1 {
   font-size: 1.8rem;
 }
 
-.logout-btn {
-  background-color: #f3f4f6;
-  color: #4b5563;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  padding: 0.6rem 1.2rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.logout-btn:hover {
-  background-color: #e5e7eb;
-  color: #374151;
-}
-
 .form-group {
   margin-bottom: 1.8rem;
   display: flex;
@@ -128,6 +113,25 @@ button {
   border-color: #fecaca;
 }
 
+.view-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  background: #0d6efd;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.view-button:hover {
+  background: #0a58ca;
+}
+
 .submit-btn {
   background-color: #4f46e5;
   color: white;
@@ -203,6 +207,8 @@ button {
 }
 
 .sub-form-group {
+  display: flex;
+  gap: 100px;
   margin-bottom: 1.5rem;
   padding: 1.2rem;
   background-color: #f9fafb;

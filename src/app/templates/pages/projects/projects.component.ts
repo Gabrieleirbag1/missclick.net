@@ -96,11 +96,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           () => {
             // Remove the deleted project from the projects array
             this.projects = this.projects?.filter(p => p._id !== project._id);
-            alert('Project deleted successfully');
           },
           (error) => {
             console.error('Error deleting project:', error);
-            alert('Error deleting project');
           }
         );
       }
