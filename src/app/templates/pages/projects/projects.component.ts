@@ -64,6 +64,18 @@ export class ProjectsComponent implements OnInit {
   }
   
   deleteProject(project: any): void {
-    return;
+    if (confirm('Are you sure you want to delete this project?')) {
+      this.adminProjectService.deleteProject(project._id).subscribe(
+        () => {
+          // Remove the deleted project from the projects array
+          this.projects = this.projects?.filter(p => p._id !== project._id);
+          alert('Project deleted successfully');
+        },
+        (error) => {
+          console.error('Error deleting project:', error);
+          alert('Error deleting project');
+        }
+      );
+    }
   }
 }

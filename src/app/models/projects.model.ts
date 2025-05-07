@@ -1,4 +1,5 @@
 export class Project {
+  public _id: any;
 
   constructor(
     public title: string,
