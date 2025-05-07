@@ -251,10 +251,11 @@ export class AdminComponent implements OnInit {
         );
         this.success = true;
         this.submitted = false;
+        
+        this.globalService.scroll();
 
         if (this.editMode) {
-          this.globalService.scroll();
-          setTimeout(() => this.router.navigate(['/projects']), 2000);
+          setTimeout(() => this.router.navigate(['/projects']), 1500);
         } else {
           // Reset the form when adding a new project
           this.resetForm();

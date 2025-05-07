@@ -4,19 +4,15 @@
     <button type="button" class="logout-btn" (click)="cancelEdit()" *ngIf="editMode">Cancel</button>
   </div>
   
-  @if (success) {
-    <div class="success-message">
-      @if (editMode) {
-        Project has been updated successfully!
-      } @else {
-        Project has been added successfully!
-      }
-    </div>
-  }
+  <div class="success-message" *ngIf="success">
+    @if (editMode) {
+      Project has been updated successfully!
+    } @else {
+      Project has been added successfully!
+    }
+  </div>
   
-  @if (error) {
-    <div class="error-message">{{ error }}</div>
-  }
+  <div class="error-message" *ngIf="error">{{ error }}</div>
   
   <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -74,11 +70,9 @@
       <div class="sub-form-group">
         <label for="gridImage">Grid Image:</label>
         <input type="file" id="gridImage" (change)="onGridImageSelected($event)" class="form-control">
-        @if (gridImagePreview) {
-          <div class="image-preview">
-            <img [src]="gridImagePreview" alt="Grid image preview">
-          </div>
-        }
+        <div class="image-preview" *ngIf="gridImagePreview">
+          <img [src]="gridImagePreview" alt="Grid image preview">
+        </div>
       </div>
       
       <div class="sub-form-group">

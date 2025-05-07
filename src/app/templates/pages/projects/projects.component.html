@@ -37,7 +37,7 @@
         </div>
         
         <div class="project-description">
-          <p *ngFor="let description of project.description">{{ description }}</p>
+          <p *ngFor="let description of project.description.slice(0, 2)">{{ description }}</p>
         </div>
         
         <div class="project-footer">

@@ -79,6 +79,10 @@
   gap: 30px;
 }
 
+.projects-wrapper .project-card {
+  min-height: 50vh;
+}
+
 .project-card {
   position: relative;
   border-radius: 16px;
