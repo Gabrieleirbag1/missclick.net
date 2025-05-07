@@ -4,6 +4,7 @@ import { Project } from '../../../models/projects.model';
 import { AdminProjectService } from '../../../services/admin-projects.service';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { GlobalService } from '../../../services/global.service';
 
 @Component({
   selector: 'app-projects',
@@ -22,7 +23,8 @@ export class ProjectsComponent implements OnInit {
   constructor(
     private adminProjectService: AdminProjectService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    protected global: GlobalService
   ) {}
 
   ngOnInit(): void {

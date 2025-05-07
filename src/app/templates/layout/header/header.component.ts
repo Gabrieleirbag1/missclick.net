@@ -17,7 +17,7 @@ import { AuthService } from '../../../services/auth.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements AfterViewInit {
-  isAdmin = false;
+  isAuthenticated = false;
   isModalOpen = false;
   isSidebarOpen = false;
   isHomeSubmenuOpen = false;
@@ -30,7 +30,7 @@ export class HeaderComponent implements AfterViewInit {
 
   ngOnInit(): void {
     this.authService.isAuthenticated().subscribe((isAuthenticated) => {
-      this.isAdmin = isAuthenticated;
+      this.isAuthenticated = isAuthenticated;
     });
   }
 

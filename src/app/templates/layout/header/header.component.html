@@ -32,15 +32,12 @@
       <li class="menu-item">
         <div class="menu-title"><a href="#" (click)="toggleContactModal($event)" [class.active]="isModalOpen">Contact</a></div>
       </li>
-      @if (!isAdmin) {
+      @if (!isAuthenticated) {
       <li class="menu-item">
         <a routerLink="/projects/admin">Login</a>
       </li>
       }
       @else {
-      <li class="menu-item">
-        <a routerLink="/projects/admin">Admin Panel</a>
-      </li>
       <li class="menu-item">
         <a routerLink="/projects/logout" (click)="logout()">Logout</a>
       </li>
