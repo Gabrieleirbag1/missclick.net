@@ -38,12 +38,10 @@
     <div class="form-group">
       <label>Tags:</label>
       <div formArrayName="tags">
-        @for (tag of tagsArray.controls; track $index) {
-          <div class="array-item">
-            <input [formControlName]="$index" class="form-control">
-            <button type="button" (click)="removeTag($index)" class="remove-btn">Remove</button>
-          </div>
-        }
+        <div *ngFor="let tag of tagsArray.controls; let i = index" class="array-item">
+          <input [formControlName]="i" class="form-control">
+          <button type="button" (click)="removeTag(i)" class="remove-btn">Remove</button>
+        </div>
       </div>
       <button type="button" (click)="addTag()" class="add-btn">Add Tag</button>
     </div>
@@ -51,12 +49,10 @@
     <div class="form-group">
       <label>Description Lines:</label>
       <div formArrayName="description">
-        @for (desc of descriptionArray.controls; track $index) {
-          <div class="array-item">
-            <textarea [formControlName]="$index" class="form-control"></textarea>
-            <button type="button" (click)="removeDescription($index)" class="remove-btn">Remove</button>
-          </div>
-        }
+        <div *ngFor="let desc of descriptionArray.controls; let i = index" class="array-item">
+          <textarea [formControlName]="i" class="form-control"></textarea>
+          <button type="button" (click)="removeDescription(i)" class="remove-btn">Remove</button>
+        </div>
       </div>
       <button type="button" (click)="addDescription()" class="add-btn">Add Description Line</button>
     </div>
@@ -64,12 +60,10 @@
     <div class="form-group">
       <label>Technologies:</label>
       <div formArrayName="technologies">
-        @for (tech of technologiesArray.controls; track $index) {
-          <div class="array-item">
-            <input [formControlName]="$index" class="form-control">
-            <button type="button" (click)="removeTechnology($index)" class="remove-btn">Remove</button>
-          </div>
-        }
+        <div *ngFor="let tech of technologiesArray.controls; let i = index" class="array-item">
+          <input [formControlName]="i" class="form-control">
+          <button type="button" (click)="removeTechnology(i)" class="remove-btn">Remove</button>
+        </div>
       </div>
       <button type="button" (click)="addTechnology()" class="add-btn">Add Technology</button>
     </div>

@@ -56,6 +56,12 @@ export class AdminComponent implements OnInit {
         this.loadProject(this.projectId);
       }
     });
+
+    if (!this.editMode) {
+      this.addTag();
+      this.addDescription();
+      this.addTechnology();
+    }
   }
 
   loadProject(id: string): void {
