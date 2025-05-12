@@ -8,11 +8,12 @@ import { RouterModule, Router } from '@angular/router';
 import { ContactModalComponent } from '../../components/contact-modal/contact-modal.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth.service';
+import { CloseSidebarDirective } from '../../../directives/close-sidebar.directive';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, ContactModalComponent, CommonModule],
+  imports: [RouterModule, ContactModalComponent, CommonModule, CloseSidebarDirective],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })

@@ -12,7 +12,7 @@
 </header>
 
 <div class="sidebar" [class.open]="isSidebarOpen">
-  <div class="sidebar-content">
+  <div class="sidebar-content" appCloseSidebar [excludeToggle]="true">
     <ul>
       <li class="menu-item">
         <div class="menu-title">
