@@ -3,6 +3,31 @@ body {
   margin: 0;
 }
 
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(
+    -60deg,
+    rgb(246, 246, 246) 50%,
+    rgb(229, 229, 229) 50%
+  );
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 10s;
+}
+
+.bg3 {
+  animation-duration: 12s;
+}
+
 .github-stats {
   background-image: url("/assets/images/backgrounds/cloud.gif");
 }
@@ -16,6 +41,10 @@ body {
   position: relative;
 }
 
+.login-container {
+  height: calc(100vh - var(--header-height, 0px));
+}
+
 .skills {
   padding: 0;
 }
@@ -25,4 +54,13 @@ body {
   background: transparent;
   cursor: pointer;
   border: none;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
 }
