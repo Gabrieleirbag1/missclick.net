@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 import { GlobalService } from '../../../services/global.service';
 import { ConfirmationModalComponent } from '../../components/confirmation-modal/confirmation-modal.component';
 import { ModalService } from '../../../services/modal.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment.development';
 import { FormsModule } from '@angular/forms';
 
@@ -39,6 +40,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   projectToDelete: any = null;
 
   private modalSubscription: Subscription | undefined;
+  private searchTerms = new Subject<string>();
 
   constructor(
     private adminProjectService: AdminProjectService,
@@ -68,6 +70,13 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         this.modalMessage = state.message;
       }
     );
+
+    this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(() => {
+      this.searchProjects();
+    });
   }
 
   loadProjects(): void {
@@ -158,6 +167,11 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.applyFilters();
   }
 
+  updateSearch(term: string): void {
+    this.searchTerm = term;
+    this.searchTerms.next(term);
+  }
+
   toggleTagSelection(tag: string): void {
     if (this.selectedTags.includes(tag)) {
       // Remove tag if already selected
@@ -171,7 +185,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   toggleSortsFilter(event: MouseEvent): void {
-    event.stopPropagation(); // Prevent the click from being detected by the document listener
+    event.stopPropagation();
     this.showSortsFilter = !this.showSortsFilter;
     
     // Close the other dropdown if open
@@ -181,7 +195,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   toggleTagsFilter(event: MouseEvent): void {
-    event.stopPropagation(); // Prevent the click from being detected by the document listener
+    event.stopPropagation();
     this.showTagsFilter = !this.showTagsFilter;
     
     // Close the other dropdown if open
