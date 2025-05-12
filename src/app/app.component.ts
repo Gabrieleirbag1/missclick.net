@@ -13,16 +13,9 @@ import { LoaderComponent } from './templates/components/loader/loader.component'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   loading$ = this.loadingService.isLoading$;
 
   constructor(private loadingService: LoadingService) {}
 
-  ngOnInit() {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        this.loadingService.hideLoader();
-      }, 1000); // Adjust timeout as needed
-    });
-  }
 }

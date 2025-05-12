@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [LoadingGuard]  },
   { path: 'projects', component: ProjectsComponent, canActivate: [LoadingGuard] },
   { path: 'login', component: LoginComponent, canActivate: [LoadingGuard] },
-  { path: 'projects/admin', component: AdminComponent, canActivate: [LoadingGuard, authGuard] },
-  { path: 'projects/admin/edit/:id', component: AdminComponent, canActivate: [LoadingGuard, authGuard] },
+  { path: 'projects/admin', component: AdminComponent, canActivate: [authGuard, LoadingGuard] },
+  { path: 'projects/admin/edit/:id', component: AdminComponent, canActivate: [authGuard, LoadingGuard] },
   { path: '**', redirectTo: '' }
 ];
