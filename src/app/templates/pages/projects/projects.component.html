@@ -4,34 +4,35 @@
   <div class="bg bg3"></div>
 
   <div class="projects-header">
-    <div class="search-container">
-      <input type="text" [(ngModel)]="searchTerm" placeholder="Search projects..." (keyup.enter)="searchProjects()" />
-      <button (click)="searchProjects()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
-      </button>
-    </div>
-    
-    <div class="filters-container">
-      <div class="sort-dropdown">
-        <button class="sort-btn" (click)="toggleSortsFilter()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h10"></path><path d="M11 9h7"></path><path d="M11 13h4"></path><path d="M3 17h18"></path><path d="M3 21h18"></path><path d="m3 13 5-5"></path><path d="M3 8v5"></path><path d="m8 13-5-5"></path></svg>
-          Sort
+    <div class="search-filters-container">
+      <div class="search-container">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search projects..." (keyup.enter)="searchProjects()" />
+        <button (click)="searchProjects()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
         </button>
-        <div class="sort-options" *ngIf="showSortsFilter">
-          <button [class.active]="sortOption === 'date-desc'" (click)="setSortOption('date-desc')">Newest first</button>
-          <button [class.active]="sortOption === 'date-asc'" (click)="setSortOption('date-asc')">Oldest first</button>
-          <button [class.active]="sortOption === 'alpha-asc'" (click)="setSortOption('alpha-asc')">A-Z</button>
-          <button [class.active]="sortOption === 'alpha-desc'" (click)="setSortOption('alpha-desc')">Z-A</button>
-        </div>
       </div>
       
+      <div class="filters-container">
+        <div class="sort-dropdown">
+          <button class="sort-btn" (click)="toggleSortsFilter($event)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h10"></path><path d="M11 9h7"></path><path d="M11 13h4"></path><path d="M3 17h18"></path><path d="M3 21h18"></path><path d="m3 13 5-5"></path><path d="M3 8v5"></path><path d="m8 13-5-5"></path></svg>
+            Sort
+          </button>
+          <div class="sort-options" *ngIf="showSortsFilter" (click)="handleOptionClick($event)">
+            <button [class.active]="sortOption === 'date-desc'" (click)="setSortOption('date-desc')">Newest first</button>
+            <button [class.active]="sortOption === 'date-asc'" (click)="setSortOption('date-asc')">Oldest first</button>
+            <button [class.active]="sortOption === 'alpha-asc'" (click)="setSortOption('alpha-asc')">A-Z</button>
+            <button [class.active]="sortOption === 'alpha-desc'" (click)="setSortOption('alpha-desc')">Z-A</button>
+          </div>
+        </div>
+
       <div class="tags-filter">
-        <button class="tags-btn" (click)="toggleTagsFilter()">
+        <button class="tags-btn" (click)="toggleTagsFilter($event)">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H2v7l6.29 6.29c.94.94 2.48.94 3.42 0l3.58-3.58c.94-.94.94-2.48 0-3.42L9 5Z"></path><path d="M6 9.01V9"></path><path d="m15 5 6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19"></path></svg>
           Tags
           <span class="tag-count" *ngIf="selectedTags.length">{{ selectedTags.length }}</span>
         </button>
-        <div class="tags-options" *ngIf="showTagsFilter">
+        <div class="tags-options" *ngIf="showTagsFilter" (click)="handleOptionClick($event)">
           <div class="tags-header">
             <h4>Filter by tags</h4>
             <button class="clear-btn" (click)="clearFilters()" *ngIf="selectedTags.length || searchTerm">Clear all</button>
@@ -48,6 +49,7 @@
         </div>
       </div>
 
+      </div>
     </div>
     
     <div class="layout-toggle">

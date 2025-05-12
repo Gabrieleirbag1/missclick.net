@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '../../../models/projects.model';
 import { AdminProjectService } from '../../../services/admin-projects.service';
@@ -45,7 +45,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     protected globalService: GlobalService,
-    protected modalService: ModalService
+    protected modalService: ModalService,
+    private elementRef: ElementRef // Add ElementRef to constructor
   ) {}
 
   ngOnInit(): void {
@@ -169,12 +170,24 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.applyFilters();
   }
 
-  toggleSortsFilter(): void {
+  toggleSortsFilter(event: MouseEvent): void {
+    event.stopPropagation(); // Prevent the click from being detected by the document listener
     this.showSortsFilter = !this.showSortsFilter;
+    
+    // Close the other dropdown if open
+    if (this.showSortsFilter && this.showTagsFilter) {
+      this.showTagsFilter = false;
+    }
   }
 
-  toggleTagsFilter(): void {
+  toggleTagsFilter(event: MouseEvent): void {
+    event.stopPropagation(); // Prevent the click from being detected by the document listener
     this.showTagsFilter = !this.showTagsFilter;
+    
+    // Close the other dropdown if open
+    if (this.showTagsFilter && this.showSortsFilter) {
+      this.showSortsFilter = false;
+    }
   }
 
   clearFilters(): void {
@@ -191,7 +204,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   private applyFilters(): void {
     if (!this.projects) return;
     
-    // Start with all projects
     let filtered = [...this.projects];
     
     // Apply search term filter
@@ -211,7 +223,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     
     this.filteredProjects = filtered;
     
-    // Apply sorting after filtering
     this.applySorting();
   }
 
@@ -232,5 +243,30 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         this.filteredProjects.sort((a, b) => b.title.localeCompare(a.title));
         break;
     }
+  }
+
+  // Add a host listener to detect clicks outside the component
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    // Check if the sort dropdown is open and if the click was outside of it
+    if (this.showSortsFilter) {
+      const sortElement = this.elementRef.nativeElement.querySelector('.sort-dropdown');
+      if (sortElement && !sortElement.contains(event.target as Node)) {
+        this.showSortsFilter = false;
+      }
+    }
+    
+    // Check if the tags filter is open and if the click was outside of it
+    if (this.showTagsFilter) {
+      const tagsElement = this.elementRef.nativeElement.querySelector('.tags-filter');
+      if (tagsElement && !tagsElement.contains(event.target as Node)) {
+        this.showTagsFilter = false;
+      }
+    }
+  }
+
+  // Add method to handle clicks on dropdown options
+  handleOptionClick(event: MouseEvent): void {
+    event.stopPropagation(); // Prevent bubbling up to document
   }
 }

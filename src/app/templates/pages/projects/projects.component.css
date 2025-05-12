@@ -40,15 +40,18 @@
   }
 }
 
-/* Add these styles to your projects.component.css file */
-
-/* Projects header section with filters */
 .projects-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+  gap: 15px;
+}
+
+.search-filters-container {
+  display: flex;
+  align-items: center;
   gap: 15px;
 }
 
@@ -119,6 +122,22 @@
   transition: all 0.2s ease;
 }
 
+.sort-btn::after, .tags-btn::after {
+  content: '';
+  display: inline-block;
+  margin-left: 5px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+  transition: transform 0.2s ease;
+}
+
+.sort-btn:hover::after, .tags-btn:hover::after {
+  transform: translateY(2px);
+}
+
 .sort-btn:hover, .tags-btn:hover {
   background-color: rgba(255, 255, 255, 0.95);
   border-color: #0d6efd;
@@ -135,6 +154,16 @@
   min-width: 180px;
   z-index: 10;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: dropdown-appear 0.2s ease forwards;
+}
+
+@keyframes dropdown-appear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .sort-options button {
