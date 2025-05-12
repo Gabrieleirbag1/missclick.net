@@ -55,12 +55,3 @@ body {
   cursor: pointer;
   border: none;
 }
-
-@keyframes slide {
-  0% {
-    transform: translateX(-25%);
-  }
-  100% {
-    transform: translateX(25%);
-  }
-}
