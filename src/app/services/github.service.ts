@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment.development';
 })
 export class GithubService {
   private username = 'Gabrieleirbag1';
-  private token = environment.githubToken;
+  private readonly token = environment.githubToken;
 
   constructor(private http: HttpClient) {}
 
