@@ -19,13 +19,13 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {
     // Redirect to admin if already logged in
     if (this.authService.hasStoredSession()) {
-      this.router.navigate(['/projects/admin']);
+      this.router.navigate(['/projects']);
     }
   }
   
   onSubmit(): void {
     if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/projects/admin']);
+      this.router.navigate(['/projects']);
     } else {
       this.errorMessage = 'Invalid username or password';
     }

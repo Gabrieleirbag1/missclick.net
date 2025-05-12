@@ -34,7 +34,7 @@
 .skill-icon {
   background-size: cover;
   background-position: center;
-  height: 450px;
+  height: 50vh;
   transition: all 0.75s ease-in-out;
 }
 
@@ -63,7 +63,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 40px;
-  height: 275px;
+  height: 30vh;
   position: relative;
 }
 
