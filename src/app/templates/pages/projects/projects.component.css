@@ -40,10 +40,254 @@
   }
 }
 
+/* Add these styles to your projects.component.css file */
+
+/* Projects header section with filters */
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Search container */
+.search-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  position: relative;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2);
+  border-color: #0d6efd;
+}
+
+.search-container button {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-container button:hover {
+  color: #0d6efd;
+}
+
+/* Filters and sorting */
+.filters-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  position: relative;
+}
+
+.sort-dropdown, .tags-filter {
+  position: relative;
+}
+
+.sort-btn, .tags-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sort-btn:hover, .tags-btn:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: #0d6efd;
+}
+
+.sort-options, .tags-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 5px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sort-options button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sort-options button:last-child {
+  border-bottom: none;
+}
+
+.sort-options button:hover, .sort-options button.active {
+  background-color: #f0f7ff;
+}
+
+.sort-options button.active {
+  color: #0d6efd;
+  font-weight: 500;
+}
+
+/* Tags filter styling */
+.tags-options {
+  min-width: 250px;
+  max-width: 100%;
+  padding: 15px;
+}
+
+.tags-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.tags-header h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.clear-btn {
+  background: none;
+  border: none;
+  color: #0d6efd;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.clear-btn:hover {
+  text-decoration: underline;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.tag-btn {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tag-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.tag-btn.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.tag-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  margin-left: 5px;
+}
+
+/* Highlight selected tags in project cards */
+.project-tags span.highlighted, .tags .tag.highlighted {
+  background-color: #0d6efd;
+  color: white;
+}
+
+/* No results message */
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.no-results svg {
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.no-results h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.no-results p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.clear-search-btn {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-search-btn:hover {
+  background-color: #0b5ed7;
+  transform: translateY(-2px);
+}
+
 .layout-toggle {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 30px;
+  justify-content: space-between;
   gap: 10px;
 }
 
@@ -430,6 +674,28 @@
 
   .divider {
     display: none;
+  }
+
+  .projects-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-container {
+    max-width: none;
+  }
+  
+  .filters-container {
+    justify-content: space-between;
+  }
+  
+  .sort-options, .tags-options {
+    left: 0;
+    right: auto;
+  }
+  
+  .layout-toggle {
+    align-self: flex-end;
   }
 }
 

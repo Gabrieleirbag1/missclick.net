@@ -1,19 +1,77 @@
 <div class="projects-container">
   <div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
-  <div class="layout-toggle">
-    <button [class.active]="currentLayout === 'grid'" (click)="setLayout('grid')" aria-label="Grid view">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-    </button>
-    <button [class.active]="currentLayout === 'list'" (click)="setLayout('list')" aria-label="List view">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-    </button>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
+
+  <div class="projects-header">
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Search projects..." (keyup.enter)="searchProjects()" />
+      <button (click)="searchProjects()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+      </button>
+    </div>
+    
+    <div class="filters-container">
+      <div class="sort-dropdown">
+        <button class="sort-btn" (click)="toggleSortsFilter()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h10"></path><path d="M11 9h7"></path><path d="M11 13h4"></path><path d="M3 17h18"></path><path d="M3 21h18"></path><path d="m3 13 5-5"></path><path d="M3 8v5"></path><path d="m8 13-5-5"></path></svg>
+          Sort
+        </button>
+        <div class="sort-options" *ngIf="showSortsFilter">
+          <button [class.active]="sortOption === 'date-desc'" (click)="setSortOption('date-desc')">Newest first</button>
+          <button [class.active]="sortOption === 'date-asc'" (click)="setSortOption('date-asc')">Oldest first</button>
+          <button [class.active]="sortOption === 'alpha-asc'" (click)="setSortOption('alpha-asc')">A-Z</button>
+          <button [class.active]="sortOption === 'alpha-desc'" (click)="setSortOption('alpha-desc')">Z-A</button>
+        </div>
+      </div>
+      
+      <div class="tags-filter">
+        <button class="tags-btn" (click)="toggleTagsFilter()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H2v7l6.29 6.29c.94.94 2.48.94 3.42 0l3.58-3.58c.94-.94.94-2.48 0-3.42L9 5Z"></path><path d="M6 9.01V9"></path><path d="m15 5 6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19"></path></svg>
+          Tags
+          <span class="tag-count" *ngIf="selectedTags.length">{{ selectedTags.length }}</span>
+        </button>
+        <div class="tags-options" *ngIf="showTagsFilter">
+          <div class="tags-header">
+            <h4>Filter by tags</h4>
+            <button class="clear-btn" (click)="clearFilters()" *ngIf="selectedTags.length || searchTerm">Clear all</button>
+          </div>
+          <div class="tags-list">
+            <button 
+              *ngFor="let tag of availableTags" 
+              [class.active]="selectedTags.includes(tag)"
+              (click)="toggleTagSelection(tag)"
+              class="tag-btn">
+              {{ tag }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="layout-toggle">
+      <button [class.active]="currentLayout === 'grid'" (click)="setLayout('grid')" aria-label="Grid view">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      </button>
+      <button [class.active]="currentLayout === 'list'" (click)="setLayout('list')" aria-label="List view">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- No results message -->
+  <div class="no-results" *ngIf="filteredProjects && filteredProjects.length === 0">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path><path d="M8 11h6"></path></svg>
+    <h3>No projects found</h3>
+    <p>Try adjusting your search or filter criteria</p>
+    <button class="clear-search-btn" (click)="clearFilters()">Clear filters</button>
   </div>
 
   <!-- Grid Layout -->
-  <div class="projects-wrapper" *ngIf="currentLayout === 'grid'">
-    <div class="project-card" *ngFor="let project of projects">
+  <div class="projects-wrapper" *ngIf="currentLayout === 'grid' && filteredProjects && filteredProjects.length > 0">
+    <div class="project-card" *ngFor="let project of filteredProjects">
+      <!-- Same as before, but using filteredProjects instead of projects -->
       <div class="project-image-container">
         <img [src]="project.imageUrl.grid" alt="{{ project.title }}" class="project-image"/>
         <div class="image-overlay"></div>
@@ -33,7 +91,10 @@
         </div>
         
         <div class="project-tags">
-          <span *ngFor="let tag of project.tags.slice(0, 3)">{{ tag }}</span>
+          <span 
+            *ngFor="let tag of project.tags.slice(0, 3)" 
+            [class.highlighted]="selectedTags.includes(tag)"
+          >{{ tag }}</span>
           <span *ngIf="project.tags.length > 3" class="more">+{{ project.tags.length - 3 }}</span>
         </div>
         
@@ -58,14 +119,19 @@
   </div>
 
   <!-- List Layout -->
-  <div class="project-container" *ngIf="currentLayout === 'list'">
-    <div class="project-card" *ngFor="let project of projects; let even = even" [ngClass]="{'card-alt': even}">
+  <div class="project-container" *ngIf="currentLayout === 'list' && filteredProjects && filteredProjects.length > 0">
+    <div class="project-card" *ngFor="let project of filteredProjects; let even = even" [ngClass]="{'card-alt': even}">
+      <!-- Same as before, but using filteredProjects instead of projects -->
       <div class="card-content">
         <div class="project-info" [ngClass]="{'info-right': even}">
           <div class="project-text">
             <h3>{{ project.title }}</h3>
             <div class="tags">
-              <span class="tag" *ngFor="let tag of project.tags">{{ tag }}</span>
+              <span 
+                class="tag" 
+                *ngFor="let tag of project.tags"
+                [class.highlighted]="selectedTags.includes(tag)"
+              >{{ tag }}</span>
             </div>
             <p class="date" *ngIf="project.date">{{ project.date }}</p>
             <div class="description">
@@ -86,7 +152,6 @@
         <div class="project-image" [ngClass]="{'image-left': even}">
           <img [src]="project.imageUrl.list" alt="{{ project.title }}" />
         </div>
-
       </div>
       <div class="admin-buttons" *ngIf="isAdmin">
         <button class="admin-btn edit-btn" (click)="editProject(project)">
@@ -101,7 +166,6 @@
       <span><svg xmlns="http://www.w3.org/2000/svg" height="96px" viewBox="0 -960 960 960" width="96px" fill="#0d6efd"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
     </div>
   </div>
-
 </div>
 
 <app-confirmation-modal
