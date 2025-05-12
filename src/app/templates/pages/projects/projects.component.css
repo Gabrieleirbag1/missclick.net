@@ -230,10 +230,18 @@
   margin-left: 5px;
 }
 
-/* Highlight selected tags in project cards */
 .project-tags span.highlighted, .tags .tag.highlighted {
   background-color: #0d6efd;
   color: white;
+}
+
+.download-btn {
+  display: flex;
+}
+
+.download-btn:hover svg {
+  fill: #0d6efd;
+  transition: fill 0.3s ease;
 }
 
 /* No results message */

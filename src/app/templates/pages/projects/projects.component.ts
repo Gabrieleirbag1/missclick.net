@@ -259,10 +259,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Add a host listener to detect clicks outside the component
   @HostListener('document:click', ['$event'])
   clickOutside(event: Event) {
-    // Check if the sort dropdown is open and if the click was outside of it
     if (this.showSortsFilter) {
       const sortElement = this.elementRef.nativeElement.querySelector('.sort-dropdown');
       if (sortElement && !sortElement.contains(event.target as Node)) {
@@ -270,7 +268,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       }
     }
     
-    // Check if the tags filter is open and if the click was outside of it
     if (this.showTagsFilter) {
       const tagsElement = this.elementRef.nativeElement.querySelector('.tags-filter');
       if (tagsElement && !tagsElement.contains(event.target as Node)) {
@@ -279,8 +276,17 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Add method to handle clicks on dropdown options
   handleOptionClick(event: MouseEvent): void {
-    event.stopPropagation(); // Prevent bubbling up to document
+    event.stopPropagation();
   }
+
+  downloadProjects(): void {
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.projects));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute('href', dataStr);
+    downloadAnchorNode.setAttribute('download', 'projects.json');
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  } 
 }
