@@ -7,12 +7,14 @@ import { environment } from '../../environments/environment.development';
 })
 export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasStoredSession());
+  private readonly envUsername: string = environment.username;
+  private readonly envPassword: string = environment.password;
   
   constructor() {}
   
   login(username: string, password: string): boolean {
     // Hard-coded credentials from environment
-    if (username === 'admin' && password === 'admin') {
+    if (username === this.envUsername && password === this.envPassword) {
       localStorage.setItem('isAuthenticated', 'true');
       this.isAuthenticatedSubject.next(true);
       return true;
