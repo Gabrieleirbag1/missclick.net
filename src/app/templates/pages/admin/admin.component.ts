@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Project } from '../../../models/projects.model';
 import { GlobalService } from '../../../services/global.service';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-admin',
@@ -39,7 +40,7 @@ export class AdminComponent implements OnInit {
   gridImageName: string | null = null;
   listImageName: string | null = null;
 
-  private imageAPIUrl = 'http://localhost:3100/api/projects/image/';
+  private readonly imageAPIUrl = environment.apiUrl + 'projects/image/';
 
   constructor(
     private adminProjectService: AdminProjectService,
