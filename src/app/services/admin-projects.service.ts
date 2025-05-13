@@ -7,7 +7,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root'
 })
 export class AdminProjectService {
-    private apiUrl = "http://localhost:3000/api/projects";
+    private apiUrl = "http://localhost:3100/api/projects";
 
     constructor(private http: HttpClient) {}
 
