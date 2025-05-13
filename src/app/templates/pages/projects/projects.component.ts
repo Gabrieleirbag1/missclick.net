@@ -9,7 +9,7 @@ import { ConfirmationModalComponent } from '../../components/confirmation-modal/
 import { ModalService } from '../../../services/modal.service';
 import { Subscription, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { environment } from '../../../../environments/environment.development';
+import { environment } from '../../../../environments/environment';
 import { FormsModule } from '@angular/forms';
 
 @Component({
