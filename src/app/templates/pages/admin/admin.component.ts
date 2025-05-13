@@ -39,7 +39,7 @@ export class AdminComponent implements OnInit {
   gridImageName: string | null = null;
   listImageName: string | null = null;
 
-  private imageAPIUrl = 'http://localhost:3000/api/projects/image/';
+  private imageAPIUrl = 'http://localhost:3100/api/projects/image/';
 
   constructor(
     private adminProjectService: AdminProjectService,
