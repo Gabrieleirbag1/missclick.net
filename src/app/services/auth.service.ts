@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { SecretsService } from './secrets.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasStoredSession());
-  private readonly envUsername: string = environment.username;
-  private readonly envPassword: string = environment.password;
+  private username: string | undefined;
+  private  password: string | undefined;
   
-  constructor() {}
+  constructor(private secretsService: SecretsService) {
+    this.secretsService.loadSecrets().subscribe(secrets => {
+      this.username = secrets.username;
+      this.password = secrets.password;
+    });
+  }
   
   login(username: string, password: string): boolean {
-    // Hard-coded credentials from environment
-    if (username === this.envUsername && password === this.envPassword) {
-      localStorage.setItem('isAuthenticated', 'true');
-      this.isAuthenticatedSubject.next(true);
-      return true;
+    if (this.username && this.password) {
+      if (username === this.username && password === this.password) {
+        localStorage.setItem('isAuthenticated', 'true');
+        this.isAuthenticatedSubject.next(true);
+        return true;
+      }
     }
     return false;
   }

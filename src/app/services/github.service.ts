@@ -1,16 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, forkJoin, from, mergeMap} from 'rxjs';
-import { environment } from '../../environments/environment';
+import { SecretsService } from './secrets.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GithubService {
-  private username = 'Gabrieleirbag1';
-  private readonly token = environment.githubToken;
+  private githubUsername = 'Gabrieleirbag1';
+  private token: string | undefined;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private secretsService: SecretsService
+  ) {
+    this.loadSecretToken();
+  }
+
+  private loadSecretToken(): void {
+    this.secretsService.loadSecrets().subscribe(secrets => {
+      if (secrets.githubToken) {
+        this.token = secrets.githubToken;
+      } else {
+        this.token = '';
+      }
+    });
+  }
+
 
   private getAuthHeaders(): HttpHeaders {
     return new HttpHeaders({
@@ -19,21 +35,21 @@ export class GithubService {
   }
 
   getUserProfile(): Observable<any> {
-    return this.http.get(`https://api.github.com/users/${this.username}`, {
+    return this.http.get(`https://api.github.com/users/${this.githubUsername}`, {
       headers: this.getAuthHeaders(),
     });
   }
 
   getRepos(): Observable<any> {
     return this.http.get(
-      `https://api.github.com/users/${this.username}/repos?per_page=100`,
+      `https://api.github.com/users/${this.githubUsername}/repos?per_page=100`,
       { headers: this.getAuthHeaders() }
     );
   }
 
   getFollowers(): Observable<any> {
     return this.http.get(
-      `https://api.github.com/users/${this.username}/followers?per_page=100`,
+      `https://api.github.com/users/${this.githubUsername}/followers?per_page=100`,
       { headers: this.getAuthHeaders() }
     );
   }
@@ -56,7 +72,7 @@ export class GithubService {
         // Create an array of observables for fetching commits from each repo
         const commitRequests = repos.map((repo) =>
           this.http.get(
-            `https://api.github.com/repos/${this.username}/${repo.name}/commits?per_page=1`,
+            `https://api.github.com/repos/${this.githubUsername}/${repo.name}/commits?per_page=1`,
             {
               headers: this.getAuthHeaders(),
               observe: 'response',
@@ -93,7 +109,7 @@ export class GithubService {
   getTotalPullRequests(): Observable<number> {
     return this.http
       .get(
-        `https://api.github.com/search/issues?q=author:${this.username}+type:pr`,
+        `https://api.github.com/search/issues?q=author:${this.githubUsername}+type:pr`,
         { headers: this.getAuthHeaders() }
       )
       .pipe(mergeMap((response: any) => from([response.total_count])));
@@ -102,7 +118,7 @@ export class GithubService {
   getTotalIssues(): Observable<number> {
     return this.http
       .get(
-        `https://api.github.com/search/issues?q=author:${this.username}+type:issue`,
+        `https://api.github.com/search/issues?q=author:${this.githubUsername}+type:issue`,
         { headers: this.getAuthHeaders() }
       )
       .pipe(mergeMap((response: any) => from([response.total_count])));
