@@ -19,12 +19,26 @@ export class GlobalService {
     });
   }
 
-  playSound(src: string, volume: number): void {
-    const audio = new Audio();
-    audio.src = src;
-    audio.load();
-    audio.volume = volume;
-    audio.play();
+}
+
+export class MusicPlayer {
+  private audio: HTMLAudioElement;
+
+  constructor(src: string, volume: number) {
+    this.audio = new Audio(src);
+    this.audio.volume = volume;
+    this.audio.loop = false;
   }
 
+  play(): void {
+    this.audio.play();
+  }
+
+  pause(): void {
+    this.audio.pause();
+  }
+
+  setVolume(volume: number): void {
+    this.audio.volume = volume;
+  }
 }

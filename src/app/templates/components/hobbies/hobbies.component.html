@@ -10,7 +10,10 @@
           <p *ngFor="let paragraph of hobby.description">{{ paragraph }}</p>
         </div>
         <div class="hobbie-image" *ngIf="!hobby.replaceBackground">
-          <img [src]="hobby.imageUrl" [alt]="hobby.title" (click)="playPiano()">
+          <div>
+            <img class="piano" [src]="hobby.imageUrl" [alt]="hobby.title" (click)="playPiano()">
+            <img class="music-notes" src="assets/images/hobbies/music-notes.gif" alt="Music Notes" class="music-notes" *ngIf="isPianoPlaying">
+          </div>
         </div>
       </div>
     </div>

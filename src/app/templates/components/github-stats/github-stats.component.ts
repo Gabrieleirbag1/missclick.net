@@ -2,7 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GithubService } from '../../../services/github.service';
 import desktopIconsData from '../../../../assets/data/desktop-icons.json';
-import { GlobalService } from '../../../services/global.service';
+import { GlobalService, MusicPlayer } from '../../../services/global.service';
 
 interface ModalInfo {
   type: string;
@@ -27,8 +27,9 @@ export class GithubStatsComponent implements OnInit {
   currentTime: Date = new Date();
   githubStats: any = {};
   desktopIcons: DesktopIcon[] = desktopIconsData;
+  musicPlayer: MusicPlayer = new MusicPlayer('assets/sounds/windows-xp-startup.mp3', 0.85);
 
-  constructor(private githubService: GithubService, private ngZone: NgZone, protected globalService: GlobalService) {}
+  constructor(private githubService: GithubService, private ngZone: NgZone) {}
 
   ngOnInit(): void {
     this.githubService.getAllStats().subscribe((stats) => {

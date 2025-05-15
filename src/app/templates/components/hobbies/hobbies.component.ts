@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import hobbiesData from '../../../../assets/data/hobbies.json';
-import { GlobalService } from '../../../services/global.service';
+import { MusicPlayer } from '../../../services/global.service';
 
 interface Hobby {
   title: string;
@@ -19,11 +19,14 @@ interface Hobby {
 })
 export class HobbiesComponent {
 
-  constructor(protected globalService: GlobalService) {}
+  constructor() {}
 
   hobbies: Hobby[] = hobbiesData;
+  musicPlayer: MusicPlayer = new MusicPlayer('assets/sounds/Essais_-_Miphas_Theme.mp3', 0.5);
 
   currentIndex = 0;
+
+  isPianoPlaying: boolean = false;
 
   previousSlide(): void {
     this.currentIndex = this.currentIndex === 0 ? this.hobbies.length - 1 : this.currentIndex - 1;
@@ -34,7 +37,14 @@ export class HobbiesComponent {
   }
 
   playPiano(): void {
-    console.log('Playing piano sound');
-    this.globalService.playSound('assets/sounds/Essais_-_Miphas_Theme.mp3', 0.5);
+    if (this.isPianoPlaying) {
+      console.log('Pausing music');
+      this.musicPlayer.pause();
+    }
+    else {
+      console.log('Playing music');
+      this.musicPlayer.play();
+    }
+    this.isPianoPlaying = !this.isPianoPlaying;
   }
 }

@@ -62,11 +62,25 @@
   justify-content: center;
 }
 
-.hobbie-image img {
+.hobbie-image div {
+  position: relative;
+}
+
+.piano {
   height: 50vh;
   border-radius: 8px;
   cursor: pointer;
+  position: relative;
+  z-index: 20;
+}
 
+.music-notes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.3;
+  z-index: 10;
 }
 
 .slider-navigation .arrow {
