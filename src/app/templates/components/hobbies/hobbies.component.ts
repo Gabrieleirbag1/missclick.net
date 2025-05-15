@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import hobbiesData from '../../../../assets/data/hobbies.json';
+import { GlobalService } from '../../../services/global.service';
 
 interface Hobby {
   title: string;
@@ -17,6 +18,9 @@ interface Hobby {
   styleUrl: './hobbies.component.css'
 })
 export class HobbiesComponent {
+
+  constructor(protected globalService: GlobalService) {}
+
   hobbies: Hobby[] = hobbiesData;
 
   currentIndex = 0;
@@ -27,5 +31,10 @@ export class HobbiesComponent {
 
   nextSlide(): void {
     this.currentIndex = (this.currentIndex + 1) % this.hobbies.length;
+  }
+
+  playPiano(): void {
+    console.log('Playing piano sound');
+    this.globalService.playSound('assets/sounds/Essais_-_Miphas_Theme.mp3', 0.5);
   }
 }

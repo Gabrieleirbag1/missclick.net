@@ -10,7 +10,7 @@
           <p *ngFor="let paragraph of hobby.description">{{ paragraph }}</p>
         </div>
         <div class="hobbie-image" *ngIf="!hobby.replaceBackground">
-          <img [src]="hobby.imageUrl" [alt]="hobby.title">
+          <img [src]="hobby.imageUrl" [alt]="hobby.title" (click)="playPiano()">
         </div>
       </div>
     </div>

@@ -18,4 +18,13 @@ export class GlobalService {
       behavior: behavior,
     });
   }
+
+  playSound(src: string, volume: number): void {
+    const audio = new Audio();
+    audio.src = src;
+    audio.load();
+    audio.volume = volume;
+    audio.play();
+  }
+
 }

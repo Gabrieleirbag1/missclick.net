@@ -134,22 +134,22 @@ export class GithubService {
       .pipe(mergeMap((response: any) => from([response.total_count])));
   }
 
-getAllStats(): Observable<any> {
-  if (!this.token) {
-    console.warn('Token not loaded. Waiting and retrying...');
-    return timer(1000).pipe(switchMap(() => this.getAllStats()));
-  }
+  getAllStats(): Observable<any> {
+    if (!this.token) {
+      console.warn('Token not loaded. Waiting and retrying...');
+      return timer(1000).pipe(switchMap(() => this.getAllStats()));
+    }
 
-  return forkJoin({
-    profile: this.getUserProfile(),
-    repos: this.getRepos(),
-    stars: this.getTotalStars(),
-    commits: this.getTotalCommits(),
-    pullRequests: this.getTotalPullRequests(),
-    issues: this.getTotalIssues(),
-    followers: this.getFollowers().pipe(
-      mergeMap((followers: any[]) => from([followers.length]))
-    ),
-  });
-}
+    return forkJoin({
+      profile: this.getUserProfile(),
+      repos: this.getRepos(),
+      stars: this.getTotalStars(),
+      commits: this.getTotalCommits(),
+      pullRequests: this.getTotalPullRequests(),
+      issues: this.getTotalIssues(),
+      followers: this.getFollowers().pipe(
+        mergeMap((followers: any[]) => from([followers.length]))
+      ),
+    });
+  }
 }

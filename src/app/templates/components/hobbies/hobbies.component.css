@@ -40,7 +40,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   min-height: 300px;
   animation: fadeIn 0.5s;
-  height: 650px;
 }
 
 .hobbie-element.replace-background {
@@ -64,8 +63,10 @@
 }
 
 .hobbie-image img {
-  height: 500px;
+  height: 50vh;
   border-radius: 8px;
+  cursor: pointer;
+
 }
 
 .slider-navigation .arrow {
