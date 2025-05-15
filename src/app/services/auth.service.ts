@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { SecretsService } from './secrets.service';
 
 @Injectable({
@@ -7,25 +8,18 @@ import { SecretsService } from './secrets.service';
 })
 export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasStoredSession());
-  private username: string | undefined;
-  private  password: string | undefined;
   
-  constructor(private secretsService: SecretsService) {
-    this.secretsService.loadSecrets().subscribe(secrets => {
-      this.username = secrets.username;
-      this.password = secrets.password;
-    });
-  }
+  constructor(private secretsService: SecretsService) {}
   
-  login(username: string, password: string): boolean {
-    if (this.username && this.password) {
-      if (username === this.username && password === this.password) {
-        localStorage.setItem('isAuthenticated', 'true');
-        this.isAuthenticatedSubject.next(true);
-        return true;
-      }
-    }
-    return false;
+  login(username: string, password: string): Observable<boolean> {
+    return this.secretsService.validateCredentials(username, password).pipe(
+      tap(isValid => {
+        if (isValid) {
+          localStorage.setItem('isAuthenticated', 'true');
+          this.isAuthenticatedSubject.next(true);
+        }
+      })
+    );
   }
   
   logout(): void {

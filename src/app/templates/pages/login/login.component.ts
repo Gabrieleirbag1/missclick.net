@@ -15,6 +15,7 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
   errorMessage: string = '';
+  isLoading: boolean = false;
   
   constructor(private authService: AuthService, private router: Router) {
     // Redirect to admin if already logged in
@@ -24,10 +25,23 @@ export class LoginComponent {
   }
   
   onSubmit(): void {
-    if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/projects']);
-    } else {
-      this.errorMessage = 'Invalid username or password';
-    }
+    this.isLoading = true;
+    this.errorMessage = '';
+    
+    this.authService.login(this.username, this.password).subscribe({
+      next: (isValid) => {
+        this.isLoading = false;
+        if (isValid) {
+          this.router.navigate(['/projects']);
+        } else {
+          this.errorMessage = 'Invalid username or password';
+        }
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.errorMessage = 'Login failed. Please try again.';
+        console.error('Login error:', error);
+      }
+    });
   }
 }
