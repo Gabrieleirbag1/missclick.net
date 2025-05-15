@@ -74,6 +74,10 @@
   z-index: 20;
 }
 
+.piano-shake {
+  animation: littleShake 2s ease-in-out infinite alternate;
+}
+
 .music-notes {
   position: absolute;
   top: 0;
@@ -134,6 +138,24 @@
 
 .slide-indicators span.active {
   background: #9c9c9c;
+}
+
+@keyframes littleShake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes fadeIn {
