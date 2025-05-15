@@ -17,30 +17,16 @@ export interface LoginResponse {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SecretsService {
   private readonly secretsUrl = `${environment.apiUrl}secrets`;
   private secretsSubject = new BehaviorSubject<Secrets>({});
   public secrets$ = this.secretsSubject.asObservable();
-  
+
   private secretsLoaded = false;
 
   constructor(private http: HttpClient) {}
-  
-  /**
-   * Get a specific secret by key
-   */
-  getSecret(key: string): string | undefined {
-    return this.secretsSubject.value[key];
-  }
-
-  /**
-   * Get GitHub token specifically
-   */
-  getGithubToken(): string | undefined {
-    return this.getSecret('githubToken');
-  }
 
   /**
    * Check if secrets have been loaded
@@ -48,53 +34,37 @@ export class SecretsService {
   areSecretsLoaded(): boolean {
     return this.secretsLoaded;
   }
-  
-  /**
-   * Load GitHub token from the API
-   */
-  loadGithubToken(): Observable<string> {
-    return this.http.get<string>(`${this.secretsUrl}/githubToken`).pipe(
-      tap(token => {
-        const currentSecrets = this.secretsSubject.value;
-        this.secretsSubject.next({
-          ...currentSecrets,
-          githubToken: token
-        });
-      }),
-      catchError(error => {
-        console.error('Error loading GitHub token:', error);
-        return of('');
-      })
-    );
+
+  loadGithubToken(): Observable<string | null> {
+    return this.http
+      .get<{ githubToken: string }>(`${this.secretsUrl}/githubToken`)
+      .pipe(
+        map((response) => response.githubToken),
+        tap((token) => {
+          const currentSecrets = this.secretsSubject.getValue();
+          this.secretsSubject.next({ ...currentSecrets, githubToken: token });
+          this.secretsLoaded = true;
+        }),
+        catchError((error) => {
+          console.error('Error loading GitHub token:', error);
+          return of(null);
+        })
+      );
   }
-  
+
   /**
    * Validate login credentials through API
    */
   validateCredentials(username: string, password: string): Observable<boolean> {
     // Send credentials directly in the request body
-    return this.http.post<LoginResponse>(`${this.secretsUrl}/login`, { username, password }).pipe(
-      map(response => response.success),
-      catchError(error => {
-        console.error('Error validating credentials:', error);
-        return of(false);
-      })
-    );
-  }
-  
-  /**
-   * Load all secrets
-   */
-  loadSecrets(): Observable<Secrets> {
-    if (this.secretsLoaded) {
-      return this.secrets$;
-    }
-    
-    return this.loadGithubToken().pipe(
-      map(token => {
-        this.secretsLoaded = true;
-        return this.secretsSubject.value;
-      })
-    );
+    return this.http
+      .post<LoginResponse>(`${this.secretsUrl}/login`, { username, password })
+      .pipe(
+        map((response) => response.success),
+        catchError((error) => {
+          console.error('Error validating credentials:', error);
+          return of(false);
+        })
+      );
   }
 }

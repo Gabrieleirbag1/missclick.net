@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, forkJoin, from, mergeMap} from 'rxjs';
+import { Observable, forkJoin, from, mergeMap, switchMap, timer } from 'rxjs';
 import { SecretsService } from './secrets.service';
 
 @Injectable({
@@ -18,15 +18,22 @@ export class GithubService {
   }
 
   private loadSecretToken(): void {
-    this.secretsService.loadSecrets().subscribe(secrets => {
+    this.secretsService.secrets$.subscribe((secrets) => {
       if (secrets.githubToken) {
         this.token = secrets.githubToken;
+      }
+    });
+
+    this.secretsService.loadGithubToken().subscribe((token) => {
+      if (token) {
+        this.token = token;
       } else {
-        this.token = '';
+        console.warn(
+          'GitHub token not loaded. Some API requests may be rate-limited.'
+        );
       }
     });
   }
-
 
   private getAuthHeaders(): HttpHeaders {
     return new HttpHeaders({
@@ -35,9 +42,12 @@ export class GithubService {
   }
 
   getUserProfile(): Observable<any> {
-    return this.http.get(`https://api.github.com/users/${this.githubUsername}`, {
-      headers: this.getAuthHeaders(),
-    });
+    return this.http.get(
+      `https://api.github.com/users/${this.githubUsername}`,
+      {
+        headers: this.getAuthHeaders(),
+      }
+    );
   }
 
   getRepos(): Observable<any> {
@@ -124,17 +134,22 @@ export class GithubService {
       .pipe(mergeMap((response: any) => from([response.total_count])));
   }
 
-  getAllStats(): Observable<any> {
-    return forkJoin({
-      profile: this.getUserProfile(),
-      repos: this.getRepos(),
-      stars: this.getTotalStars(),
-      commits: this.getTotalCommits(),
-      pullRequests: this.getTotalPullRequests(),
-      issues: this.getTotalIssues(),
-      followers: this.getFollowers().pipe(
-        mergeMap((followers: any[]) => from([followers.length]))
-      ),
-    });
+getAllStats(): Observable<any> {
+  if (!this.token) {
+    console.warn('Token not loaded. Waiting and retrying...');
+    return timer(1000).pipe(switchMap(() => this.getAllStats()));
   }
+
+  return forkJoin({
+    profile: this.getUserProfile(),
+    repos: this.getRepos(),
+    stars: this.getTotalStars(),
+    commits: this.getTotalCommits(),
+    pullRequests: this.getTotalPullRequests(),
+    issues: this.getTotalIssues(),
+    followers: this.getFollowers().pipe(
+      mergeMap((followers: any[]) => from([followers.length]))
+    ),
+  });
+}
 }
