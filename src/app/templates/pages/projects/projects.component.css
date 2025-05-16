@@ -718,16 +718,25 @@
 
   .search-container, .filters-container {
     width: 100%;
+    justify-content: space-between;
   }
 
   .mobile-only {
     display: flex;
-    width: 100%;
     justify-content: space-between;
+  }
+
+  .layout-toggle {
+    gap: 15px;
   }
   
   .desktop-only {
     display: none;
+  }
+
+  .sort-options, .tags-options {
+    min-width: 150px;
+    left: 0;
   }
 }
 
@@ -736,6 +745,11 @@
     .divider {
       transform: skewX(-5deg);
     }
+  }
+
+  .admin-buttons {
+    opacity: 1;
+    visibility: visible;
   }
 }
 

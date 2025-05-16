@@ -72,3 +72,9 @@ h2 {
   width: 40px;
   fill: white;
 }
+
+@media (max-width: 768px) {
+  .modal-content {
+    margin: auto 2rem;
+  }
+}

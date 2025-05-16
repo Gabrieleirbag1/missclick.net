@@ -5,7 +5,7 @@
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .admin-header {
@@ -270,37 +270,6 @@ input[type="file"]:hover {
   border-bottom: 1px solid #f1f5f9;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .admin-container {
-    padding: 1.5rem;
-    margin: 1rem;
-  }
-
-  .array-item {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .remove-btn {
-    align-self: flex-end;
-  }
-
-  .sub-form-group {
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .file-name {
-    width: 100%;
-    max-width: none;
-    margin-top: 5px;
-  }
-}
-
-/* Add these styles to your existing CSS */
-
 .file-input-container {
   margin-bottom: 1.5rem;
 }
@@ -365,4 +334,43 @@ input[type="file"]:hover {
   text-overflow: ellipsis;
   max-width: 200px;
   display: inline-block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .array-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .remove-btn {
+    align-self: flex-end;
+  }
+
+  .sub-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .file-name {
+    width: 100%;
+    max-width: none;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 1024px) {
+  @media (orientation: landscape) {
+    .admin-container {
+      padding: 2rem;
+      margin: 1.5rem;
+    }
+  }
 }

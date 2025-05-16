@@ -166,7 +166,23 @@
     display: none;
   }
 
-  .expanded-content p{
+  .expanded-content p {
     overflow: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  @media (orientation: landscape) {
+    .skill-desc h1 {
+      display: none;
+    }
+
+    .expanded-content p {
+      overflow: auto;
+    }
+
+    .technologies-icons {
+      gap: 5px;
+    }
   }
 }

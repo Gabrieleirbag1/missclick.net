@@ -186,17 +186,48 @@ label {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .login-card {
-    padding: 30px 20px;
+    width: 90%;
+    margin: auto 2rem;
   }
 
   h2 {
     font-size: 24px;
-    margin-bottom: 24px;
   }
 
   .form-control {
-    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .login-btn {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 1024px) {
+  @media (orientation: landscape) {
+    .login-card {
+      width: 80%;
+      padding: 30px;
+    }
+
+    h2 {
+      font-size: 26px;
+    }
+
+    .form-control {
+      font-size: 15px;
+    }
+
+    .login-btn {
+      font-size: 15px;
+      padding: 13px;
+    }
+
+    .login-container {
+      height: 70vw;
+    }
   }
 }
