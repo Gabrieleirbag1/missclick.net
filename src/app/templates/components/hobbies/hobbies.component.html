@@ -2,9 +2,8 @@
   <div class="slider-container">
     <div class="slider-inner" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
       <div class="hobbie-element" *ngFor="let hobby of hobbies" 
-           [ngClass]="{'replace-background': hobby.replaceBackground}"
-           [ngStyle]="hobby.replaceBackground ? 
-                     {'background-image': '-webkit-linear-gradient(-20deg, rgba(255, 255, 255, 0.9) 45%, transparent 0%), url(' + hobby.imageUrl + ')'} : {}">
+        [ngClass]="{'replace-background': hobby.replaceBackground}"
+        [ngStyle]="getBackgroundStyle(hobby)">
         <div class="hobbie-desc">
           <h2>{{ hobby.title }}</h2>
           <p *ngFor="let paragraph of hobby.description">{{ paragraph }}</p>

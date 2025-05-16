@@ -5,7 +5,9 @@
   <div class="windows-xp-desktop">
     <div class="desktop-icons">
       <!-- Generate desktop icons dynamically -->
-      <div *ngFor="let icon of desktopIcons" class="desktop-icon" (dblclick)="openModal(icon.type)">
+      <div *ngFor="let icon of desktopIcons" class="desktop-icon" 
+        (dblclick)="openModal(icon.type)" 
+        (touchend)="openModal(icon.type)">
         <img [src]="icon.iconSrc" [alt]="icon.label + ' Icon'" class="icon-img">
         <span class="icon-label">{{ icon.label }}</span>
       </div>

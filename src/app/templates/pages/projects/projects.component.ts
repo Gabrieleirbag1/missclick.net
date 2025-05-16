@@ -77,6 +77,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     ).subscribe(() => {
       this.searchProjects();
     });
+
+    this.checkOrientation();
+    window.addEventListener('resize', () => this.checkOrientation());
   }
 
   loadProjects(): void {
@@ -120,6 +123,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     if (this.modalSubscription) {
       this.modalSubscription.unsubscribe();
     }
+    window.removeEventListener('resize', () => this.checkOrientation());
   }
 
   setLayout(layout: 'grid' | 'list'): void {
@@ -288,5 +292,12 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     document.body.appendChild(downloadAnchorNode); // required for firefox
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
-  } 
+  }
+
+  checkOrientation(): void {
+    // Force grid view on portrait mobile
+    if (window.innerWidth <= 768 && window.innerHeight > window.innerWidth) {
+      this.currentLayout = 'grid';
+    }
+  }
 }

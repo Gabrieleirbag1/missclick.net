@@ -28,14 +28,22 @@ export class HobbiesComponent implements OnInit, OnDestroy {
 
   isPianoPlaying: boolean = false;
 
+  isMobileView: boolean = false;
+
   ngOnInit(): void {
     const audioElement = this.musicPlayer['audio'] as HTMLAudioElement;
     audioElement.addEventListener('ended', this.onAudioEnded.bind(this));
+
+    this.checkScreenSize();
+
+    window.addEventListener('resize', this.checkScreenSize.bind(this));
   }
 
   ngOnDestroy(): void {
     const audioElement = this.musicPlayer['audio'] as HTMLAudioElement;
     audioElement.removeEventListener('ended', this.onAudioEnded.bind(this));
+
+    window.removeEventListener('resize', this.checkScreenSize.bind(this));
   }
 
   onAudioEnded(): void {
@@ -58,5 +66,29 @@ export class HobbiesComponent implements OnInit, OnDestroy {
       this.musicPlayer.play();
     }
     this.isPianoPlaying = !this.isPianoPlaying;
+  }
+
+  checkScreenSize(): void {
+    this.isMobileView = window.innerWidth <= 768;
+  }
+
+  getBackgroundStyle(hobby: Hobby): any {
+    if (!hobby.replaceBackground) {
+      return {};
+    }
+
+    if (this.isMobileView) {
+      return {
+        'background-image': `linear-gradient(to bottom, 
+                             rgba(255, 255, 255, 0.9) 0%, 
+                             rgba(140, 140, 140, 0.9) calc(100% - 200px), 
+                             transparent 100%), 
+                             url(${hobby.imageUrl})`
+      };
+    } else {
+      return {
+        'background-image': `-webkit-linear-gradient(-20deg, rgba(255, 255, 255, 0.9) 45%, transparent 0%), url(${hobby.imageUrl})`
+      };
+    }
   }
 }
