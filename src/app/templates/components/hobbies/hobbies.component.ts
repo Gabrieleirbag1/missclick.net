@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import hobbiesData from '../../../../assets/data/hobbies.json';
 import { MusicPlayer } from '../../../services/global.service';
@@ -17,7 +17,7 @@ interface Hobby {
   templateUrl: './hobbies.component.html',
   styleUrl: './hobbies.component.css'
 })
-export class HobbiesComponent {
+export class HobbiesComponent implements OnInit, OnDestroy {
 
   constructor() {}
 
@@ -27,6 +27,20 @@ export class HobbiesComponent {
   currentIndex = 0;
 
   isPianoPlaying: boolean = false;
+
+  ngOnInit(): void {
+    const audioElement = this.musicPlayer['audio'] as HTMLAudioElement;
+    audioElement.addEventListener('ended', this.onAudioEnded.bind(this));
+  }
+
+  ngOnDestroy(): void {
+    const audioElement = this.musicPlayer['audio'] as HTMLAudioElement;
+    audioElement.removeEventListener('ended', this.onAudioEnded.bind(this));
+  }
+
+  onAudioEnded(): void {
+    this.isPianoPlaying = false;
+  }
 
   previousSlide(): void {
     this.currentIndex = this.currentIndex === 0 ? this.hobbies.length - 1 : this.currentIndex - 1;
@@ -38,11 +52,9 @@ export class HobbiesComponent {
 
   playPiano(): void {
     if (this.isPianoPlaying) {
-      console.log('Pausing music');
       this.musicPlayer.pause();
     }
     else {
-      console.log('Playing music');
       this.musicPlayer.play();
     }
     this.isPianoPlaying = !this.isPianoPlaying;
