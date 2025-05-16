@@ -412,6 +412,7 @@
 .project-description {
   line-height: 1.6;
   margin-bottom: 25px;
+  height: 20vh;
 }
 
 .project-footer {
