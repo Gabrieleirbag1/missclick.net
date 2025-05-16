@@ -91,10 +91,6 @@
   transition-delay: 0.1s;
 }
 
-.expanded-content p {
-  padding: 0 10px;
-}
-
 .expanded-content h1 {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -103,6 +99,7 @@
 .expanded-content p {
   font-weight: 500;
   line-height: 1.6;
+  padding: 0 10px;
 }
 
 /* Hide normal content and show expanded content when card is expanded */
@@ -144,4 +141,32 @@
 
 .technologies-icon {
   height: 42px;
+}
+
+@media (max-width: 768px) {
+  .skills-cards {
+    flex-direction: column;
+  }
+
+  .skill-card {
+    width: 100%;
+    height: 100%;
+  }
+
+  .skill-icon {
+    height: 30vh;
+  }
+
+  .skill-desc {
+    height: auto;
+    padding: 20px;
+  }
+
+  .skill-desc h1 {
+    display: none;
+  }
+
+  .expanded-content p{
+    overflow: auto;
+  }
 }

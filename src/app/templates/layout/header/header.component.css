@@ -210,7 +210,6 @@ nav a:hover {
 
 @media (max-width: 768px) {
   .header-container {
-    flex-direction: column;
-    gap: 15px;
+    padding: 20px 10px;
   }
 }
