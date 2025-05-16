@@ -30,6 +30,12 @@
         "method": "redirectToPage"
     },
     {
+        "command": "login/",
+        "alias": ["login", "log-in", "sign-in", "signin", "log"],
+        "description": "Log in to your account.",
+        "method": "redirectToPage"
+    },
+    {
         "command": "https://ultimate-converter.missclick.net/",
         "alias": ["converter", "ultimate-converter", "convert", "conversion"],
         "description": "The ultimate converter for all your needs.",
@@ -54,10 +60,9 @@
         "method": "redirectToPage"
     },
     {
-        "command": "login/",
-        "alias": ["login", "log-in", "sign-in", "signin", "log"],
-        "description": "Log in to your account.",
+        "command": "https://www.mesopinions.com/public/img/petition/petition-img-176334-fr.jpeg",
+        "alias": ["quoi", "koi", "qoi", "koa", "quoa", "qoa", "coa"],
+        "description": "A petition to stop the use of the word 'quoi'.",
         "method": "redirectToPage"
     }
-
 ]
