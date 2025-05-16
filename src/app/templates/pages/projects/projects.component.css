@@ -719,6 +719,7 @@
   .search-container, .filters-container {
     width: 100%;
     justify-content: space-between;
+    gap: 5px;
   }
 
   .mobile-only {
@@ -727,7 +728,7 @@
   }
 
   .layout-toggle {
-    gap: 15px;
+    gap: 5px;
   }
   
   .desktop-only {
@@ -737,6 +738,11 @@
   .sort-options, .tags-options {
     min-width: 150px;
     left: 0;
+  }
+
+  .projects-wrapper {
+    display: flex;
+    flex-direction: column;
   }
 }
 
