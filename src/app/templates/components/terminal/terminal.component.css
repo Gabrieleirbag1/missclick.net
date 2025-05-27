@@ -166,28 +166,37 @@
       align-items: flex-start;
     }
 
+    .terminal-header p {
+      font-size: 0.9rem;
+      margin: 10px 0;
+    }
+
     .terminal-buttons {
       margin-bottom: 10px;
     }
 
     .terminal-text {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
 
     .terminal-input {
-      font-size: 0.9rem;
+      font-size: 0.7rem;
     }
 
     .terminal-prompt {
-      font-size: 0.9rem;
+      font-size: 0.7rem;
     }
 
     .terminal-cursor {
-      height: 1.5em;
+      height: 1em;
     }
 
     .terminal-input-container {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .desktop-only {
+      display: none;
     }
   }
 }
