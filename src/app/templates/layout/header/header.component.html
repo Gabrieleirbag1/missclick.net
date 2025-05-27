@@ -1,7 +1,9 @@
 <header>
   <div class="container header-container">
     <div class="logo">
-      <a routerLink="/" class="header-title">Missclick.net</a>
+      <a routerLink="/" class="header-title">
+        <img src="assets/images/logo/logo-cropped.png" alt="MissclickNet Logo" class="logo-image">
+      </a>
     </div>
     <nav>
       <button class="invisible-btn menu-toggle" [class.open]="isSidebarOpen" (click)="toggleMenu()">
@@ -13,7 +15,7 @@
 
 <div class="sidebar" [class.open]="isSidebarOpen">
   <div class="sidebar-content" appCloseSidebar [excludeToggle]="true">
-    <ul>
+    <ul id="menu">
       <li class="menu-item">
         <div class="menu-title">
           <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>

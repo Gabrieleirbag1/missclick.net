@@ -2,7 +2,7 @@
 
 header {
   font-family: "Courier New", Courier, monospace;
-  padding: 2vw;
+  padding: 0 2vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,14 +16,14 @@ header {
 }
 
 .header-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
 
-.logo a {
-  color: white;
+.logo-image {
+  width: 250px;
+  height: auto;
+  padding: 20px 0;
 }
 
 nav a {
@@ -62,8 +62,8 @@ nav a:hover {
 }
 
 .menu-toggle svg {
-  width: 2rem;
-  height: 2rem;
+  width: 2.3rem;
+  height: 2.3rem;
 }
 
 .sidebar {
@@ -179,6 +179,10 @@ nav a:hover {
   transform: rotate(-90deg);
 }
 
+#menu {
+  margin-top: 20px;
+}
+
 .submenu {
   max-height: 0;
   overflow: hidden;
@@ -209,7 +213,12 @@ nav a:hover {
 }
 
 @media (max-width: 768px) {
-  .header-container {
-    padding: 20px 10px;
+  header {
+    padding: 0 5vw;
+  }
+
+  .logo-image {
+    width: 200px;
+    padding: 10px 0;
   }
 }
