@@ -11,11 +11,17 @@ import { Subscription, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { LoaderComponent } from '../../components/loader/loader.component';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, ConfirmationModalComponent, FormsModule],
+  imports: [
+    CommonModule, 
+    ConfirmationModalComponent, 
+    FormsModule,
+    LoaderComponent
+  ],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css'],
 })
@@ -39,6 +45,11 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   modalMessage = '';
   projectToDelete: any = null;
 
+  // Image loading state
+  imagesLoading = true;
+  totalImages = 0;
+  loadedImages = 0;
+
   private modalSubscription: Subscription | undefined;
   private searchTerms = new Subject<string>();
 
@@ -48,7 +59,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     private router: Router,
     protected globalService: GlobalService,
     protected modalService: ModalService,
-    private elementRef: ElementRef // Add ElementRef to constructor
+    private elementRef: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -83,6 +94,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   loadProjects(): void {
+    this.imagesLoading = true;
+    this.loadedImages = 0;
+    
     this.adminProjectService.getProjects().subscribe(
       (projects: Project[]) => {
         projects.forEach((project) => {
@@ -92,14 +106,20 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         this.projects = projects;
         this.filteredProjects = [...projects];
         
-        // Extract all unique tags for the filter
+        this.totalImages = projects.length * 2; // Grid and list image for each project
+        
+        // If there are no projects, stop showing loader
+        if (this.totalImages === 0) {
+          this.imagesLoading = false;
+        }
+        
         this.extractAvailableTags();
         
-        // Apply initial sorting
         this.applySorting();
       },
       (error) => {
         console.error('Error fetching projects:', error);
+        this.imagesLoading = false; // Stop loading on error
       }
     );
   }
@@ -119,7 +139,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Clean up subscription when component is destroyed
     if (this.modalSubscription) {
       this.modalSubscription.unsubscribe();
     }
@@ -298,6 +317,17 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     // Force grid view on portrait mobile
     if (window.innerWidth <= 768 && window.innerHeight > window.innerWidth) {
       this.currentLayout = 'grid';
+    }
+  }
+
+  // Add a new method to handle image loads
+  onImageLoad(): void {
+    this.loadedImages++;
+    if (this.loadedImages >= this.totalImages && this.totalImages > 0) {
+      // Add a small delay to prevent flickering
+      setTimeout(() => {
+        this.imagesLoading = false;
+      }, 300);
     }
   }
 }
