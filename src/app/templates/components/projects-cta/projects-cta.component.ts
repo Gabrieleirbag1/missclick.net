@@ -13,7 +13,6 @@ import { GlobalService } from '../../../services/global.service';
 export class ProjectsCtaComponent {
   
   constructor(
-    private router: Router,
     private globalService: GlobalService
   ) {}
   
