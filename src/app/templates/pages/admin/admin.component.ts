@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AdminProjectService } from '../../../services/admin-projects.service';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Project } from '../../../models/projects.model';
 import { GlobalService } from '../../../services/global.service';
@@ -17,7 +17,7 @@ import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
   providers: [AdminProjectService],
