@@ -90,7 +90,7 @@
         "method": "redirectToPage"
     },
     {
-        "command": "https://altselection.ouest-france.fr/wp-content/uploads/2025/04/Comment-Faker-est-devenu-une-legende-de-lEsport.webp",
+        "command": "https://fr.wikipedia.org/wiki/Faker",
         "alias": ["goat", "greatest of all time", "t1", "best-player", "top-player", "faker", "lee-sang-hyeok"],
         "description": "Learn about Faker, the greatest of all time.",
         "method": "redirectToPage"
