@@ -15,11 +15,10 @@ interface DesktopIcon extends ModalInfo {
 }
 
 @Component({
-  selector: 'app-github-stats',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './github-stats.component.html',
-  styleUrls: ['./github-stats.component.css'],
+    selector: 'app-github-stats',
+    imports: [CommonModule],
+    templateUrl: './github-stats.component.html',
+    styleUrls: ['./github-stats.component.css']
 })
 export class GithubStatsComponent implements OnInit {
   username = 'Gabrieleirbag1';

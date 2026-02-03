@@ -17,11 +17,10 @@ interface TerminalCommand {
 }
 
 @Component({
-  selector: 'app-terminal',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './terminal.component.html',
-  styleUrls: ['./terminal.component.css'],
+    selector: 'app-terminal',
+    imports: [FormsModule],
+    templateUrl: './terminal.component.html',
+    styleUrls: ['./terminal.component.css']
 })
 export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
   terminalInput = '';

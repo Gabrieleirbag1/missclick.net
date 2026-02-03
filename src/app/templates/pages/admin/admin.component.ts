@@ -15,12 +15,11 @@ import { GlobalService } from '../../../services/global.service';
 import { environment } from '../../../../environments/environment';
 
 @Component({
-  selector: 'app-admin',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css',
-  providers: [AdminProjectService],
+    selector: 'app-admin',
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './admin.component.html',
+    styleUrl: './admin.component.css',
+    providers: [AdminProjectService]
 })
 export class AdminComponent implements OnInit {
   projectForm!: FormGroup;

@@ -4,11 +4,10 @@ import { Router } from '@angular/router';
 import { GlobalService } from '../../../services/global.service';
 
 @Component({
-  selector: 'app-projects-cta',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './projects-cta.component.html',
-  styleUrls: ['./projects-cta.component.css']
+    selector: 'app-projects-cta',
+    imports: [CommonModule],
+    templateUrl: './projects-cta.component.html',
+    styleUrls: ['./projects-cta.component.css']
 })
 export class ProjectsCtaComponent {
   

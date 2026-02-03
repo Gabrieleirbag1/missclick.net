@@ -11,11 +11,10 @@ interface Hobby {
 }
 
 @Component({
-  selector: 'app-hobbies',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './hobbies.component.html',
-  styleUrl: './hobbies.component.css'
+    selector: 'app-hobbies',
+    imports: [CommonModule],
+    templateUrl: './hobbies.component.html',
+    styleUrl: './hobbies.component.css'
 })
 export class HobbiesComponent implements OnInit, OnDestroy {
 

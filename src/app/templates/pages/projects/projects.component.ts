@@ -14,16 +14,15 @@ import { FormsModule } from '@angular/forms';
 import { LoaderComponent } from '../../components/loader/loader.component';
 
 @Component({
-  selector: 'app-projects',
-  standalone: true,
-  imports: [
-    CommonModule, 
-    ConfirmationModalComponent, 
-    FormsModule,
-    LoaderComponent
-  ],
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css'],
+    selector: 'app-projects',
+    imports: [
+        CommonModule,
+        ConfirmationModalComponent,
+        FormsModule,
+        LoaderComponent
+    ],
+    templateUrl: './projects.component.html',
+    styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   private readonly imageAPIUrl = environment.apiUrl + 'projects/image/';

@@ -2,11 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-contact-modal',
-  templateUrl: './contact-modal.component.html',
-  styleUrls: ['./contact-modal.component.css'],
-  standalone: true,
-  imports: [CommonModule]
+    selector: 'app-contact-modal',
+    templateUrl: './contact-modal.component.html',
+    styleUrls: ['./contact-modal.component.css'],
+    imports: [CommonModule]
 })
 export class ContactModalComponent {
   @Input() isOpen = false;

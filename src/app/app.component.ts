@@ -9,11 +9,10 @@ import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationErr
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent, CommonModule],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    imports: [RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent, CommonModule],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, AfterViewInit {
   loading$ = this.loadingService.isLoading$;

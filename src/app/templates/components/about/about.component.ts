@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import aboutImagesData from '../../../../assets/data/about-images.json';
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.css'
+    selector: 'app-about',
+    imports: [CommonModule],
+    templateUrl: './about.component.html',
+    styleUrl: './about.component.css'
 })
 export class AboutComponent implements OnInit, OnDestroy {
   images: string[] = aboutImagesData;
