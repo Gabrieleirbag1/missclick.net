@@ -48,9 +48,15 @@
         "method": "redirectToPage"
     },
     {
-        "command": "https://missclick.net/streamingpower/",
+        "command": "https://streamingpower.missclick.net/",
         "alias": ["streamingpower", "streaming-power", "streaming", "stream"],
-        "description": "The streaming power game.",
+        "description": "The streaming power website.",
+        "method": "redirectToPage"
+    },
+    {
+        "command": "https://geonovis.missclick.net/",
+        "alias": ["geonovis", "geo-novis", "geography-game", "geo-game"],
+        "description": "The geography knowledge game.",
         "method": "redirectToPage"
     },
     {
@@ -63,6 +69,36 @@
         "command": "https://www.mesopinions.com/public/img/petition/petition-img-176334-fr.jpeg",
         "alias": ["quoi", "koi", "qoi", "koa", "quoa", "qoa", "coa"],
         "description": "A petition to stop the use of the word 'quoi'.",
+        "method": "redirectToPage"
+    },
+    {
+        "command": "https://www.linkedin.com/in/christopherantonio67/",
+        "alias": ["christopher", "chris", "chr1s", "antonio", "christof", "christofer"],
+        "description": "Discover Christopher Antonio.",
+        "method": "redirectToPage"
+    },
+    {
+        "command": "https://www.justice.gov/epstein",
+        "alias": ["whereami", "am i a good person", "am i bad", "am i evil", "where", "where am i", "location", "my location"],
+        "description": "Find out where you are.",
+        "method": "redirectToPage"
+    },
+    {
+        "command": "https://www.youtube.com/watch?v=9On042x-Jw4",
+        "alias": ["music", "musique", "my-music", "favorite-music", "song", "my-song", "favorite-song", "spotify", "spotify-wrapped"],
+        "description": "Listen to some music.",
+        "method": "redirectToPage"
+    },
+    {
+        "command": "https://altselection.ouest-france.fr/wp-content/uploads/2025/04/Comment-Faker-est-devenu-une-legende-de-lEsport.webp",
+        "alias": ["goat", "greatest of all time", "t1", "best-player", "top-player", "faker", "lee-sang-hyeok"],
+        "description": "Learn about Faker, the greatest of all time.",
+        "method": "redirectToPage"
+    },
+    {
+        "command": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "alias": ["easter egg", "easter-egg", "surprise", "rickroll", "rick-astley", "never-gonna-give-you-up", "never-gonna-let-you-down"],
+        "description": "A little surprise for you.",
         "method": "redirectToPage"
     }
 ]
