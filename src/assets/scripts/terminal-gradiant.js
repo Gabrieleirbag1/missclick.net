@@ -31,11 +31,23 @@ class MiniGl {
       debug_output =
         -1 !== document.location.search.toLowerCase().indexOf("debug=webgl");
     (_miniGl.canvas = canvas),
-      (_miniGl.gl = _miniGl.canvas.getContext("webgl", {
-        antialias: true,
-      })),
+      (_miniGl.gl =
+        _miniGl.canvas.getContext("webgl", {
+          antialias: true,
+          failIfMajorPerformanceCaveat: false,
+        }) ||
+        _miniGl.canvas.getContext("experimental-webgl", {
+          antialias: true,
+          failIfMajorPerformanceCaveat: false,
+        })),
       (_miniGl.meshes = []);
     const context = _miniGl.gl;
+    if (!context) {
+      console.warn(
+        "[terminal-gradient] WebGL context unavailable (blocked by browser/GPU policy), skipping gradient animation."
+      );
+      return;
+    }
     width && height && this.setSize(width, height),
       _miniGl.lastDebugMsg,
       (_miniGl.debug =
@@ -626,11 +638,13 @@ class Gradient {
       document.querySelectorAll("canvas").length < 1
         ? console.log("DID NOT LOAD HERO STRIPE CANVAS")
         : ((this.minigl = new MiniGl(this.el, null, null, !0)),
-          requestAnimationFrame(() => {
-            this.el &&
-              ((this.computedCanvasStyle = getComputedStyle(this.el)),
-              this.waitForCssVars());
-          }));
+          this.minigl.gl
+            ? requestAnimationFrame(() => {
+                this.el &&
+                  ((this.computedCanvasStyle = getComputedStyle(this.el)),
+                  this.waitForCssVars());
+              })
+            : void 0);
           /*
               this.scrollObserver = await s.create(.1, !1),
               this.scrollObserver.observe(this.el),
